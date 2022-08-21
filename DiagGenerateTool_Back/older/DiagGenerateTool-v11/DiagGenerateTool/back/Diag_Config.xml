@@ -1,0 +1,43 @@
+<DiagConfigs>
+    <DcmConfig>
+        <DcmGeneralConfig>
+            <DcmGeneralConfig: DcmTesterResponseAddr="2"/>
+            <DcmGeneralConfig: DcmTesterSourcePhyAddr="1"/>
+            <DcmGeneralConfig: DcmTesterSourceFuncAddr="0"/>
+            <DcmGeneralConfig: DcmDslBufferSize="4095"/>
+        </DcmGeneralConfig>
+        <DidConfig>
+            <DidConfig: DataLen="a" Did="a1a1" Operation="3"/>
+            <DidConfig: DataLen="1" Did="f1b1" Operation="4"/>
+            <DidConfig: DataLen="4" Did="f193" Operation="1"/>
+            <DidConfig: DataLen="4" Did="f195" Operation="1"/>
+        </DidConfig>
+        <RidConfig>
+            <RidConfig: RoutineType="6" Rid="202" Operation="f" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Rid="203" Operation="f" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Rid="ff01" Operation="f" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Rid="f103" Operation="f" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Rid="f104" Operation="f" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Rid="f11e" Operation="f" RoutineControlOptionRecord="1"/>
+        </RidConfig>
+    </DcmConfig>
+    <DemConfig>
+        <OpCycleConfig>
+            <OpCycleConfig: Type="0" AutoStop="0" Id="0" AutoStart="0"/>
+            <OpCycleConfig: Type="0" AutoStop="0" Id="1" AutoStart="0"/>
+            <OpCycleConfig: Type="0" AutoStop="0" Id="2" AutoStart="0"/>
+            <OpCycleConfig: Type="0" AutoStop="1" Id="3" AutoStart="1"/>
+        </OpCycleConfig>
+        <DebounceConfig>
+            <DebounceConfig: PassedTimeThershold="100" FailedTimeThershold="100" JumpDownValue="0" IncStepSize="0" FailedThershold="0" JumpDown="0" JumpUpValue="0" DecStepSize="0" JumpUp="0" AlgoClass="1" PassedThershold="0" behavior="1"/>
+            <DebounceConfig: PassedTimeThershold="0" FailedTimeThershold="0" JumpDownValue="0" IncStepSize="1" FailedThershold="127" JumpDown="0" JumpUpValue="0" DecStepSize="-1" JumpUp="0" AlgoClass="0" PassedThershold="-128" behavior="1"/>
+            <DebounceConfig: PassedTimeThershold="0" FailedTimeThershold="0" JumpDownValue="0" IncStepSize="0" FailedThershold="0" JumpDown="0" JumpUpValue="0" DecStepSize="0" JumpUp="0" AlgoClass="3" PassedThershold="0" behavior="1"/>
+        </DebounceConfig>
+        <DTCConfig>
+            <DTCConfig: AgingThershold="255" DTCTableRef="0" AvailableStatus="0" EventKind="0" AttrbsRef="0" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="4" StorageConditionRef="0" ImmediateNvStorageAllowed="0" EnableConditionRef="0" OpCycleRef="4" Value="ffffff" Id="0" AgingAllowed="0" FailureCycleCounterThershold="255" DebounceTableRef="255"/>
+            <DTCConfig: AgingThershold="40" DTCTableRef="1" AvailableStatus="1" EventKind="0" AttrbsRef="1" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="0" StorageConditionRef="0" ImmediateNvStorageAllowed="1" EnableConditionRef="0" OpCycleRef="2" Value="0" Id="1" AgingAllowed="1" FailureCycleCounterThershold="255" DebounceTableRef="255"/>
+            <DTCConfig: AgingThershold="40" DTCTableRef="2" AvailableStatus="1" EventKind="1" AttrbsRef="2" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="0" StorageConditionRef="0" ImmediateNvStorageAllowed="1" EnableConditionRef="0" OpCycleRef="2" Value="0" Id="2" AgingAllowed="1" FailureCycleCounterThershold="255" DebounceTableRef="255"/>
+            <DTCConfig: AgingThershold="40" DTCTableRef="3" AvailableStatus="1" EventKind="0" AttrbsRef="3" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="0" StorageConditionRef="0" ImmediateNvStorageAllowed="1" EnableConditionRef="0" OpCycleRef="3" Value="f00316" Id="3" AgingAllowed="1" FailureCycleCounterThershold="255" DebounceTableRef="0"/>
+        </DTCConfig>
+    </DemConfig>
+</DiagConfigs>
