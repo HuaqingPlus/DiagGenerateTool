@@ -77,22 +77,6 @@
 #ifndef DCM_TABLE_IOCTRL
 #define DCM_TABLE_IOCTRL \
 {\
-	PID_A1A1,\
-	RETURN_CONTROL_ECU|FREEZE_CURRENT_STATE|RESET_TO_DEFAULT|SHORT_TERM_ADJUST,\
-	DID_0x2FDID_SIZE_2,\
-	NULL_PTR, \
-	fdiag_app_A1A1_IOC, \
-	NULL_PTR, \
-},\
-{\
-	PID_F190,\
-	RETURN_CONTROL_ECU|FREEZE_CURRENT_STATE|RESET_TO_DEFAULT|SHORT_TERM_ADJUST,\
-	DID_0x2FDID_SIZE_2,\
-	NULL_PTR, \
-	fdiag_app_F190_IOC, \
-	NULL_PTR, \
-},\
-{\
 	PID_F297,\
 	RETURN_CONTROL_ECU|FREEZE_CURRENT_STATE|RESET_TO_DEFAULT|SHORT_TERM_ADJUST,\
 	DID_0x2FDID_SIZE_2,\
@@ -146,8 +130,6 @@ static const PID_RECORD diag_write_pid_table_rom[] =
 #endif
 
 #ifdef SERVICE_2F_SUPPORTED
-uint8 fdiag_app_A1A1_IOC(uint8 fl_ctrl_parameter, uint8 *fl_get_ctrl_value);
-uint8 fdiag_app_F190_IOC(uint8 fl_ctrl_parameter, uint8 *fl_get_ctrl_value);
 uint8 fdiag_app_F297_IOC(uint8 fl_ctrl_parameter, uint8 *fl_get_ctrl_value);
 
 static const IOCTL_RECORD ioctl_diag_table_rom[] = 

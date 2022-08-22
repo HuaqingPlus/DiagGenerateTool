@@ -155,12 +155,13 @@ void MainWindow::MainWindow_Init(void)
     QStringList Str_Actinos;
     QAction* Ptr_Action_Temp;
     QMenu* Ptr_Menu_Project = new QMenu("File",this);
-    Str_Actinos << "New Project" << "Open Project" << "Save Project";
+    Str_Actinos << "New Project" << "Open Project" << "Save Project" << "Save As" << "Close Project";
     for(uint8 i = 0; i < Str_Actinos.count(); i++)
     {
        Ptr_Action_Temp = new QAction(Str_Actinos.at(i));
        List_Actions_Project.append(Ptr_Action_Temp);
     }
+
     Ptr_Menu_Project->addActions(List_Actions_Project);
     ui->menubar->addMenu(Ptr_Menu_Project);
     //设置菜单栏背景颜色
@@ -169,23 +170,23 @@ void MainWindow::MainWindow_Init(void)
     connect(Ptr_Menu_Project, &QMenu::triggered, this, &MainWindow::Slot_FileMenu_Triggered);
 
     //每一项配置增加一个TableView
-    Ptr_TableView_Rid = new QTableView(ui->Table_Config->parentWidget());
-    Ptr_TableView_DcmGeneral = new QTableView(ui->Table_Config->parentWidget());
-    Ptr_TableView_OpCycle = new QTableView(ui->Table_Config->parentWidget());
-    Ptr_TableView_Debounce = new QTableView(ui->Table_Config->parentWidget());
-    Ptr_TableView_DTC = new QTableView(ui->Table_Config->parentWidget());
-    Ptr_TableView_NVM = new QTableView(ui->Table_Config->parentWidget());
-    Ptr_TableView_FEE = new QTableView(ui->Table_Config->parentWidget());
+    Ptr_TableView_Rid = new QTableView(ui->TableView_Did->parentWidget());
+    Ptr_TableView_DcmGeneral = new QTableView(ui->TableView_Did->parentWidget());
+    Ptr_TableView_OpCycle = new QTableView(ui->TableView_Did->parentWidget());
+    Ptr_TableView_Debounce = new QTableView(ui->TableView_Did->parentWidget());
+    Ptr_TableView_DTC = new QTableView(ui->TableView_Did->parentWidget());
+    Ptr_TableView_NVM = new QTableView(ui->TableView_Did->parentWidget());
+    Ptr_TableView_FEE = new QTableView(ui->TableView_Did->parentWidget());
 
-    Ptr_TableView_Rid->setGeometry(ui->Table_Config->geometry());
-    Ptr_TableView_DcmGeneral->setGeometry(ui->Table_Config->geometry());
-    Ptr_TableView_OpCycle->setGeometry(ui->Table_Config->geometry());
-    Ptr_TableView_Debounce->setGeometry(ui->Table_Config->geometry());
-    Ptr_TableView_DTC->setGeometry(ui->Table_Config->geometry());
-    Ptr_TableView_NVM->setGeometry(ui->Table_Config->geometry());
-    Ptr_TableView_FEE->setGeometry(ui->Table_Config->geometry());
+    Ptr_TableView_Rid->setGeometry(ui->TableView_Did->geometry());
+    Ptr_TableView_DcmGeneral->setGeometry(ui->TableView_Did->geometry());
+    Ptr_TableView_OpCycle->setGeometry(ui->TableView_Did->geometry());
+    Ptr_TableView_Debounce->setGeometry(ui->TableView_Did->geometry());
+    Ptr_TableView_DTC->setGeometry(ui->TableView_Did->geometry());
+    Ptr_TableView_NVM->setGeometry(ui->TableView_Did->geometry());
+    Ptr_TableView_FEE->setGeometry(ui->TableView_Did->geometry());
 
-    ui->Table_Config->hide();
+    ui->TableView_Did->hide();
     Ptr_TableView_Rid->hide();
     Ptr_TableView_OpCycle->hide();
     Ptr_TableView_Debounce->hide();
@@ -239,31 +240,31 @@ void MainWindow::MainWindow_Init(void)
     connect(ui->Tree_Config, &QTreeView::clicked, this, &MainWindow::Slot_TreeView_Clicled);
 
     //增加DID Table右键菜单
-    Ptr_Menu_Did = new QMenu(ui->Table_Config);
+    Ptr_Menu_Did = new QMenu(ui->TableView_Did);
     Ptr_Action_AddDID = Ptr_Menu_Did->addAction("Add Did");
     Ptr_Action_DelDID = Ptr_Menu_Did->addAction("Delete Did");
     Ptr_Action_InsertDID = Ptr_Menu_Did->addAction("Insert Did");
 
-    ui->Table_Config->addAction(Ptr_Action_AddDID);
-    ui->Table_Config->addAction(Ptr_Action_DelDID);
-    ui->Table_Config->addAction(Ptr_Action_InsertDID);
+    ui->TableView_Did->addAction(Ptr_Action_AddDID);
+    ui->TableView_Did->addAction(Ptr_Action_DelDID);
+    ui->TableView_Did->addAction(Ptr_Action_InsertDID);
 
     connect(Ptr_Action_AddDID, &QAction::triggered, this, &MainWindow::Slot_AddDID);
     connect(Ptr_Action_DelDID, &QAction::triggered, this, &MainWindow::Slot_DelDID);
     connect(Ptr_Action_InsertDID, &QAction::triggered, this, &MainWindow::Slot_InsertDID);
 
-    ui->Table_Config->setContextMenuPolicy(Qt::CustomContextMenu);//必须设置
-    connect(ui->Table_Config, &QTableView::customContextMenuRequested, this, &MainWindow::Slot_DidTable_customContextMenuRequested);
+    ui->TableView_Did->setContextMenuPolicy(Qt::CustomContextMenu);//必须设置
+    connect(ui->TableView_Did, &QTableView::customContextMenuRequested, this, &MainWindow::Slot_DidTable_customContextMenuRequested);
     connect(&StdModel_Did, &QStandardItemModel::itemChanged, this, &MainWindow::Slot_UpdateDidInfos);
     //test
     //设置代理
-    Ptr_Checkbox_Delegate_Did[0] = new CheckBoxDelegate(ui->Table_Config);
-    Ptr_Checkbox_Delegate_Did[1] = new CheckBoxDelegate(ui->Table_Config);
-    Ptr_Checkbox_Delegate_Did[2] = new CheckBoxDelegate(ui->Table_Config);
-    Ptr_Checkbox_Delegate_Did[3] = new CheckBoxDelegate(ui->Table_Config);
+    Ptr_Checkbox_Delegate_Did[0] = new CheckBoxDelegate(ui->TableView_Did);
+    Ptr_Checkbox_Delegate_Did[1] = new CheckBoxDelegate(ui->TableView_Did);
+    Ptr_Checkbox_Delegate_Did[2] = new CheckBoxDelegate(ui->TableView_Did);
+    Ptr_Checkbox_Delegate_Did[3] = new CheckBoxDelegate(ui->TableView_Did);
 
     //增加RID Table右键菜单
-    Ptr_Menu_Rid = new QMenu(ui->Table_Config);
+    Ptr_Menu_Rid = new QMenu(ui->TableView_Did);
     Ptr_Action_AddRID = Ptr_Menu_Rid->addAction("Add Rid");
     Ptr_Action_DelRID = Ptr_Menu_Rid->addAction("Delete Rid");
     Ptr_Action_InsertRID = Ptr_Menu_Rid->addAction("Insert Rid");
@@ -409,6 +410,33 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
         //使能Generate
         ui->But_Generate->setEnabled(true);
     }
+    else if(action->text() == "Save As")
+    {
+        PM_NewProject();
+        //设置TreeView
+        ui->Tree_Config->setModel(&StdModle_TreeConfig);
+        //设置展开
+        ui->Tree_Config->expandAll();
+
+        //使能Generate
+        ui->But_Generate->setEnabled(true);
+    }
+    else if(action->text() == "Close Project")
+    {
+        PM_NewProject();
+        //清除TreeView
+        ui->TableView_Did->close();
+        Ptr_TableView_DcmGeneral->close();
+        Ptr_TableView_Rid->close();
+        Ptr_TableView_OpCycle->close();
+        Ptr_TableView_Debounce->close();
+        Ptr_TableView_DTC->close();
+        Ptr_TableView_NVM->close();
+        Ptr_TableView_FEE->close();
+
+        //禁止Generate
+        ui->But_Generate->setEnabled(false);
+    }
 }
 
 void MainWindow::Slot_OpenConfig(bool checked)
@@ -421,7 +449,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     QString Str_ItemName = ui->Tree_Config->model()->itemData(index).values().at(0).toString();
     if(Str_ItemName == "DID Table")
     {
-        ui->Table_Config->show();
+        ui->TableView_Did->show();
         Ptr_TableView_Rid->hide();
         Ptr_TableView_DcmGeneral->hide();
         Ptr_TableView_OpCycle->hide();
@@ -432,7 +460,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     }
     else if(Str_ItemName == "RID Table")
     {
-        ui->Table_Config->hide();
+        ui->TableView_Did->hide();
         Ptr_TableView_Rid->show();
         Ptr_TableView_DcmGeneral->hide();
         Ptr_TableView_OpCycle->hide();
@@ -443,7 +471,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     }
     else if(Str_ItemName == "Dcm General Config")
     {
-        ui->Table_Config->hide();
+        ui->TableView_Did->hide();
         Ptr_TableView_Rid->hide();
         Ptr_TableView_DcmGeneral->show();
         Ptr_TableView_OpCycle->hide();
@@ -455,7 +483,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     }
     else if(Str_ItemName == "OpCycle Table")
     {
-        ui->Table_Config->hide();
+        ui->TableView_Did->hide();
         Ptr_TableView_Rid->hide();
         Ptr_TableView_DcmGeneral->hide();
         Ptr_TableView_OpCycle->show();
@@ -467,7 +495,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     }
     else if(Str_ItemName == "Debounce Table")
     {
-        ui->Table_Config->hide();
+        ui->TableView_Did->hide();
         Ptr_TableView_Rid->hide();
         Ptr_TableView_DcmGeneral->hide();
         Ptr_TableView_OpCycle->hide();
@@ -479,7 +507,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     }
     else if(Str_ItemName == "DTC Config")
     {
-        ui->Table_Config->hide();
+        ui->TableView_Did->hide();
         Ptr_TableView_Rid->hide();
         Ptr_TableView_DcmGeneral->hide();
         Ptr_TableView_OpCycle->hide();
@@ -491,7 +519,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     }
     else if(Str_ItemName == "NvM Block Config")
     {
-        ui->Table_Config->hide();
+        ui->TableView_Did->hide();
         Ptr_TableView_Rid->hide();
         Ptr_TableView_DcmGeneral->hide();
         Ptr_TableView_OpCycle->hide();
@@ -503,7 +531,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
     }
     else if(Str_ItemName == "FEE Config")
     {
-        ui->Table_Config->hide();
+        ui->TableView_Did->hide();
         Ptr_TableView_Rid->hide();
         Ptr_TableView_DcmGeneral->hide();
         Ptr_TableView_OpCycle->hide();
@@ -524,7 +552,7 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
 void MainWindow::Slot_DidTable_customContextMenuRequested(const QPoint &pos)
 {
     bool Enable_Menu = false;
-    QModelIndex index = ui->Table_Config->indexAt(pos);
+    QModelIndex index = ui->TableView_Did->indexAt(pos);
     qDebug() << "index at : " << index;
     sint8 row = index.row();
     if(row == (-1))
@@ -1144,8 +1172,9 @@ void MainWindow::TableView_UpdateDcmGeneral(void)
         Ptr_Item_Temp[1] = new QStandardItem(List_DcmGeneral_Infos_User.at(i)->Value);
 
         //设置文字对齐
-        Ptr_Item_Temp[0]->setTextAlignment(Qt::AlignLeft);
+        Ptr_Item_Temp[0]->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
         Ptr_Item_Temp[1]->setTextAlignment(Qt::AlignCenter);
+
         //设置不可编辑
         Ptr_Item_Temp[0]->setEditable(false);
 
@@ -1196,22 +1225,21 @@ void MainWindow::TableView_UpdateDid(void)
     col = StdModel_Did.columnCount();
     StdModel_Did.setColumnCount(col);
 
-
     //设置代理
-    Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(ui->Table_Config);
-    Ptr_CheckBoxDelegate[1] = new CheckBoxDelegate(ui->Table_Config);
-    Ptr_CheckBoxDelegate[2] = new CheckBoxDelegate(ui->Table_Config);
-    Ptr_CheckBoxDelegate[3] = new CheckBoxDelegate(ui->Table_Config);
+    Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(ui->TableView_Did);
+    Ptr_CheckBoxDelegate[1] = new CheckBoxDelegate(ui->TableView_Did);
+    Ptr_CheckBoxDelegate[2] = new CheckBoxDelegate(ui->TableView_Did);
+    Ptr_CheckBoxDelegate[3] = new CheckBoxDelegate(ui->TableView_Did);
 
     Ptr_CheckBoxDelegate[0]->setColumn(1);
     Ptr_CheckBoxDelegate[1]->setColumn(2);
     Ptr_CheckBoxDelegate[2]->setColumn(4);
     Ptr_CheckBoxDelegate[3]->setColumn(5);
 
-    ui->Table_Config->setItemDelegateForColumn(1,Ptr_CheckBoxDelegate[0]);
-    ui->Table_Config->setItemDelegateForColumn(2,Ptr_CheckBoxDelegate[1]);
-    ui->Table_Config->setItemDelegateForColumn(4,Ptr_CheckBoxDelegate[2]);
-    ui->Table_Config->setItemDelegateForColumn(5,Ptr_CheckBoxDelegate[3]);
+    ui->TableView_Did->setItemDelegateForColumn(1,Ptr_CheckBoxDelegate[0]);
+    ui->TableView_Did->setItemDelegateForColumn(2,Ptr_CheckBoxDelegate[1]);
+    ui->TableView_Did->setItemDelegateForColumn(4,Ptr_CheckBoxDelegate[2]);
+    ui->TableView_Did->setItemDelegateForColumn(5,Ptr_CheckBoxDelegate[3]);
 
     //设置DID表的信息, new出Model需要的Item
     for(int i = 0; i < row; i++)
@@ -1294,7 +1322,7 @@ void MainWindow::TableView_UpdateDid(void)
         }
         StdModel_Did.insertRow(i, List_Row_Item);
     }
-    ui->Table_Config->setModel(&StdModel_Did);
+    ui->TableView_Did->setModel(&StdModel_Did);
 
     Print_TableView();
 }
@@ -1381,12 +1409,10 @@ void MainWindow::TableView_UpdateOpCycle(void)
     QStringList Strlist_Header;
     QStringList Strlist_HeaderTip;
     QStandardItem* Ptr_Item;
-
-    //设置表行数和列数
+    CheckBoxDelegate* Ptr_CheckBoxDelegate[2];
+    
+    //清除数据
     StdModel_OpCycle.clear();
-    StdModel_OpCycle.setColumnCount(4);
-    row = List_OpCycle_Infos_User.count();
-    col = StdModel_OpCycle.columnCount();
 
     //设置表头和ToolTip
     Strlist_Header << "OpCycleID" << "Type" << "AutoStart" << "AutoStop";
@@ -1394,7 +1420,7 @@ void MainWindow::TableView_UpdateOpCycle(void)
                       << QString::fromLocal8Bit("类型名(暂时没用到，可忽略)") \
                       << QString::fromLocal8Bit("该OpCycle是否自动开启(在Dem_PreInit中)")\
                       << QString::fromLocal8Bit("该OpCycle是否自动停止");
-
+    
     for(int i = 0; i < Strlist_Header.size(); i++)
     {
         Ptr_Item = new QStandardItem(Strlist_Header.at(i));
@@ -1403,7 +1429,22 @@ void MainWindow::TableView_UpdateOpCycle(void)
         StdModel_OpCycle.setHorizontalHeaderItem(i,Ptr_Item);
     }
 
-    //设置DID表的信息
+    //设置表行数和列数
+    row = List_OpCycle_Infos_User.count();
+    col = StdModel_OpCycle.columnCount();
+    StdModel_OpCycle.setColumnCount(col);
+
+    //设置代理
+    Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(Ptr_TableView_OpCycle);
+    Ptr_CheckBoxDelegate[1] = new CheckBoxDelegate(Ptr_TableView_OpCycle);
+    
+    Ptr_CheckBoxDelegate[0]->setColumn(2);
+    Ptr_CheckBoxDelegate[1]->setColumn(3);
+
+    Ptr_TableView_OpCycle->setItemDelegateForColumn(2,Ptr_CheckBoxDelegate[0]);
+    Ptr_TableView_OpCycle->setItemDelegateForColumn(3,Ptr_CheckBoxDelegate[1]);
+
+    //设置OpCycle表的信息
     for(uint8 i = 0; i < row; i++)
     {
         List_Row_Item.clear();
@@ -1425,28 +1466,32 @@ void MainWindow::TableView_UpdateOpCycle(void)
                 case (2):
                     if(0 != List_OpCycle_Infos_User.at(i)->AutoStart)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
                     /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 case (3):
                     if(0 != List_OpCycle_Infos_User.at(i)->AutoStop)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
                     /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);;
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 default:
                         break;
@@ -1476,12 +1521,10 @@ void MainWindow::TableView_UpdateDebounce(void)
     QStringList Strlist_Header;
     QStringList Strlist_HeaderTip;
     QStandardItem* Ptr_Item;
+    CheckBoxDelegate* Ptr_CheckBoxDelegate[2];
 
-    //设置表行数和列数
+    //清除数据
     StdModel_Debounce.clear();
-    StdModel_Debounce.setColumnCount(12);
-    row = List_Debounce_Infos_User.count();
-    col = StdModel_Debounce.columnCount();
 
     //设置模型
     Ptr_TableView_Debounce->setModel(&StdModel_Debounce);
@@ -1512,6 +1555,21 @@ void MainWindow::TableView_UpdateDebounce(void)
         Ptr_Item->setToolTip(Strlist_HeaderTip.at(i));
         StdModel_Debounce.setHorizontalHeaderItem(i,Ptr_Item);
     }
+    
+    //设置表行数和列数
+    row = List_Debounce_Infos_User.count();
+    col = StdModel_Debounce.columnCount();
+    StdModel_Debounce.setColumnCount(col);
+
+    //设置代理
+    Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(Ptr_TableView_Debounce);
+    Ptr_CheckBoxDelegate[1] = new CheckBoxDelegate(Ptr_TableView_Debounce);
+    
+    Ptr_CheckBoxDelegate[0]->setColumn(9);
+    Ptr_CheckBoxDelegate[1]->setColumn(10);
+
+    Ptr_TableView_Debounce->setItemDelegateForColumn(9,Ptr_CheckBoxDelegate[0]);
+    Ptr_TableView_Debounce->setItemDelegateForColumn(10,Ptr_CheckBoxDelegate[1]);
 
     //设置Debounce表的信息
     for(uint8 i = 0; i < row; i++)
@@ -1556,28 +1614,32 @@ void MainWindow::TableView_UpdateDebounce(void)
                 case (9):
                     if(false != List_Debounce_Infos_User.at(i)->JumpUp)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
                     /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 case (10):
                     if(false != List_Debounce_Infos_User.at(i)->JumpDown)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
                     /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);;
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 case (11):
                     break;
@@ -1631,13 +1693,10 @@ void MainWindow::TableView_UpdateDTC(void)
     QStringList Strlist_Header;
     QStringList Strlist_HeaderTip;
     QStandardItem* Ptr_Item;
-    //QList<QComboBox*> List_PtrCombox_OpCycle;
-
-    //设置表行数和列数
+    CheckBoxDelegate* Ptr_CheckBoxDelegate[3];
+    
+    //清除数据
     StdModel_DTC.clear();
-    StdModel_DTC.setColumnCount(16);
-    row = List_DTC_Infos_User.count();
-    col = StdModel_DTC.columnCount();
 
     //设置表头和ToolTip
     Strlist_Header << "DTC Value" << "AttrbsRef" << "AgingThershold" << "AgingOpCycleRef" \
@@ -1668,10 +1727,28 @@ void MainWindow::TableView_UpdateDTC(void)
         Ptr_Item->setToolTip(Strlist_HeaderTip.at(i));
         StdModel_DTC.setHorizontalHeaderItem(i,Ptr_Item);
     }
+    
+    //设置表行数和列数
+    row = List_DTC_Infos_User.count();
+    col = StdModel_DTC.columnCount();
+    StdModel_DTC.setColumnCount(col);
 
     //设置模型
     Ptr_TableView_DTC->setModel(&StdModel_DTC);
     Ptr_TableView_DTC->setItemDelegateForColumn(8,Ptr_ComBoxDelegate_EventKind);
+    
+    //设置代理
+    Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(Ptr_TableView_DTC);
+    Ptr_CheckBoxDelegate[1] = new CheckBoxDelegate(Ptr_TableView_DTC);
+    Ptr_CheckBoxDelegate[2] = new CheckBoxDelegate(Ptr_TableView_DTC);
+    
+    Ptr_CheckBoxDelegate[0]->setColumn(4);
+    Ptr_CheckBoxDelegate[1]->setColumn(5);
+    Ptr_CheckBoxDelegate[2]->setColumn(15);
+
+    Ptr_TableView_DTC->setItemDelegateForColumn(4,Ptr_CheckBoxDelegate[0]);
+    Ptr_TableView_DTC->setItemDelegateForColumn(5,Ptr_CheckBoxDelegate[1]);
+    Ptr_TableView_DTC->setItemDelegateForColumn(15,Ptr_CheckBoxDelegate[2]);
 
     //设置DTC表的信息
     for(uint8 i = 0; i < row; i++)
@@ -1703,28 +1780,32 @@ void MainWindow::TableView_UpdateDTC(void)
                 case (4):
                     if(0 != List_DTC_Infos_User.at(i)->ImmediateNvStorageAllowed)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
-                    /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);
+                    // /* 禁止编辑, 使能Check */
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 case (5):
                     if(0 != List_DTC_Infos_User.at(i)->AgingAllowed)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
-                    /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);
+                    // /* 禁止编辑, 使能Check */
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 case (6):
                     /* 禁止编辑, 使能Check */
@@ -1766,18 +1847,20 @@ void MainWindow::TableView_UpdateDTC(void)
                 case (15):
                     if(false != List_DTC_Infos_User.at(i)->AvailableStatus)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
                     /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 default:
-                        break;
+                    break;
             }
             List_Row_Item.append(Ptr_Item);
         }
@@ -1813,12 +1896,11 @@ void MainWindow::TableView_UpdateNVM(void)
     QStringList Strlist_Header;
     QStringList Strlist_HeaderTip;
     QStandardItem* Ptr_Item;
+    CheckBoxDelegate* Ptr_CheckBoxDelegate[2];
 
-    //设置表行数和列数
+    //清除数据
     StdModel_NVM.clear();
-    StdModel_NVM.setColumnCount(16);
-    row = List_NVM_Infos_User.count();
-    col = StdModel_NVM.columnCount();
+
 
     //设置表头和ToolTip
     Strlist_Header << "InitCallback" << "Block Name" << "Block Id" << "Block Length(Byte)" << "RamBlock" << "RomBlock" \
@@ -1850,10 +1932,27 @@ void MainWindow::TableView_UpdateNVM(void)
         StdModel_NVM.setHorizontalHeaderItem(i,Ptr_Item);
     }
 
+    //设置表行数和列数
+    row = List_NVM_Infos_User.count();
+    col = StdModel_NVM.columnCount();
+    StdModel_NVM.setColumnCount(col);
+
     //设置模型
     Ptr_TableView_NVM->setModel(&StdModel_NVM);
-    //将某一列设置为代理
+
+    //设置ComBOx代理
     Ptr_TableView_NVM->setItemDelegateForColumn(11,Ptr_ComBoxDelegate_DeviceKind);
+
+    //设置CheckBox代理
+    
+    Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(Ptr_TableView_NVM);
+    Ptr_CheckBoxDelegate[1] = new CheckBoxDelegate(Ptr_TableView_NVM);
+    
+    Ptr_CheckBoxDelegate[0]->setColumn(14);
+    Ptr_CheckBoxDelegate[1]->setColumn(15);
+
+    Ptr_TableView_NVM->setItemDelegateForColumn(14,Ptr_CheckBoxDelegate[0]);
+    Ptr_TableView_NVM->setItemDelegateForColumn(15,Ptr_CheckBoxDelegate[1]);
 
     //设置NVM表的信息
     for(uint8 i = 0; i < row; i++)
@@ -1895,6 +1994,7 @@ void MainWindow::TableView_UpdateNVM(void)
                     break;
                 case (8):
                     /* 禁止编辑 */
+                    Ptr_Item->setEditable(false);
                     Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->BlockJobPriority));
                     break;
                 case (9):
@@ -1908,37 +2008,43 @@ void MainWindow::TableView_UpdateNVM(void)
                     break;
                 case (12):
                     /* 禁止编辑 */
+                    Ptr_Item->setEditable(false);
                     Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->BlockCrcType));
                     break;
                 case (13):
                     /* 禁止编辑 */
+                    Ptr_Item->setEditable(false);
                     Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->BlockManagementType));
                     break;
                 case (14): /* CheckBox */
                     if(0 != List_NVM_Infos_User.at(i)->SelectBlockForReadAll)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
                     /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 case (15): /* CheckBox */
                     if(0 != List_NVM_Infos_User.at(i)->SelectBlockForWriteAll)
                     {
-                        Ptr_Item->setCheckState(Qt::Checked);
+                        //Ptr_Item->setCheckState(Qt::Checked);
+                        Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
                     }
                     else
                     {
-                        Ptr_Item->setCheckState(Qt::Unchecked);
+                        //Ptr_Item->setCheckState(Qt::Unchecked);
+                        Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
                     /* 禁止编辑, 使能Check */
-                    Ptr_Item->setEditable(false);
-                    Ptr_Item->setCheckable(true);
+                    // Ptr_Item->setEditable(false);
+                    // Ptr_Item->setCheckable(true);
                     break;
                 default:
                         break;
@@ -1995,7 +2101,7 @@ void MainWindow::TableView_UpdateFEE(void)
         StdModel_FEE.setHorizontalHeaderItem(i,Ptr_Item);
     }
 
-    //设置DID表的信息
+    //设置FEE表的信息
     for(int i = 0; i < row; i++)
     {
         QStandardItem* Ptr_Item_Temp[2];
@@ -2005,7 +2111,7 @@ void MainWindow::TableView_UpdateFEE(void)
         Ptr_Item_Temp[1] = new QStandardItem(List_FEE_Infos_User.at(i)->Value);
 
         //设置文字对齐
-        Ptr_Item_Temp[0]->setTextAlignment(Qt::AlignLeft);
+        Ptr_Item_Temp[0]->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
         Ptr_Item_Temp[1]->setTextAlignment(Qt::AlignCenter);
         //设置不可编辑
         Ptr_Item_Temp[0]->setEditable(false);
@@ -2107,7 +2213,7 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
             /* Read Flag */
             Index = StdModel_Did.index(i,1,QModelIndex());
             IndexData = StdModel_Did.data(Index,Qt::DisplayRole);
-            if(IndexData.toUInt() == Qt::Checked)
+            if(IndexData == Qt::Checked)
             {
                 Did_Operation |= DID_READ;
             }
@@ -2347,6 +2453,8 @@ void MainWindow::Slot_UpdateOpCycleInfos(QStandardItem *item)
     uint8 OpInfo_Counter = 0;
     S_OpCycle_Infos_User_Type* Ptr_S_OpCycleInfos_Temp_User;
     uint8 OpCycle_Operation = 0;
+    QModelIndex Index;
+    QVariant IndexData;
 
     if((l_OpCycleTable_UpdateReason == TABLE_UPDATE_BY_USER) && \
        (false != l_OpCycleTableUpdate_Finished))
@@ -2370,9 +2478,9 @@ void MainWindow::Slot_UpdateOpCycleInfos(QStandardItem *item)
             Ptr_S_OpCycleInfos_Temp_User->Id = StdModel_OpCycle.item(i,0)->text().toUInt(&Result, 10);
             Ptr_S_OpCycleInfos_Temp_User->Type = StdModel_OpCycle.item(i,1)->text().toUInt(&Result, 10);
 
-            List_OpCycle_Infos_User.append(Ptr_S_OpCycleInfos_Temp_User);
-
-            if(Qt::Checked == StdModel_OpCycle.item(i,2)->checkState())
+            Index = StdModel_OpCycle.index(i,2,QModelIndex());
+            IndexData = StdModel_OpCycle.data(Index,Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_OpCycleInfos_Temp_User->AutoStart = 1;
             }
@@ -2381,7 +2489,9 @@ void MainWindow::Slot_UpdateOpCycleInfos(QStandardItem *item)
                 Ptr_S_OpCycleInfos_Temp_User->AutoStart = 0;
             }
 
-            if(Qt::Checked == StdModel_OpCycle.item(i,3)->checkState())
+            Index = StdModel_OpCycle.index(i,3,QModelIndex());
+            IndexData = StdModel_OpCycle.data(Index,Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_OpCycleInfos_Temp_User->AutoStop = 1;
             }
@@ -2389,7 +2499,8 @@ void MainWindow::Slot_UpdateOpCycleInfos(QStandardItem *item)
             {
                 Ptr_S_OpCycleInfos_Temp_User->AutoStop = 0;
             }
-
+        
+            List_OpCycle_Infos_User.append(Ptr_S_OpCycleInfos_Temp_User);
         }
     }
 }
@@ -2406,6 +2517,8 @@ void MainWindow::Slot_UpdateDebounceInfos(QStandardItem *item)
     uint8 col = 0;
     QComboBox* Ptr_ComboBox;
     S_Debounce_Infos_User_Type* Ptr_S_DebounceInfos_Temp_User;
+    QModelIndex Index;
+    QVariant IndexData;
 
     if((l_DebounceTable_UpdateReason == TABLE_UPDATE_BY_USER) && \
        (false != l_DebounceTableUpdate_Finished))
@@ -2436,7 +2549,9 @@ void MainWindow::Slot_UpdateDebounceInfos(QStandardItem *item)
             Ptr_S_DebounceInfos_Temp_User->JumpUpValue = StdModel_Debounce.item(i,6)->text().toInt(&Result, 10);
             Ptr_S_DebounceInfos_Temp_User->JumpDownValue = StdModel_Debounce.item(i,7)->text().toInt(&Result, 10);
 
-            if(Qt::Checked == StdModel_Debounce.item(i,9)->checkState())
+            //Index = StdModel_Debounce.index(i,9,QModelIndex());
+            IndexData = StdModel_Debounce.item(i, 9)->data(Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_DebounceInfos_Temp_User->JumpUp = 1;
             }
@@ -2445,7 +2560,9 @@ void MainWindow::Slot_UpdateDebounceInfos(QStandardItem *item)
                 Ptr_S_DebounceInfos_Temp_User->JumpUp = 0;
             }
 
-            if(Qt::Checked == StdModel_Debounce.item(i,10)->checkState())
+            //Index = StdModel_OpCycle.index(i,10,QModelIndex());
+            IndexData = StdModel_Debounce.item(i, 10)->data(Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_DebounceInfos_Temp_User->JumpDown = 1;
             }
@@ -2480,6 +2597,7 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
     uint8 col = 0;
     QComboBox* Ptr_ComboBox;
     S_DTC_Infos_User_Type* Ptr_S_DTCInfos_Temp_User;
+    QVariant IndexData;
 
     if((l_DTCTable_UpdateReason == TABLE_UPDATE_BY_USER) && \
        (false != l_DTCTableUpdate_Finished))
@@ -2517,7 +2635,8 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
             Ptr_S_DTCInfos_Temp_User->EnableConditionRef = StdModel_DTC.item(i,13)->text().toInt(&Result, 10);
             Ptr_S_DTCInfos_Temp_User->StorageConditionRef = StdModel_DTC.item(i,14)->text().toInt(&Result, 10);
 
-            if(Qt::Checked == StdModel_DTC.item(i,4)->checkState())
+            IndexData = StdModel_DTC.item(i, 4)->data(Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_DTCInfos_Temp_User->ImmediateNvStorageAllowed = 1;
             }
@@ -2525,8 +2644,9 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
             {
                 Ptr_S_DTCInfos_Temp_User->ImmediateNvStorageAllowed = 0;
             }
-
-            if(Qt::Checked == StdModel_DTC.item(i,5)->checkState())
+            
+            IndexData = StdModel_DTC.item(i, 5)->data(Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_DTCInfos_Temp_User->AgingAllowed = 1;
             }
@@ -2535,7 +2655,8 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
                 Ptr_S_DTCInfos_Temp_User->AgingAllowed = 0;
             }
 
-            if(Qt::Checked == StdModel_DTC.item(i,15)->checkState())
+            IndexData = StdModel_DTC.item(i, 15)->data(Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_DTCInfos_Temp_User->AvailableStatus = 1;
             }
@@ -2565,6 +2686,7 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
     uint8 col = 0;
     QComboBox* Ptr_ComboBox;
     S_NVM_Infos_User_Type* Ptr_S_NVMInfos_Temp_User;
+    QVariant IndexData;
 
     if((l_NVMTable_UpdateReason == TABLE_UPDATE_BY_USER) && \
        (false != l_NVMTableUpdate_Finished))
@@ -2605,7 +2727,9 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
             //Ptr_S_NVMInfos_Temp_User->SelectBlockForReadAll = StdModel_NVM.item(i,13)->text().toInt(&Result, 10);
             //Ptr_S_NVMInfos_Temp_User->SelectBlockForWriteAll = StdModel_NVM.item(i,14)->text().toInt(&Result, 10);
 
-            if(Qt::Checked == StdModel_NVM.item(i,14)->checkState())
+            
+            IndexData = StdModel_NVM.item(i, 14)->data(Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_NVMInfos_Temp_User->SelectBlockForReadAll = 1;
             }
@@ -2613,8 +2737,9 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
             {
                 Ptr_S_NVMInfos_Temp_User->SelectBlockForReadAll = 0;
             }
-
-            if(Qt::Checked == StdModel_NVM.item(i,15)->checkState())
+    
+            IndexData = StdModel_NVM.item(i, 15)->data(Qt::DisplayRole);
+            if(Qt::Checked == IndexData)
             {
                 Ptr_S_NVMInfos_Temp_User->SelectBlockForWriteAll = 1;
             }

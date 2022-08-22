@@ -26,7 +26,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QTableView *Table_Config;
+    QTableView *TableView_Did;
     QTreeView *Tree_Config;
     QPushButton *But_Generate;
     QMenuBar *menubar;
@@ -40,10 +40,10 @@ public:
         MainWindow->resize(1090, 541);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        Table_Config = new QTableView(centralwidget);
-        Table_Config->setObjectName(QString::fromUtf8("Table_Config"));
-        Table_Config->setEnabled(true);
-        Table_Config->setGeometry(QRect(280, 40, 800, 450));
+        TableView_Did = new QTableView(centralwidget);
+        TableView_Did->setObjectName(QString::fromUtf8("TableView_Did"));
+        TableView_Did->setEnabled(true);
+        TableView_Did->setGeometry(QRect(280, 40, 800, 450));
         Tree_Config = new QTreeView(centralwidget);
         Tree_Config->setObjectName(QString::fromUtf8("Tree_Config"));
         Tree_Config->setGeometry(QRect(10, 40, 261, 451));

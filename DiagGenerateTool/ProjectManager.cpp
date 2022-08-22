@@ -350,8 +350,6 @@ void PM_SaveConfigInfo(void)
     File_DiagConfig.close();
 }
 
-
-
 //读取配置
 void PM_OpenProject(void)
 {

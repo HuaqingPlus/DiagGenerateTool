@@ -17,7 +17,7 @@
    <string>DiagGenerateTool_V1.7</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableView" name="Table_Config">
+   <widget class="QTableView" name="TableView_Did">
     <property name="enabled">
      <bool>true</bool>
     </property>
