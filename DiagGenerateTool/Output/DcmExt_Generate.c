@@ -36,6 +36,28 @@ static uint8 l_F1C1_Base_SoftVersion[15] = {0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 
 
 #ifdef SERVICE_22_SUPPORTED
 /****************************************************************************
+Function Name     : fdiag_app_A1A1_Read
+Description       : This function is used to read 
+Invocation        : diagnosis_app 
+Parameters        : None 
+Return Value      : UINT8 
+Critical Section  : None 
+******************************************************************************/
+uint8 fdiag_app_A1A1_Read(uint8 Buff[])
+{ 
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
+	uint8 fl_DataLen = ((uint8)0);
+	return (fl_DataLen);
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
+} 
+
+/****************************************************************************
 Function Name     : fdiag_app_F190_Read
 Description       : This function is used to read 
 Invocation        : diagnosis_app 
@@ -49,9 +71,7 @@ uint8 fdiag_app_F190_Read(uint8 Buff[])
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)17);
-
-	NvmServer_ReadBlock_ById(NvMConf_NvMBlockDescriptor_VIN, Buff, 17);
+	uint8 fl_DataLen = ((uint8)11);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -73,11 +93,7 @@ uint8 fdiag_app_F193_Read(uint8 Buff[])
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)15);
-	for(uint8 i = 0; i < 15; i++)
-	{
-		Buff[i] = l_F193_Supplier_HardwareVersion[i];
-	}
+	uint8 fl_DataLen = ((uint8)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -388,6 +404,28 @@ uint8 fdiag_app_F297_Read(uint8 Buff[])
 
 #ifdef SERVICE_2E_SUPPORTED
 /****************************************************************************
+Function Name     : fdiag_app_A1A1_Write
+Description       : This function is used to write 
+Invocation        : diagnosis_app 
+Parameters        : None 
+Return Value      : UINT8 
+Critical Section  : None 
+******************************************************************************/
+uint8 fdiag_app_A1A1_Write(uint8 Buff[])
+{ 
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
+	uint8 fl_DataLen = ((uint8)0);
+	return (fl_DataLen);
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
+} 
+
+/****************************************************************************
 Function Name     : fdiag_app_F190_Write
 Description       : This function is used to write 
 Invocation        : diagnosis_app 
@@ -544,6 +582,48 @@ uint8 fdiag_app_F297_Write(uint8 Buff[])
 #endif
 
 #ifdef SERVICE_2F_SUPPORTED
+/****************************************************************************
+Function Name     : fdiag_app_A1A1_IOC
+Description       : This function is used to control IO 
+Invocation        : diagnosis_app 
+Parameters        : None 
+Return Value      : UINT8 
+Critical Section  : None 
+******************************************************************************/
+uint8 fdiag_app_A1A1_IOC(uint8 fl_ctrl_parameter, uint8 *fl_get_ctrl_value)
+{ 
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
+	return (E_OK);
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
+} 
+
+/****************************************************************************
+Function Name     : fdiag_app_F190_IOC
+Description       : This function is used to control IO 
+Invocation        : diagnosis_app 
+Parameters        : None 
+Return Value      : UINT8 
+Critical Section  : None 
+******************************************************************************/
+uint8 fdiag_app_F190_IOC(uint8 fl_ctrl_parameter, uint8 *fl_get_ctrl_value)
+{ 
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
+	return (E_OK);
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
+} 
+
 /****************************************************************************
 Function Name     : fdiag_app_F297_IOC
 Description       : This function is used to control IO 

@@ -146,7 +146,7 @@ bool CheckBoxDelegate::editorEvent(QEvent *event,
         }
 
         bool checked = index.model()->data(index, Qt::DisplayRole).toBool();
-        int data = checked ? 0 : 1;     //互逆
+        int data = checked ? Qt::Unchecked : Qt::Checked;
         return model->setData(index, data, Qt::EditRole);
     }
     else

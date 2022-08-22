@@ -1105,7 +1105,6 @@ void MainWindow::Slot_InsertNVM(bool checked)
     l_NVMTableUpdate_Finished = false;
 }
 
-
 //根据List_XXXX_Infos_User 更新DcmGeneral TableView显示
 void MainWindow::TableView_UpdateDcmGeneral(void)
 {
@@ -1171,11 +1170,7 @@ void MainWindow::TableView_UpdateDid(void)
     QStandardItem* Ptr_Item;
     QModelIndex index;
     CheckBoxDelegate* Ptr_CheckBoxDelegate[4];
-    //QStandardItem* Model_Header[4];
-    //QList<QStandardItem*> List_StdItem_Temp;
-
-    //Print_Info_User();
-
+    
     //清除数据
     StdModel_Did.clear();
 
@@ -1185,7 +1180,7 @@ void MainWindow::TableView_UpdateDid(void)
                       << QString::fromLocal8Bit("配置是否支持Write功能") \
                       << QString::fromLocal8Bit("如果配置READ或WRITE 则数据长度应该指定")\
                       << QString::fromLocal8Bit("配置是否支持IOCTRL")\
-                      << QString::fromLocal8Bit("配置是否位工厂诊断下的DID");
+                      << QString::fromLocal8Bit("配置是否为工厂诊断下的DID");
 
 
     for(int i = 0; i < Strlist_Header.size(); i++)
@@ -1208,7 +1203,6 @@ void MainWindow::TableView_UpdateDid(void)
     Ptr_CheckBoxDelegate[2] = new CheckBoxDelegate(ui->Table_Config);
     Ptr_CheckBoxDelegate[3] = new CheckBoxDelegate(ui->Table_Config);
 
-    //
     Ptr_CheckBoxDelegate[0]->setColumn(1);
     Ptr_CheckBoxDelegate[1]->setColumn(2);
     Ptr_CheckBoxDelegate[2]->setColumn(4);
@@ -1222,9 +1216,15 @@ void MainWindow::TableView_UpdateDid(void)
     //设置DID表的信息, new出Model需要的Item
     for(int i = 0; i < row; i++)
     {
+        
+        qDebug() << "i,j: " << List_DID_Infos_User.at(i)->Did\
+                    << List_DID_Infos_User.at(i)->Operation\
+                    << List_DID_Infos_User.at(i)->IsOnlyEol;
+                    
         List_Row_Item.clear();
         for(int j = 0; j < col; j++)
         {
+
             Ptr_Item = new QStandardItem();
             //设置文字居中对齐
             Ptr_Item->setTextAlignment(Qt::AlignCenter);
@@ -1238,14 +1238,12 @@ void MainWindow::TableView_UpdateDid(void)
                     if((List_DID_Infos_User.at(i)->Operation & DID_READ) != 0)
                     {
                         Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
+                        //qDebug() << "Read Checked";
                     }
                     else
                     {
                         Ptr_Item->setData(Qt::Unchecked, Qt::DisplayRole);
                     }
-                    /* 禁止编辑, 使能Check */
-                    //Ptr_Item->setEditable(false);
-                    //Ptr_Item->setCheckable(true);
                 }
                 break;
                 case (2):
@@ -1253,6 +1251,7 @@ void MainWindow::TableView_UpdateDid(void)
                     if((List_DID_Infos_User.at(i)->Operation & DID_WRITE) != 0)
                     {
                         Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
+                        //qDebug() << "Write Checked";
                     }
                     else
                     {
@@ -1268,6 +1267,7 @@ void MainWindow::TableView_UpdateDid(void)
                     if((List_DID_Infos_User.at(i)->Operation & DID_IOCTRL) != 0)
                     {
                         Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
+                        //qDebug() << "IO Checked";
                     }
                     else
                     {
@@ -1290,10 +1290,13 @@ void MainWindow::TableView_UpdateDid(void)
                     break;
             }
             List_Row_Item.append(Ptr_Item);
+            qDebug() << "Row Data: " << Ptr_Item;
         }
         StdModel_Did.insertRow(i, List_Row_Item);
     }
     ui->Table_Config->setModel(&StdModel_Did);
+
+    Print_TableView();
 }
 
 //根据List_XXXX_Infos_User 更新Rid TableView显示
@@ -2060,6 +2063,8 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
     Dcm_DspDidInfoType S_DidInfo_Temp;
     Dcm_DspDidOpInfoType S_DidOpInfo_Temp;
     QModelIndex Index;
+    QVariant IndexData;
+
     if((l_DidTable_UpdateReason == TABLE_UPDATE_BY_USER) && \
        (false != l_DidTableUpdate_Finished))
     {
@@ -2068,7 +2073,6 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
 
     row = StdModel_Did.rowCount();
     col = StdModel_Did.columnCount();
-
     Ptr_S_DidConfigs_Temp = new S_DID_Configs_Type;
 
     //清除当前的DID配置信息
@@ -2086,19 +2090,28 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
         for(i = 0; i < row; i++)
         {
             Ptr_S_DidInfos_Temp_User = new S_DID_Infos_User_Type;
+            Ptr_S_DidInfos_Temp_User->IsOnlyEol = 0;
+            Ptr_S_DidInfos_Temp_User->Operation = 0;
 
             Did_Operation = DID_NONE;
             Ptr_S_DidInfos_Temp_User->Did = StdModel_Did.item(i,0)->text().toUInt(&Result, 16);
             Ptr_S_DidInfos_Temp_User->DataLen = StdModel_Did.item(i,3)->text().toUInt(&Result, 10);
 
+
+            //            qDebug() << "RowData: " << StdModel_Did.item(i,1)->data(Qt::DisplayRole)\
+            //                     << StdModel_Did.item(i,2)->data(Qt::DisplayRole)\
+            //                     << StdModel_Did.item(i,4)->data(Qt::DisplayRole)\
+            //                     << StdModel_Did.item(i,5)->data(Qt::DisplayRole);
+
             //从CheckBox中获取数据
             /* Read Flag */
             Index = StdModel_Did.index(i,1,QModelIndex());
-
-            if(StdModel_Did.data(Index,Qt::DisplayRole) == Qt::Checked)
+            IndexData = StdModel_Did.data(Index,Qt::DisplayRole);
+            if(IndexData.toUInt() == Qt::Checked)
             {
                 Did_Operation |= DID_READ;
             }
+
             /* Write Flag */
             Index = StdModel_Did.index(i,2,QModelIndex());
             if(StdModel_Did.data(Index,Qt::DisplayRole) == Qt::Checked)
@@ -2117,12 +2130,12 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
             Index = StdModel_Did.index(i,5,QModelIndex());
             if(StdModel_Did.data(Index,Qt::DisplayRole) == Qt::Checked)
             {
-                qDebug() << "IsOnlyEol: 1";
+                //qDebug() << "IsOnlyEol: 1";
                 Ptr_S_DidInfos_Temp_User->IsOnlyEol = 1;
             }
             else
             {
-                qDebug() << "IsOnlyEol: 0";
+                //qDebug() << "IsOnlyEol: 0";
                 Ptr_S_DidInfos_Temp_User->IsOnlyEol = 0;
             }
 
@@ -2687,7 +2700,7 @@ void MainWindow::Print_TableView(void)
     uint8 row = StdModel_Did.rowCount();
     uint8 col = StdModel_Did.columnCount();
 
-    qDebug() << "------Start: Print TableView: " << row << col;
+    qDebug() << "------Start: Print Table: Did------" << row << col;
     for(i = 0; i < row; i++)
     {
         qDebug() << StdModel_Did.item(i,0)->text().toUInt(&Result, 16) \
@@ -2696,7 +2709,7 @@ void MainWindow::Print_TableView(void)
                  << StdModel_Did.item(i,3)->text().toUInt(&Result, 10) \
                  << StdModel_Did.item(i,4)->checkState();
     }
-    qDebug() << "------End: Print TableView";
+    qDebug() << "------End: Print Table: Did------";
 }
 
 //打印需生成的配置信息
