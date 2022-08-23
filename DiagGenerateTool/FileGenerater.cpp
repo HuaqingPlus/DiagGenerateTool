@@ -166,8 +166,8 @@ void FG_ParseDcmGeneralConfig()
     Str_Temp = "//DcmGeneralConfig\n";
     for(i =0; i < List_DcmGeneral_Infos_User.count(); i++)
     {
-        Str_Temp.append(QString("#define %1\t\t(%2u)\n")\
-                .arg(List_DcmGeneral_Infos_User.at(i)->Item)\
+        Str_Temp.append(QString("#define %1(%2u)\n")\
+                .arg(List_DcmGeneral_Infos_User.at(i)->Item, -28)\
                 .arg(List_DcmGeneral_Infos_User.at(i)->Value));
     }
     Str_File_DcmGeneral_Configs = Str_Temp;
@@ -211,13 +211,15 @@ void FG_ParseDidConfig()
     //DCM_TABLE_DID_INFO
     Str_Temp.clear();
     Str_Temp = QString("#ifndef DCM_TABLE_DID_INFO\n").append("#define DCM_TABLE_DID_INFO \\\n");
+    Str_Temp.append("\t/*Length, OpInfoRef, Operations*/ \\\n");
     for(i = 0; i < List_DidInfo.count(); i++)
     {
-        Str_Temp.append("{");
-        Str_Temp.append(QString("%1, %2, %3}, \\\n") \
-                .arg(List_DidInfo.at(i).Length, 2) \
-                .arg(List_DidInfo.at(i).OpInfoRef, 2) \
-                .arg(List_DidInfo.at(i).Operations, 2));
+        QString Str_Did = QString::number(List_Did.at(i), 16).toUpper();
+        Str_Temp.append(QString("\t{%1, %2, %3}, /* DID: 0x%4 */ \\\n")\
+                .arg(List_DidInfo.at(i).Length, 3) \
+                .arg(List_DidInfo.at(i).OpInfoRef, 3) \
+                .arg(List_DidInfo.at(i).Operations, 2)
+                .arg(Str_Did));
     }
     Str_Temp.append("\n#endif\n");
     S_File_DidConfigs.Str_DidInfoTable = Str_Temp;
@@ -225,13 +227,15 @@ void FG_ParseDidConfig()
 
     //DCM_TABLE_DID_OPERATION_INFO
     Str_Temp = QString("#ifndef DCM_TABLE_DID_OPERATION_INFO\n").append("#define DCM_TABLE_DID_OPERATION_INFO \\\n");
+    Str_Temp.append("\t/* State_Ref, SignalInfo_Ref, CallTypes */ \\\n");
     for(i = 0; i < List_DidOpInfo.count(); i++)
     {
-        Str_Temp.append("{");
-        Str_Temp.append(QString("0x%1, 0x%2, 0x%3}, \\\n") \
+        QString Str_Did = QString::number(List_DidOpInfo.at(i).Did, 16).toUpper();
+        Str_Temp.append(QString("\t{0x%1, 0x%2, 0x%3}, /* DID: 0x%4 */ \\\n")
                 .arg(List_DidOpInfo.at(i).State_Ref, 2, 16, QChar('0')) \
                 .arg(List_DidOpInfo.at(i).SignalInfo_Ref, 2, 10, QChar('0')) \
-                .arg(List_DidOpInfo.at(i).CallTypes, 2, 10, QChar('0')));
+                .arg(List_DidOpInfo.at(i).CallTypes, 2, 10, QChar('0')) \
+                .arg(Str_Did));
     }
     Str_Temp.append("\n#endif\n");
     S_File_DidConfigs.Str_DidOpInfoCount = QString("#define DcmDspNumOfDidOpInfo\t\t((uint16)%1)").arg(List_DidOpInfo.count());
@@ -548,12 +552,15 @@ void FG_ParseRidConfig(void)
     //DCM_TABLE_RID_INFO
     Str_Temp.clear();
     Str_Temp = QString("#ifndef DCM_TABLE_RID_INFO\n").append("#define DCM_TABLE_RID_INFO \\\n");
+    Str_Temp.append("\t/* SignalInfo_Ref, State_Ref, Operation */ \\\n");
     for(i = 0; i < List_RidInfo.count(); i++)
     {
-        Str_Temp.append(QString("{0x%1, 0x%2, 0x%3}, \\\n") \
+        QString Str_Rid = QString::number(List_Rid.at(i), 16).toUpper();
+        Str_Temp.append(QString("\t{0x%1, 0x%2, 0x%3}, /* RID: 0x%4 */ \\\n") \
                 .arg(QString::number(List_RidInfo.at(i).SignalInfo_Ref,16), 1, QChar('0')) \
                 .arg(QString::number(List_RidInfo.at(i).State_Ref, 10), 1, QChar('0')) \
-                .arg(QString::number(List_RidInfo.at(i).Operation,10).toUpper(), 2, QChar('0')));
+                .arg(QString::number(List_RidInfo.at(i).Operation,10).toUpper(), 2, QChar('0')) \
+                .arg(Str_Rid, 4, QChar('0')));
     }
     Str_Temp.append("\n#endif\n");
     S_File_RidConfigs.Str_RidInfoTable = Str_Temp;
@@ -561,17 +568,20 @@ void FG_ParseRidConfig(void)
     //DCM_TABLE_RID_SIGNAL_INFO
     Str_Temp.clear();
     Str_Temp = QString("#ifndef DCM_TABLE_RID_SIGNAL_INFO\n").append("#define DCM_TABLE_RID_SIGNAL_INFO \\\n");
+    Str_Temp.append("\t/* RidOpFunc_Ref, Req_Length, Resp_Length, OpType */ \\\n");
     for(i = 0; i < List_RidSignalInfo.count(); i++)
     {
+        QString Str_Rid = QString::number(List_Rid.at(i), 16).toUpper();
         QString Str_RidOpFunc_Ref = QString::number(List_RidSignalInfo.at(i).RidOpFunc_Ref, 16).toUpper();
         QString Str_Req_Length = QString::number(List_RidSignalInfo.at(i).Req_Length, 10).toUpper();
         QString Str_Resp_Length = QString::number(List_RidSignalInfo.at(i).Resp_Length, 10).toUpper();
         QString Str_OpType = QString::number(List_RidSignalInfo.at(i).OpType, 10).toUpper();
-        Str_Temp.append(QString("{0x%1, 0x%2, 0x%3, 0x%4}, \\\n") \
+        Str_Temp.append(QString("\t{0x%1, 0x%2, 0x%3, 0x%4}, /* RID: 0x%5 */ \\\n") \
                         .arg(Str_RidOpFunc_Ref, 1, QChar('0')) \
                         .arg(Str_Req_Length, 1, QChar('0')) \
                         .arg(Str_Resp_Length, 2, QChar('0')) \
-                        .arg(Str_OpType, 2, QChar('0')));
+                        .arg(Str_OpType, 2, QChar('0')) \
+                        .arg(Str_Rid, 4, QChar('0')));
     }
     Str_Temp.append("\n#endif\n");
     S_File_RidConfigs.Str_RidSignalInfoCount = QString("#define DcmDspNumOfRidSignalInfo\t\t((uint16)%1)").arg(List_RidSignalInfo.count());

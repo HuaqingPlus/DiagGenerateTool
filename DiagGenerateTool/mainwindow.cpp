@@ -1296,7 +1296,6 @@ void MainWindow::TableView_UpdateDid(void)
                     if((List_DID_Infos_User.at(i)->Operation & DID_READ) != 0)
                     {
                         Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
-                        //qDebug() << "Read Checked";
                     }
                     else
                     {
@@ -1325,7 +1324,6 @@ void MainWindow::TableView_UpdateDid(void)
                     if((List_DID_Infos_User.at(i)->Operation & DID_IOCTRL) != 0)
                     {
                         Ptr_Item->setData(Qt::Checked, Qt::DisplayRole);
-                        //qDebug() << "IO Checked";
                     }
                     else
                     {
@@ -1353,8 +1351,6 @@ void MainWindow::TableView_UpdateDid(void)
         StdModel_Did.insertRow(i, List_Row_Item);
     }
     ui->TableView_Did->setModel(&StdModel_Did);
-
-    Print_TableView();
 }
 
 //根据List_XXXX_Infos_User 更新Rid TableView显示
@@ -1364,6 +1360,7 @@ void MainWindow::TableView_UpdateRid(void)
     QStringList Strlist_HeaderTip;
     QStandardItem* Ptr_Item;
     QList<QStandardItem*> List_Row_Item;    //每一行的数据
+    QString Str_Rid;
     uint8 row = 0;
     uint8 col = 0;
 
@@ -1399,21 +1396,30 @@ void MainWindow::TableView_UpdateRid(void)
             switch(j)
             {
                 case (0):
-                    Ptr_Item->setText(QString::number(List_RID_Infos_User.at(i)->Rid, 16).toUpper());
-                    break;
+                {
+                    Str_Rid = QString::number(List_RID_Infos_User.at(i)->Rid, 16).toUpper();
+                    Ptr_Item->setText(QString("%1").arg(Str_Rid, 4, QChar('0')));
+                }
+                break;
                 case (1):
+                {
                     Ptr_Item->setText("START | STOP | RESULT");
                     //设置不可编辑
                     Ptr_Item->setEditable(false);
-                    break;
+                }
+                break;
                 case (2):
+                {
                     Ptr_Item->setText(QString::number(List_RID_Infos_User.at(i)->RoutineControlOptionRecord, 10));
-                    break;
+                }
+                break;
                 case (3):
+                {
                     Ptr_Item->setText("ROUTINE_TYPE_2 | RC_STOP_SERVICE");
                     //设置不可编辑
                     Ptr_Item->setEditable(false);
-                    break;
+                }
+                break;
                 default:
                     break;
 
@@ -2216,7 +2222,6 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
     List_DidInfo.clear();
     List_DidOpInfo.clear();
 
-    Print_TableView();
     //获取界面上用户配置的信息
     if(row != 0)
     {
@@ -2250,6 +2255,7 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
 
             /* Write Flag */
             Index = StdModel_Did.index(i,2,QModelIndex());
+            IndexData = StdModel_Did.data(Index,Qt::DisplayRole);
             if(StdModel_Did.data(Index,Qt::DisplayRole) == Qt::Checked)
             {
                 Did_Operation |= DID_WRITE;
@@ -2257,21 +2263,21 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
 
             /* IoCtrl Flag */
             Index = StdModel_Did.index(i,4,QModelIndex());
-            if(StdModel_Did.data(Index,Qt::DisplayRole) == Qt::Checked)
+            IndexData = StdModel_Did.data(Index,Qt::DisplayRole);
+            if(IndexData == Qt::Checked)
             {
                 Did_Operation |= DID_IOCTRL;
             }
 
             /* IsOnlyEol Flag */
             Index = StdModel_Did.index(i,5,QModelIndex());
-            if(StdModel_Did.data(Index,Qt::DisplayRole) == Qt::Checked)
+            IndexData = StdModel_Did.data(Index,Qt::DisplayRole);
+            if(IndexData == Qt::Checked)
             {
-                //qDebug() << "IsOnlyEol: 1";
                 Ptr_S_DidInfos_Temp_User->IsOnlyEol = 1;
             }
             else
             {
-                //qDebug() << "IsOnlyEol: 0";
                 Ptr_S_DidInfos_Temp_User->IsOnlyEol = 0;
             }
 
@@ -2281,7 +2287,7 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
     }
 
     //生成Did的配置表
-    //Print_Info_User();
+    Print_Info_User();
     for(int i = 0; i < List_DID_Infos_User.count(); i++)
     {
         Ptr_S_DidConfigs_Temp->Did = List_DID_Infos_User.at(i)->Did;
@@ -2310,6 +2316,7 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
                     break;
                 }
             }
+            S_DidOpInfo_Temp.Did = Ptr_S_DidConfigs_Temp->Did;
             S_DidOpInfo_Temp.CallTypes = 1;//默认值
             S_DidOpInfo_Temp.SignalInfo_Ref = 0;//默认值
 
@@ -2336,6 +2343,7 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
                 }
             }
 
+            S_DidOpInfo_Temp.Did = Ptr_S_DidConfigs_Temp->Did;
             S_DidOpInfo_Temp.CallTypes = 1;//默认值
             S_DidOpInfo_Temp.SignalInfo_Ref = 0;//默认值
 
@@ -2362,6 +2370,7 @@ void MainWindow::Slot_UpdateDidInfos(QStandardItem *item)
                 }
             }
 
+            S_DidOpInfo_Temp.Did = Ptr_S_DidConfigs_Temp->Did;
             S_DidOpInfo_Temp.CallTypes = 9;
             S_DidOpInfo_Temp.SignalInfo_Ref = 0;//默认值
 
@@ -2836,14 +2845,15 @@ void MainWindow::Slot_Generate(bool checked)
 
 void MainWindow::Print_Info_User(void)
 {
-    qDebug("------Start: Print User Config");
+    qDebug("------Start: Print User Config------");
     for(uint8 i = 0; i < List_DID_Infos_User.count(); i++)
     {
         qDebug() << QString::number(List_DID_Infos_User.at(i)->Did, 16) \
                  << List_DID_Infos_User.at(i)->DataLen \
-                 << List_DID_Infos_User.at(i)->Operation;
+                 << List_DID_Infos_User.at(i)->Operation \
+                 << List_DID_Infos_User.at(i)->IsOnlyEol;
     }
-    qDebug("------End: Print User Config");
+    qDebug("------End: Print User Config------");
 }
 
 //打印用户配置的表格信息
@@ -2862,7 +2872,8 @@ void MainWindow::Print_TableView(void)
                  << StdModel_Did.item(i,1)->checkState() \
                  << StdModel_Did.item(i,2)->checkState() \
                  << StdModel_Did.item(i,3)->text().toUInt(&Result, 10) \
-                 << StdModel_Did.item(i,4)->checkState();
+                 << StdModel_Did.item(i,4)->checkState() \
+                 << StdModel_Did.item(i,5)->checkState();
     }
     qDebug() << "------End: Print Table: Did------";
 }
