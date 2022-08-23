@@ -1,0 +1,16 @@
+<DiagConfigs>
+    <DcmConfig>
+        <DcmGeneralConfig/>
+        <DidConfig/>
+        <RidConfig/>
+    </DcmConfig>
+    <DemConfig>
+        <OpCycleConfig/>
+        <DebounceConfig/>
+        <DTCConfig/>
+    </DemConfig>
+    <NVMConfig>
+        <NVMBlockConfig/>
+        <FEEBlockConfig/>
+    </NVMConfig>
+</DiagConfigs>

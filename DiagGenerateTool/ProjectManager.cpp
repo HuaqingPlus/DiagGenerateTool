@@ -3,6 +3,7 @@
 #include "ProjectManager.h"
 
 extern MainWindow* MW;
+extern QString Str_ToolVersion;
 
 //当前配置工程
 QString Str_CurProject_Name;
@@ -362,6 +363,7 @@ void PM_OpenProject(void)
                                                         "./../DiagGenerateTool/Config",\
                                                         ("xml (*.xml)"));
     Str_CurProject_Name = Str_FileName;
+    
 
     List_DID_Infos_User.clear();
     List_RID_Infos_User.clear();
@@ -859,5 +861,8 @@ void PM_OpenProject(void)
     MW->TableView_UpdateDTC();
     MW->TableView_UpdateNVM();
     MW->TableView_UpdateFEE();
+
+    //显示当前工程名
+    MW->setWindowTitle(Str_ToolVersion + " - " + Str_CurProject_Name);
 }
 

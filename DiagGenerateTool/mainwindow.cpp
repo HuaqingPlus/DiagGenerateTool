@@ -22,6 +22,7 @@ extern QList<S_RID_RTN_Record_Type> List_RTN_Record;
 extern const State_SID_Ref_Type State_SID_Table[4];
 
 //Project右键菜单
+QString Str_ToolVersion = "DGT-v1.7-20220823";
 QList<QAction*> List_Actions_Project;
 
 //记录界面中的配置信息
@@ -151,6 +152,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::MainWindow_Init(void)
 {
+
+    //默认设置 Generate 不可点击
+    ui->But_Generate->setEnabled(false);
+    connect(ui->But_Generate, &QPushButton::clicked, this, &MainWindow::Slot_Generate);
+
     //增加菜单
     QStringList Str_Actinos;
     QAction* Ptr_Action_Temp;
@@ -163,9 +169,15 @@ void MainWindow::MainWindow_Init(void)
     }
 
     Ptr_Menu_Project->addActions(List_Actions_Project);
+    //初始化时，"Save Project" "Save As" "Close Project",无法点击
+    List_Actions_Project.at(2)->setEnabled(false);
+    List_Actions_Project.at(3)->setEnabled(false);
+    List_Actions_Project.at(4)->setEnabled(false);
     ui->menubar->addMenu(Ptr_Menu_Project);
+
     //设置菜单栏背景颜色
     ui->menubar->setStyleSheet("background-color:#D1D1D1");
+
     //关联File菜单槽函数
     connect(Ptr_Menu_Project, &QMenu::triggered, this, &MainWindow::Slot_FileMenu_Triggered);
 
@@ -256,12 +268,6 @@ void MainWindow::MainWindow_Init(void)
     ui->TableView_Did->setContextMenuPolicy(Qt::CustomContextMenu);//必须设置
     connect(ui->TableView_Did, &QTableView::customContextMenuRequested, this, &MainWindow::Slot_DidTable_customContextMenuRequested);
     connect(&StdModel_Did, &QStandardItemModel::itemChanged, this, &MainWindow::Slot_UpdateDidInfos);
-    //test
-    //设置代理
-    Ptr_Checkbox_Delegate_Did[0] = new CheckBoxDelegate(ui->TableView_Did);
-    Ptr_Checkbox_Delegate_Did[1] = new CheckBoxDelegate(ui->TableView_Did);
-    Ptr_Checkbox_Delegate_Did[2] = new CheckBoxDelegate(ui->TableView_Did);
-    Ptr_Checkbox_Delegate_Did[3] = new CheckBoxDelegate(ui->TableView_Did);
 
     //增加RID Table右键菜单
     Ptr_Menu_Rid = new QMenu(ui->TableView_Did);
@@ -349,11 +355,6 @@ void MainWindow::MainWindow_Init(void)
     Ptr_ComBoxDelegate_EventKind = new ComboBox_Delegate(Ptr_TableView_DTC);
     Ptr_ComBoxDelegate_EventKind->setItems(StrList_EventKind);
 
-    //默认设置 Generate 不可点击
-    ui->But_Generate->setEnabled(false);
-    connect(ui->But_Generate, &QPushButton::clicked, this, &MainWindow::Slot_Generate);
-    //connect(ui->But_OpenConfig, &QPushButton::clicked, this, &MainWindow::Slot_OpenConfig);
-
     //增加 NVM 右键菜单
     Ptr_Menu_NVM = new QMenu(Ptr_TableView_NVM);
     Ptr_Action_AddNVM = Ptr_Menu_NVM->addAction("Add NVM Block");
@@ -378,11 +379,13 @@ void MainWindow::MainWindow_Init(void)
 
     //增加DcmGeneral表的槽函数
     connect(&StdModel_FEE, &QStandardItemModel::itemChanged, this, &MainWindow::Slot_UpdateFEEInfos);
+    
 }
 
 void MainWindow::Slot_FileMenu_Triggered(QAction* action)
 {
     qDebug() << "Clicked Menu " << action->text();
+
     if(action->text() == "Open Project")
     {
         PM_OpenProject();
@@ -392,8 +395,13 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
         //设置展开
         ui->Tree_Config->expandAll();
 
-        //使能Generate
+        //使能Generate, Save, Save As, Close
         ui->But_Generate->setEnabled(true);
+        List_Actions_Project.at(2)->setEnabled(true);
+        List_Actions_Project.at(3)->setEnabled(true);
+        List_Actions_Project.at(4)->setEnabled(true);
+
+
     }
     else if(action->text() == "Save Project")
     {
@@ -412,30 +420,52 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
     }
     else if(action->text() == "Save As")
     {
-        PM_NewProject();
-        //设置TreeView
-        ui->Tree_Config->setModel(&StdModle_TreeConfig);
-        //设置展开
-        ui->Tree_Config->expandAll();
+        //将工程文件名字清除，再执行保存
+        Str_CurProject_Name.clear();
+        PM_SaveConfigInfo();
 
         //使能Generate
         ui->But_Generate->setEnabled(true);
     }
     else if(action->text() == "Close Project")
     {
-        PM_NewProject();
         //清除TreeView
-        ui->TableView_Did->close();
-        Ptr_TableView_DcmGeneral->close();
-        Ptr_TableView_Rid->close();
-        Ptr_TableView_OpCycle->close();
-        Ptr_TableView_Debounce->close();
-        Ptr_TableView_DTC->close();
-        Ptr_TableView_NVM->close();
-        Ptr_TableView_FEE->close();
+//        ui->Tree_Config->close();
+//        ui->TableView_Did->close();
+//        Ptr_TableView_DcmGeneral->close();
+//        Ptr_TableView_Rid->close();
+//        Ptr_TableView_OpCycle->close();
+//        Ptr_TableView_Debounce->close();
+//        Ptr_TableView_DTC->close();
+//        Ptr_TableView_NVM->close();
+//        Ptr_TableView_FEE->close();
+
+        List_DID_Infos_User.clear();
+        List_DcmGeneral_Infos_User.clear();
+        List_RID_Infos_User.clear();
+        List_DTC_Infos_User.clear();
+        List_Debounce_Infos_User.clear();
+        List_OpCycle_Infos_User.clear();
+        List_NVM_Infos_User.clear();
+        List_FEE_Infos_User.clear();
+
+        TableView_UpdateDid();
+        TableView_UpdateRid();
+        TableView_UpdateDcmGeneral();
+        TableView_UpdateOpCycle();
+        TableView_UpdateDebounce();
+        TableView_UpdateDTC();
+        TableView_UpdateNVM();
+        TableView_UpdateFEE();
 
         //禁止Generate
         ui->But_Generate->setEnabled(false);
+        List_Actions_Project.at(2)->setEnabled(false);
+        List_Actions_Project.at(3)->setEnabled(false);
+        List_Actions_Project.at(4)->setEnabled(false);
+
+        //取消显示工程名
+        this->setWindowTitle(Str_ToolVersion);
     }
 }
 
