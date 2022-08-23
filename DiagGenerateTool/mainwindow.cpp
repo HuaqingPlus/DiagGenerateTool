@@ -1351,7 +1351,7 @@ void MainWindow::TableView_UpdateDid(void)
                     break;
             }
             List_Row_Item.append(Ptr_Item);
-            qDebug() << "Row Data: " << Ptr_Item;
+            //qDebug() << "Row Data: " << Ptr_Item;
         }
         StdModel_Did.insertRow(i, List_Row_Item);
     }

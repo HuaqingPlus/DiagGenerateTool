@@ -13,7 +13,7 @@
 
 
 #define DcmNumOfDIDSupported		((uint8)16)
-#define DcmDspNumOfDidOpInfo		((uint16)24)
+#define DcmDspNumOfDidOpInfo		((uint16)25)
 
 //PID Define
 #define PID_A1A1		((uint16)0xA1A1)
@@ -74,7 +74,7 @@
 	{  0,  17,  1}, /* DID: 0xF1C1 */ \
 	{  4,  18,  3}, /* DID: 0xF299 */ \
 	{ 10,  20,  3}, /* DID: 0xF298 */ \
-	{  2,  22,  3}, /* DID: 0xF297 */ \
+	{  2,  24,  7}, /* DID: 0xF297 */ \
 
 #endif
 
@@ -104,8 +104,9 @@
 	{0x03, 0x00, 0x01}, /* DID: 0xF299 */ \
 	{0x02, 0x00, 0x01}, /* DID: 0xF298 */ \
 	{0x03, 0x00, 0x01}, /* DID: 0xF298 */ \
-	{0x0e, 0x00, 0x01}, /* DID: 0xF297 */ \
-	{0x0f, 0x00, 0x01}, /* DID: 0xF297 */ \
+	{0x02, 0x00, 0x01}, /* DID: 0xF297 */ \
+	{0x03, 0x00, 0x01}, /* DID: 0xF297 */ \
+	{0x04, 0x00, 0x09}, /* DID: 0xF297 */ \
 
 #endif
 

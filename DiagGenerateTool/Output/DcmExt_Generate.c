@@ -582,6 +582,27 @@ uint8 fdiag_app_F297_Write(uint8 Buff[])
 #endif
 
 #ifdef SERVICE_2F_SUPPORTED
+/****************************************************************************
+Function Name     : fdiag_app_F297_IOC
+Description       : This function is used to control IO 
+Invocation        : diagnosis_app 
+Parameters        : None 
+Return Value      : UINT8 
+Critical Section  : None 
+******************************************************************************/
+uint8 fdiag_app_F297_IOC(uint8 fl_ctrl_parameter, uint8 *fl_get_ctrl_value)
+{ 
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
+	return (E_OK);
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
+} 
+
 #endif
 
 #ifdef SERVICE_31_SUPPORTED
