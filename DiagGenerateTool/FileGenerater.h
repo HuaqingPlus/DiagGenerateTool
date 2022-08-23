@@ -26,6 +26,7 @@ typedef struct
 
 typedef struct
 {
+  uint16 Did;
   uint8 State_Ref;      //引用Dcm_DsdStateRefo的index
   uint8 SignalInfo_Ref; //都是0
   uint8 CallTypes;      //都是SYNC（同步）
