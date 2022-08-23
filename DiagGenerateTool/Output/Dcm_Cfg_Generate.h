@@ -13,7 +13,7 @@
 
 
 #define DcmNumOfDIDSupported		((uint8)16)
-#define DcmDspNumOfDidOpInfo		((uint16)24)
+#define DcmDspNumOfDidOpInfo		((uint16)21)
 
 //PID Define
 #define PID_A1A1		((uint16)0xA1A1)
@@ -59,26 +59,22 @@
 #ifndef DCM_TABLE_DID_INFO
 #define DCM_TABLE_DID_INFO \
 	/*Length, OpInfoRef, Operations*/ \
-	{  0,   0,  3}, /* DID: 0xA1A1 */ \
-	{ 11,   2,  3}, /* DID: 0xF190 */ \
-	{  0,   4,  3}, /* DID: 0xF193 */ \
-	{  4,   6,  1}, /* DID: 0xF195 */ \
-	{  0,   7,  3}, /* DID: 0xF1B1 */ \
-	{  0,   9,  1}, /* DID: 0xF187 */ \
-	{  8,  10,  1}, /* DID: 0xF18A */ \
-	{ 14,  11,  3}, /* DID: 0xF18C */ \
-	{ 13,  13,  1}, /* DID: 0xF1A2 */ \
-	{  4,  14,  1}, /* DID: 0xF1B5 */ \
-	{  0,  15,  1}, /* DID: 0xF189 */ \
-	{  0,  16,  1}, /* DID: 0xF1C0 */ \
-	{  0,  17,  1}, /* DID: 0xF1C1 */ \
-	{  4,  18,  3}, /* DID: 0xF299 */ \
-	{ 10,  20,  3}, /* DID: 0xF298 */ \
-<<<<<<< HEAD
-	{  2,  24,  7}, /* DID: 0xF297 */ \
-=======
-	{  2,  22,  3}, /* DID: 0xF297 */ \
->>>>>>> a8de4ea8f87b42f0e02d9d13eb285cc75234e4e8
+	{  0, 167,  2}, /* DID: 0xA1A1 */ \
+	{ 11, 167,  2}, /* DID: 0xF190 */ \
+	{  0, 167,  2}, /* DID: 0xF193 */ \
+	{  4,   3,  1}, /* DID: 0xF195 */ \
+	{  0,   4,  3}, /* DID: 0xF1B1 */ \
+	{  0,   6,  1}, /* DID: 0xF187 */ \
+	{  8,   7,  1}, /* DID: 0xF18A */ \
+	{ 14,   8,  3}, /* DID: 0xF18C */ \
+	{ 13,  10,  1}, /* DID: 0xF1A2 */ \
+	{  4,  11,  1}, /* DID: 0xF1B5 */ \
+	{  0,  12,  1}, /* DID: 0xF189 */ \
+	{  0,  13,  1}, /* DID: 0xF1C0 */ \
+	{  0,  14,  1}, /* DID: 0xF1C1 */ \
+	{  4,  15,  3}, /* DID: 0xF299 */ \
+	{ 10,  17,  3}, /* DID: 0xF298 */ \
+	{  2,  19,  3}, /* DID: 0xF297 */ \
 
 #endif
 
@@ -86,11 +82,8 @@
 #ifndef DCM_TABLE_DID_OPERATION_INFO
 #define DCM_TABLE_DID_OPERATION_INFO \
 	/* State_Ref, SignalInfo_Ref, CallTypes */ \
-	{0x02, 0x00, 0x01}, /* DID: 0xA1A1 */ \
 	{0x03, 0x00, 0x01}, /* DID: 0xA1A1 */ \
-	{0x02, 0x00, 0x01}, /* DID: 0xF190 */ \
 	{0x03, 0x00, 0x01}, /* DID: 0xF190 */ \
-	{0x02, 0x00, 0x01}, /* DID: 0xF193 */ \
 	{0x03, 0x00, 0x01}, /* DID: 0xF193 */ \
 	{0x02, 0x00, 0x01}, /* DID: 0xF195 */ \
 	{0x02, 0x00, 0x01}, /* DID: 0xF1B1 */ \
@@ -108,14 +101,8 @@
 	{0x03, 0x00, 0x01}, /* DID: 0xF299 */ \
 	{0x02, 0x00, 0x01}, /* DID: 0xF298 */ \
 	{0x03, 0x00, 0x01}, /* DID: 0xF298 */ \
-<<<<<<< HEAD
-	{0x02, 0x00, 0x01}, /* DID: 0xF297 */ \
-	{0x03, 0x00, 0x01}, /* DID: 0xF297 */ \
-	{0x04, 0x00, 0x09}, /* DID: 0xF297 */ \
-=======
 	{0x0e, 0x00, 0x01}, /* DID: 0xF297 */ \
 	{0x0f, 0x00, 0x01}, /* DID: 0xF297 */ \
->>>>>>> a8de4ea8f87b42f0e02d9d13eb285cc75234e4e8
 
 #endif
 

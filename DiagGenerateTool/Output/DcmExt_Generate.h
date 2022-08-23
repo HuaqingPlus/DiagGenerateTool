@@ -42,9 +42,6 @@
 
 #ifndef DCM_TABLE_READ
 #define DCM_TABLE_READ \
-{PID_A1A1,		fdiag_app_A1A1_Read},\
-{PID_F190,		fdiag_app_F190_Read},\
-{PID_F193,		fdiag_app_F193_Read},\
 {PID_F195,		fdiag_app_F195_Read},\
 {PID_F1B1,		fdiag_app_F1B1_Read},\
 {PID_F187,		fdiag_app_F187_Read},\
@@ -80,9 +77,6 @@
 #endif
 
 #ifdef SERVICE_22_SUPPORTED
-uint8 fdiag_app_A1A1_Read(uint8 Buff[]);
-uint8 fdiag_app_F190_Read(uint8 Buff[]);
-uint8 fdiag_app_F193_Read(uint8 Buff[]);
 uint8 fdiag_app_F195_Read(uint8 Buff[]);
 uint8 fdiag_app_F1B1_Read(uint8 Buff[]);
 uint8 fdiag_app_F187_Read(uint8 Buff[]);
