@@ -77,19 +77,19 @@
 #endif
 
 #ifdef SERVICE_22_SUPPORTED
-uint8 fdiag_app_F195_Read(uint8 Buff[]);
-uint8 fdiag_app_F1B1_Read(uint8 Buff[]);
-uint8 fdiag_app_F187_Read(uint8 Buff[]);
-uint8 fdiag_app_F18A_Read(uint8 Buff[]);
-uint8 fdiag_app_F18C_Read(uint8 Buff[]);
-uint8 fdiag_app_F1A2_Read(uint8 Buff[]);
-uint8 fdiag_app_F1B5_Read(uint8 Buff[]);
-uint8 fdiag_app_F189_Read(uint8 Buff[]);
-uint8 fdiag_app_F1C0_Read(uint8 Buff[]);
-uint8 fdiag_app_F1C1_Read(uint8 Buff[]);
-uint8 fdiag_app_F299_Read(uint8 Buff[]);
-uint8 fdiag_app_F298_Read(uint8 Buff[]);
-uint8 fdiag_app_F297_Read(uint8 Buff[]);
+uint16 fdiag_app_F195_Read(uint8 Buff[]);
+uint16 fdiag_app_F1B1_Read(uint8 Buff[]);
+uint16 fdiag_app_F187_Read(uint8 Buff[]);
+uint16 fdiag_app_F18A_Read(uint8 Buff[]);
+uint16 fdiag_app_F18C_Read(uint8 Buff[]);
+uint16 fdiag_app_F1A2_Read(uint8 Buff[]);
+uint16 fdiag_app_F1B5_Read(uint8 Buff[]);
+uint16 fdiag_app_F189_Read(uint8 Buff[]);
+uint16 fdiag_app_F1C0_Read(uint8 Buff[]);
+uint16 fdiag_app_F1C1_Read(uint8 Buff[]);
+uint16 fdiag_app_F299_Read(uint8 Buff[]);
+uint16 fdiag_app_F298_Read(uint8 Buff[]);
+uint16 fdiag_app_F297_Read(uint8 Buff[]);
 
 static const PID_RECORD diag_pid_table_rom[] = 
 {
@@ -99,14 +99,14 @@ static const PID_RECORD diag_pid_table_rom[] =
 #endif
 
 #ifdef SERVICE_2E_SUPPORTED
-uint8 fdiag_app_A1A1_Write(uint8 Buff[]);
-uint8 fdiag_app_F190_Write(uint8 Buff[]);
-uint8 fdiag_app_F193_Write(uint8 Buff[]);
-uint8 fdiag_app_F1B1_Write(uint8 Buff[]);
-uint8 fdiag_app_F18C_Write(uint8 Buff[]);
-uint8 fdiag_app_F299_Write(uint8 Buff[]);
-uint8 fdiag_app_F298_Write(uint8 Buff[]);
-uint8 fdiag_app_F297_Write(uint8 Buff[]);
+uint16 fdiag_app_A1A1_Write(uint8 Buff[]);
+uint16 fdiag_app_F190_Write(uint8 Buff[]);
+uint16 fdiag_app_F193_Write(uint8 Buff[]);
+uint16 fdiag_app_F1B1_Write(uint8 Buff[]);
+uint16 fdiag_app_F18C_Write(uint8 Buff[]);
+uint16 fdiag_app_F299_Write(uint8 Buff[]);
+uint16 fdiag_app_F298_Write(uint8 Buff[]);
+uint16 fdiag_app_F297_Write(uint8 Buff[]);
 
 static const PID_RECORD diag_write_pid_table_rom[] = 
 {

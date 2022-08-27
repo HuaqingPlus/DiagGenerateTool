@@ -39,8 +39,8 @@ typedef struct
 {
     uint16 Did;
     uint8 Operation;
-    uint8 DataLen;
     uint8 IsOnlyEol;
+    uint16 DataLen;
 }S_DID_Infos_User_Type;
 
 //RID

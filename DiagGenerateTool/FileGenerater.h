@@ -19,7 +19,7 @@
 //Did
 typedef struct
 {
-  uint8 Length;       //Write Data Length
+  uint16 Length;       //Write Data Length
   uint8 OpInfoRef;    //引用DidOpInfo的index
   uint8 Operations;   //Read | Write | IO
 }Dcm_DspDidInfoType;
@@ -60,7 +60,7 @@ typedef struct
 typedef struct
 {
     uint16 Did;
-    uint8 Length;
+    uint16 Length;
     uint8 OpInfoRef;
     uint8 Operation;
     uint8 State_Ref;
@@ -196,7 +196,7 @@ const State_SID_Ref_Type State_SID_Table[] = \
 
 typedef struct
 {
-    uint8 DataLen;
+    uint16 DataLen;
     QString Str_ReadFunction;
 }S_ReadFunction_Type;
 

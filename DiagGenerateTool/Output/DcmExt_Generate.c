@@ -43,17 +43,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F195_Read(uint8 Buff[])
+uint16 fdiag_app_F195_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)15);
-	for(uint8 i = 0; i < 15; i++)
-	{
-		Buff[i] = l_F195_Supplier_SoftwareVersion[i];
-	}
+	uint16 fl_DataLen = ((uint16)4);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -69,14 +65,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F1B1_Read(uint8 Buff[])
+uint16 fdiag_app_F1B1_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)200);
-	NvmServer_ReadBlock_ById(NvMConf_NvMBlockDescriptor_EcuConfig, Buff, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -92,14 +87,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F187_Read(uint8 Buff[])
+uint16 fdiag_app_F187_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)13);
-	memcpy(Buff, l_F187_Vehicle_PartNumber, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -115,14 +109,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F18A_Read(uint8 Buff[])
+uint16 fdiag_app_F18A_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)5);
-	memcpy(Buff, l_F18A_Supplier_Number, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)2000);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -138,14 +131,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F18C_Read(uint8 Buff[])
+uint16 fdiag_app_F18C_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)20);
-	memcpy(Buff, l_F18C_ECU_FlowNumber, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)1000);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -161,14 +153,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F1A2_Read(uint8 Buff[])
+uint16 fdiag_app_F1A2_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)19);
-	memcpy(Buff, l_F1A2_CanMatrix_Version, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)13);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -184,14 +175,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F1B5_Read(uint8 Buff[])
+uint16 fdiag_app_F1B5_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)4);
-	memcpy(Buff, l_F1B5_System_Name, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)4);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -207,14 +197,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F189_Read(uint8 Buff[])
+uint16 fdiag_app_F189_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)15);
-	memcpy(Buff, l_F189_App_SoftVersion, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -230,14 +219,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F1C0_Read(uint8 Buff[])
+uint16 fdiag_app_F1C0_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)15);
-	memcpy(Buff, l_F1C0_Calibration_SoftVersion, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -253,14 +241,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F1C1_Read(uint8 Buff[])
+uint16 fdiag_app_F1C1_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)15);
-	memcpy(Buff, l_F1C1_Base_SoftVersion, fl_DataLen);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -276,13 +263,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F299_Read(uint8 Buff[])
+uint16 fdiag_app_F299_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)4);
+	uint16 fl_DataLen = ((uint16)4);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -298,13 +285,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F298_Read(uint8 Buff[])
+uint16 fdiag_app_F298_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)16);
+	uint16 fl_DataLen = ((uint16)10);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -320,13 +307,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F297_Read(uint8 Buff[])
+uint16 fdiag_app_F297_Read(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)2);
+	uint16 fl_DataLen = ((uint16)2);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -345,13 +332,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_A1A1_Write(uint8 Buff[])
+uint16 fdiag_app_A1A1_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)0);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -367,14 +354,14 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F190_Write(uint8 Buff[])
+uint16 fdiag_app_F190_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	NvmServer_WriteBlock_ById(NvMConf_NvMBlockDescriptor_VIN, Buff, 17);
-	return (17);
+	uint16 fl_DataLen = ((uint16)11);
+	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code end          */
@@ -389,13 +376,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F193_Write(uint8 Buff[])
+uint16 fdiag_app_F193_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)15);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -411,14 +398,14 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F1B1_Write(uint8 Buff[])
+uint16 fdiag_app_F1B1_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	NvmServer_WriteBlock_ById(NvMConf_NvMBlockDescriptor_EcuConfig, Buff, 200);
-	return (200);
+	uint16 fl_DataLen = ((uint16)0);
+	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code end          */
@@ -433,13 +420,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F18C_Write(uint8 Buff[])
+uint16 fdiag_app_F18C_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)20);
+	uint16 fl_DataLen = ((uint16)1000);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -455,13 +442,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F299_Write(uint8 Buff[])
+uint16 fdiag_app_F299_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)4);
+	uint16 fl_DataLen = ((uint16)4);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -477,13 +464,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F298_Write(uint8 Buff[])
+uint16 fdiag_app_F298_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)16);
+	uint16 fl_DataLen = ((uint16)10);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -499,13 +486,13 @@ Parameters        : None
 Return Value      : UINT8 
 Critical Section  : None 
 ******************************************************************************/
-uint8 fdiag_app_F297_Write(uint8 Buff[])
+uint16 fdiag_app_F297_Write(uint8 Buff[])
 { 
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint8 fl_DataLen = ((uint8)2);
+	uint16 fl_DataLen = ((uint16)2);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */

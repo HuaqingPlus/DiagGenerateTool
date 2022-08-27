@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "FileGenerater.h"
 
-//#define RELEASE
+#define RELEASE
 
 extern MainWindow* MW;
 //define in mainwindow.cpp
@@ -216,7 +216,7 @@ void FG_ParseDidConfig()
     {
         QString Str_Did = QString::number(List_Did.at(i), 16).toUpper();
         Str_Temp.append(QString("\t{%1, %2, %3}, /* DID: 0x%4 */ \\\n")\
-                .arg(List_DidInfo.at(i).Length, 3) \
+                .arg(List_DidInfo.at(i).Length, 4) \
                 .arg(List_DidInfo.at(i).OpInfoRef, 3) \
                 .arg(List_DidInfo.at(i).Operations, 2)
                 .arg(Str_Did));
@@ -349,7 +349,7 @@ void FG_ParseDidConfig()
     for(i = 0; i < List_Read_Funtion.count(); i++)
     {
         QString Str_ReadFun_Name;
-        Str_ReadFun_Name = QString("uint8 %1(uint8 Buff[])").arg(List_Read_Funtion.at(i).Str_ReadFunction);
+        Str_ReadFun_Name = QString("uint16 %1(uint8 Buff[])").arg(List_Read_Funtion.at(i).Str_ReadFunction);
 
         //1.Read函数注释
         Str_Temp.append("/****************************************************************************\n") \
@@ -378,7 +378,7 @@ void FG_ParseDidConfig()
         }
         if(Str_UserCode.isEmpty())
         {
-            Str_UserCode =  QString("\tuint8 fl_DataLen = ((uint8)%1);\n").arg(List_Read_Funtion.at(i).DataLen)\
+            Str_UserCode =  QString("\tuint16 fl_DataLen = ((uint16)%1);\n").arg(List_Read_Funtion.at(i).DataLen)\
                             .append("\treturn (fl_DataLen);\n");
         }
         Str_Temp.append(Str_UserCode);
@@ -406,7 +406,7 @@ void FG_ParseDidConfig()
     for(i = 0; i < List_Write_Funtion.count(); i++)
     {
         QString Str_WriteFun_Name;
-        Str_WriteFun_Name = QString("uint8 %1(uint8 Buff[])").arg(List_Write_Funtion.at(i).Str_ReadFunction);
+        Str_WriteFun_Name = QString("uint16 %1(uint8 Buff[])").arg(List_Write_Funtion.at(i).Str_ReadFunction);
 
         //1.函数声明
         Str_Temp.append("/****************************************************************************\n") \
@@ -435,7 +435,7 @@ void FG_ParseDidConfig()
         }
         if(Str_UserCode.isEmpty())
         {
-            Str_UserCode =  QString("\tuint8 fl_DataLen = ((uint8)%1);\n").arg(List_Write_Funtion.at(i).DataLen)\
+            Str_UserCode =  QString("\tuint16 fl_DataLen = ((uint16)%1);\n").arg(List_Write_Funtion.at(i).DataLen)\
                             .append("\treturn (fl_DataLen);\n");
         }
         Str_Temp.append(Str_UserCode);
