@@ -6,6 +6,8 @@
 
 //define in ProjectManger.c
 extern QString Str_CurProject_Name;
+extern S_NVM_Infos_User_Type S_NVM_Infos_Init_Value;
+extern S_NVM_Infos_User_Type S_DTC_NVM_Infos_User_Default[3];
 
 //define in FileGenerater.c
 extern S_File_DidConfigs_Type S_File_DidConfigs;
@@ -35,6 +37,7 @@ QList<S_Debounce_Infos_User_Type*> List_Debounce_Infos_User;
 QList<S_DTC_Infos_User_Type* > List_DTC_Infos_User;
 QList<S_NVM_Infos_User_Type* > List_NVM_Infos_User;
 QList<S_FEE_Infos_User_Type* > List_FEE_Infos_User;
+QList<S_NVM_Infos_User_Type* > List_DTC_NVM_Infos_User;
 
 /* QTreeView的Item */
 QStandardItem* Item_Diag[3];
@@ -182,28 +185,34 @@ void MainWindow::MainWindow_Init(void)
     connect(Ptr_Menu_Project, &QMenu::triggered, this, &MainWindow::Slot_FileMenu_Triggered);
 
     //每一项配置增加一个TableView
-    Ptr_TableView_Rid = new QTableView(ui->TableView_Did->parentWidget());
+    qDebug() << "TableView Size: " << ui->TableView_Did->geometry();
+    //Ptr_TableView_DcmGeneral = new QTableView(this);
     Ptr_TableView_DcmGeneral = new QTableView(ui->TableView_Did->parentWidget());
+    Ptr_TableView_Rid = new QTableView(ui->TableView_Did->parentWidget());
     Ptr_TableView_OpCycle = new QTableView(ui->TableView_Did->parentWidget());
     Ptr_TableView_Debounce = new QTableView(ui->TableView_Did->parentWidget());
     Ptr_TableView_DTC = new QTableView(ui->TableView_Did->parentWidget());
     Ptr_TableView_NVM = new QTableView(ui->TableView_Did->parentWidget());
     Ptr_TableView_FEE = new QTableView(ui->TableView_Did->parentWidget());
 
-    Ptr_TableView_Rid->setGeometry(ui->TableView_Did->geometry());
     Ptr_TableView_DcmGeneral->setGeometry(ui->TableView_Did->geometry());
+    //Ptr_TableView_DcmGeneral->setGeometry(ui->TableView_Did->geometry());
+    Ptr_TableView_Rid->setGeometry(ui->TableView_Did->geometry());
     Ptr_TableView_OpCycle->setGeometry(ui->TableView_Did->geometry());
     Ptr_TableView_Debounce->setGeometry(ui->TableView_Did->geometry());
     Ptr_TableView_DTC->setGeometry(ui->TableView_Did->geometry());
     Ptr_TableView_NVM->setGeometry(ui->TableView_Did->geometry());
     Ptr_TableView_FEE->setGeometry(ui->TableView_Did->geometry());
 
-    ui->TableView_Did->hide();
+    ui->TableView_Did->show();
+    Ptr_TableView_DcmGeneral->hide();
     Ptr_TableView_Rid->hide();
     Ptr_TableView_OpCycle->hide();
     Ptr_TableView_Debounce->hide();
     Ptr_TableView_DTC->hide();
     Ptr_TableView_NVM->hide();
+    Ptr_TableView_FEE->hide();
+    ResizeLayout(ui->TableView_Did);
 
     //设置QTreeview的属性
     Item_Diag[0] = new QStandardItem("DCM Config");
@@ -254,12 +263,12 @@ void MainWindow::MainWindow_Init(void)
     //增加DID Table右键菜单
     Ptr_Menu_Did = new QMenu(ui->TableView_Did);
     Ptr_Action_AddDID = Ptr_Menu_Did->addAction("Add Did");
-    Ptr_Action_DelDID = Ptr_Menu_Did->addAction("Delete Did");
     Ptr_Action_InsertDID = Ptr_Menu_Did->addAction("Insert Did");
+    Ptr_Action_DelDID = Ptr_Menu_Did->addAction("Delete Did");
 
     ui->TableView_Did->addAction(Ptr_Action_AddDID);
-    ui->TableView_Did->addAction(Ptr_Action_DelDID);
     ui->TableView_Did->addAction(Ptr_Action_InsertDID);
+    ui->TableView_Did->addAction(Ptr_Action_DelDID);
 
     connect(Ptr_Action_AddDID, &QAction::triggered, this, &MainWindow::Slot_AddDID);
     connect(Ptr_Action_DelDID, &QAction::triggered, this, &MainWindow::Slot_DelDID);
@@ -272,12 +281,12 @@ void MainWindow::MainWindow_Init(void)
     //增加RID Table右键菜单
     Ptr_Menu_Rid = new QMenu(ui->TableView_Did);
     Ptr_Action_AddRID = Ptr_Menu_Rid->addAction("Add Rid");
-    Ptr_Action_DelRID = Ptr_Menu_Rid->addAction("Delete Rid");
     Ptr_Action_InsertRID = Ptr_Menu_Rid->addAction("Insert Rid");
+    Ptr_Action_DelRID = Ptr_Menu_Rid->addAction("Delete Rid");
 
     Ptr_TableView_Rid->addAction(Ptr_Action_AddRID);
-    Ptr_TableView_Rid->addAction(Ptr_Action_DelRID);
     Ptr_TableView_Rid->addAction(Ptr_Action_InsertRID);
+    Ptr_TableView_Rid->addAction(Ptr_Action_DelRID);
 
     connect(Ptr_Action_AddRID, &QAction::triggered, this, &MainWindow::Slot_AddRID);
     connect(Ptr_Action_DelRID, &QAction::triggered, this, &MainWindow::Slot_DelRID);
@@ -293,12 +302,12 @@ void MainWindow::MainWindow_Init(void)
     //增加 OpCycle 右键菜单
     Ptr_Menu_OpCycle = new QMenu(Ptr_TableView_OpCycle);
     Ptr_Action_AddOpCycle = Ptr_Menu_OpCycle->addAction("Add OpCycle");
-    Ptr_Action_DelOpCycle = Ptr_Menu_OpCycle->addAction("Delete OpCycle");
     Ptr_Action_InsertOpCycle = Ptr_Menu_OpCycle->addAction("Insert OpCycle");
+    Ptr_Action_DelOpCycle = Ptr_Menu_OpCycle->addAction("Delete OpCycle");
 
     Ptr_TableView_OpCycle->addAction(Ptr_Action_AddOpCycle);
-    Ptr_TableView_OpCycle->addAction(Ptr_Action_DelOpCycle);
     Ptr_TableView_OpCycle->addAction(Ptr_Action_InsertOpCycle);
+    Ptr_TableView_OpCycle->addAction(Ptr_Action_DelOpCycle);
 
     connect(Ptr_Action_AddOpCycle, &QAction::triggered, this, &MainWindow::Slot_AddOpCycle);
     connect(Ptr_Action_DelOpCycle, &QAction::triggered, this, &MainWindow::Slot_DelOpCycle);
@@ -311,12 +320,12 @@ void MainWindow::MainWindow_Init(void)
     //增加 Debounce 右键菜单
     Ptr_Menu_Debounce = new QMenu(Ptr_TableView_Debounce);
     Ptr_Action_AddDebounce = Ptr_Menu_Debounce->addAction("Add Debounce");
-    Ptr_Action_DelDebounce = Ptr_Menu_Debounce->addAction("Delete Debounce");
     Ptr_Action_InsertDebounce = Ptr_Menu_Debounce->addAction("Insert Debounce");
+    Ptr_Action_DelDebounce = Ptr_Menu_Debounce->addAction("Delete Debounce");
 
     Ptr_TableView_Debounce->addAction(Ptr_Action_AddDebounce);
-    Ptr_TableView_Debounce->addAction(Ptr_Action_DelDebounce);
     Ptr_TableView_Debounce->addAction(Ptr_Action_InsertDebounce);
+    Ptr_TableView_Debounce->addAction(Ptr_Action_DelDebounce);
 
     connect(Ptr_Action_AddDebounce, &QAction::triggered, this, &MainWindow::Slot_AddDebounce);
     connect(Ptr_Action_DelDebounce, &QAction::triggered, this, &MainWindow::Slot_DelDebounce);
@@ -336,12 +345,12 @@ void MainWindow::MainWindow_Init(void)
     //增加 DTC 右键菜单
     Ptr_Menu_DTC = new QMenu(Ptr_TableView_DTC);
     Ptr_Action_AddDTC = Ptr_Menu_DTC->addAction("Add DTC");
-    Ptr_Action_DelDTC = Ptr_Menu_DTC->addAction("Delete DTC");
     Ptr_Action_InsertDTC = Ptr_Menu_DTC->addAction("Insert DTC");
+    Ptr_Action_DelDTC = Ptr_Menu_DTC->addAction("Delete DTC");
 
     Ptr_TableView_DTC->addAction(Ptr_Action_AddDTC);
-    Ptr_TableView_DTC->addAction(Ptr_Action_DelDTC);
     Ptr_TableView_DTC->addAction(Ptr_Action_InsertDTC);
+    Ptr_TableView_DTC->addAction(Ptr_Action_DelDTC);
 
     connect(Ptr_Action_AddDTC, &QAction::triggered, this, &MainWindow::Slot_AddDTC);
     connect(Ptr_Action_DelDTC, &QAction::triggered, this, &MainWindow::Slot_DelDTC);
@@ -358,12 +367,12 @@ void MainWindow::MainWindow_Init(void)
     //增加 NVM 右键菜单
     Ptr_Menu_NVM = new QMenu(Ptr_TableView_NVM);
     Ptr_Action_AddNVM = Ptr_Menu_NVM->addAction("Add NVM Block");
-    Ptr_Action_DelNVM = Ptr_Menu_NVM->addAction("Delete NVM Block");
     Ptr_Action_InsertNVM = Ptr_Menu_NVM->addAction("Insert NVM Block");
+    Ptr_Action_DelNVM = Ptr_Menu_NVM->addAction("Delete NVM Block");
 
     Ptr_TableView_NVM->addAction(Ptr_Action_AddNVM);
-    Ptr_TableView_NVM->addAction(Ptr_Action_DelNVM);
     Ptr_TableView_NVM->addAction(Ptr_Action_InsertNVM);
+    Ptr_TableView_NVM->addAction(Ptr_Action_DelNVM);
 
     connect(Ptr_Action_AddNVM, &QAction::triggered, this, &MainWindow::Slot_AddNVM);
     connect(Ptr_Action_DelNVM, &QAction::triggered, this, &MainWindow::Slot_DelNVM);
@@ -400,8 +409,6 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
         List_Actions_Project.at(2)->setEnabled(true);
         List_Actions_Project.at(3)->setEnabled(true);
         List_Actions_Project.at(4)->setEnabled(true);
-
-
     }
     else if(action->text() == "Save Project")
     {
@@ -486,6 +493,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_Debounce->hide();
         Ptr_TableView_DTC->hide();
         Ptr_TableView_FEE->hide();
+
+        ResizeLayout(ui->TableView_Did);
         TableView_UpdateDid();
     }
     else if(Str_ItemName == "RID Table")
@@ -497,6 +506,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_Debounce->hide();
         Ptr_TableView_DTC->hide();
         Ptr_TableView_FEE->hide();
+
+        ResizeLayout(Ptr_TableView_Rid);
         TableView_UpdateRid();
     }
     else if(Str_ItemName == "Dcm General Config")
@@ -509,6 +520,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_DTC->hide();
         Ptr_TableView_NVM->hide();
         Ptr_TableView_FEE->hide();
+
+        ResizeLayout(Ptr_TableView_DcmGeneral);
         TableView_UpdateDcmGeneral();
     }
     else if(Str_ItemName == "OpCycle Table")
@@ -521,6 +534,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_DTC->hide();
         Ptr_TableView_NVM->hide();
         Ptr_TableView_FEE->hide();
+
+        ResizeLayout(Ptr_TableView_OpCycle);
         TableView_UpdateOpCycle();
     }
     else if(Str_ItemName == "Debounce Table")
@@ -533,6 +548,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_DTC->hide();
         Ptr_TableView_NVM->hide();
         Ptr_TableView_FEE->hide();
+
+        ResizeLayout(Ptr_TableView_Debounce);
         TableView_UpdateDebounce();
     }
     else if(Str_ItemName == "DTC Config")
@@ -545,6 +562,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_DTC->show();
         Ptr_TableView_NVM->hide();
         Ptr_TableView_FEE->hide();
+
+        ResizeLayout(Ptr_TableView_DTC);
         TableView_UpdateDTC();
     }
     else if(Str_ItemName == "NvM Block Config")
@@ -557,6 +576,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_DTC->hide();
         Ptr_TableView_FEE->hide();
         Ptr_TableView_NVM->show();
+
+        ResizeLayout(Ptr_TableView_NVM);
         TableView_UpdateNVM();
     }
     else if(Str_ItemName == "FEE Config")
@@ -569,6 +590,8 @@ void MainWindow::Slot_TreeView_Clicled(QModelIndex index)
         Ptr_TableView_DTC->hide();
         Ptr_TableView_NVM->hide();
         Ptr_TableView_FEE->show();
+
+        ResizeLayout(Ptr_TableView_FEE);
         TableView_UpdateFEE();
     }
     else
@@ -1041,7 +1064,7 @@ void MainWindow::Slot_InsertDTC(bool checked)
     //New 1个新的配置，加入到List中
     S_DTC_Infos_User_Type* Ptr_Infos_Add = new S_DTC_Infos_User_Type;
     Ptr_Infos_Add->Value = 0;
-    Ptr_Infos_Add->AttrbsRef = List_DTC_Infos_User.count();
+    Ptr_Infos_Add->AttrbsRef = Index;
 
     Ptr_Infos_Add->AgingThershold = 40;
     Ptr_Infos_Add->AgingOpCycleRef = 3;
@@ -1049,12 +1072,12 @@ void MainWindow::Slot_InsertDTC(bool checked)
     Ptr_Infos_Add->AgingAllowed = true;
 
     Ptr_Infos_Add->DemCallbackInitMForE = "Null_Ptr";
-    Ptr_Infos_Add->Id = List_DTC_Infos_User.count();
+    Ptr_Infos_Add->Id = Index;
     Ptr_Infos_Add->EventKind = 0;
     Ptr_Infos_Add->FailureCycleCounterThershold = 255;
     Ptr_Infos_Add->DebounceTableRef = 1;    /* Counter Base */
     Ptr_Infos_Add->OpCycleRef = 3;
-    Ptr_Infos_Add->DTCTableRef = List_DTC_Infos_User.count();
+    Ptr_Infos_Add->DTCTableRef = Index;
     Ptr_Infos_Add->EnableConditionRef = 0;
     Ptr_Infos_Add->StorageConditionRef = 0;
     Ptr_Infos_Add->AvailableStatus = 1;
@@ -1073,7 +1096,7 @@ void MainWindow::Slot_AddNVM(bool checked)
     //New 1个新的配置，加入到List中
     S_NVM_Infos_User_Type* Ptr_Infos_Add = new S_NVM_Infos_User_Type;
     Ptr_Infos_Add->Str_InitFun = "NULL";
-    Ptr_Infos_Add->Str_BlockName = "";
+    Ptr_Infos_Add->Str_BlockName = "NvMConf_NvMBlockDescriptor_";
     Ptr_Infos_Add->Str_JobFinishedFunction = "Rte_Call_xxxx_JobFinished";
     Ptr_Infos_Add->Str_RamBlockDataAddress = "NvmRamData_";
     Ptr_Infos_Add->Str_RomBlockDataAddress = "NvmRomData_";
@@ -1142,7 +1165,7 @@ void MainWindow::Slot_InsertNVM(bool checked)
     Ptr_Infos_Add->RomBlockNum = 0;
     Ptr_Infos_Add->BlockCrcType = 2;
     Ptr_Infos_Add->BlockManagementType = 0;
-    Ptr_Infos_Add->NvBlockBaseNumber = 0;
+    Ptr_Infos_Add->NvBlockBaseNumber = Index;
     Ptr_Infos_Add->NvBlockLength = 0;
     Ptr_Infos_Add->NvRamBlockIdentifier = 0;
     Ptr_Infos_Add->BlockUseCrc = 0;
@@ -1808,6 +1831,8 @@ void MainWindow::TableView_UpdateDTC(void)
                 case (1):
                     /* 禁止编辑, 使能Check */
                     Ptr_Item->setEditable(false);
+                    //根据index来确定AttrbsRef
+                    List_DTC_Infos_User.at(i)->AttrbsRef = i;
                     Ptr_Item->setText(QString::number(List_DTC_Infos_User.at(i)->AttrbsRef, 10).toUpper());
                     break;
                 case (2):
@@ -1854,6 +1879,8 @@ void MainWindow::TableView_UpdateDTC(void)
                     Ptr_Item->setText("Null_Ptr");
                     break;
                 case (7):
+                    //根据index来确定 DTCTableRef
+                    List_DTC_Infos_User.at(i)->Id = i;
                     Ptr_Item->setText(QString::number(List_DTC_Infos_User.at(i)->Id, 10).toUpper());
                     break;
                 case (8):
@@ -1873,6 +1900,8 @@ void MainWindow::TableView_UpdateDTC(void)
                 case (12):
                     /* 禁止编辑, 使能Check */
                     Ptr_Item->setEditable(false);
+                    //根据index来确定 DTCTableRef
+                    List_DTC_Infos_User.at(i)->DTCTableRef = i;
                     Ptr_Item->setText(QString::number(List_DTC_Infos_User.at(i)->DTCTableRef, 10).toUpper());
                     break;
                 case (13):
@@ -1942,7 +1971,6 @@ void MainWindow::TableView_UpdateNVM(void)
     //清除数据
     StdModel_NVM.clear();
 
-
     //设置表头和ToolTip
     Strlist_Header << "InitCallback" << "Block Name" << "Block Id" << "Block Length(Byte)" << "RamBlock" << "RomBlock" \
                    << "DefaultData" << "CallBack" << "BlockJobPriority" << "MaxNumReadRetries" << "MaxNumWriteRetries"\
@@ -1985,7 +2013,6 @@ void MainWindow::TableView_UpdateNVM(void)
     Ptr_TableView_NVM->setItemDelegateForColumn(11,Ptr_ComBoxDelegate_DeviceKind);
 
     //设置CheckBox代理
-    
     Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(Ptr_TableView_NVM);
     Ptr_CheckBoxDelegate[1] = new CheckBoxDelegate(Ptr_TableView_NVM);
     
@@ -2016,6 +2043,8 @@ void MainWindow::TableView_UpdateNVM(void)
                     break;
                 case (2):
                     /* 禁止编辑 */
+                    //根据Index来更新 BlockId
+                    List_NVM_Infos_User.at(i)->NvBlockBaseNumber = i;
                     Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->NvBlockBaseNumber));
                     break;
                 case (3):
@@ -2641,6 +2670,7 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
     uint8 col = 0;
     QComboBox* Ptr_ComboBox;
     S_DTC_Infos_User_Type* Ptr_S_DTCInfos_Temp_User;
+    S_NVM_Infos_User_Type* DTC_NVM_UserType_Temp;
     QVariant IndexData;
 
     if((l_DTCTable_UpdateReason == TABLE_UPDATE_BY_USER) && \
@@ -2658,10 +2688,13 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
     {
         //删除原来的配置信息
         List_DTC_Infos_User.clear();
+        List_DTC_NVM_Infos_User.clear();
+
         //重新获取界面的配置信息，
         for(i = 0; i < row; i++)
         {
             Ptr_S_DTCInfos_Temp_User = new S_DTC_Infos_User_Type;
+            DTC_NVM_UserType_Temp = new S_NVM_Infos_User_Type;
 
             Ptr_S_DTCInfos_Temp_User->Value = StdModel_DTC.item(i,0)->text().toInt(&Result, 16);
             Ptr_S_DTCInfos_Temp_User->AttrbsRef = StdModel_DTC.item(i,1)->text().toInt(&Result, 10);
@@ -2714,7 +2747,30 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
             Ptr_S_DTCInfos_Temp_User->EventKind = Ptr_ComboBox->currentIndex();
 
             List_DTC_Infos_User.append(Ptr_S_DTCInfos_Temp_User);
+
+            // 同时增加DTC对应的NVM配置
+            //前3个为固定的NVM配置项
+            if(i >= 3)
+            {
+                uint16 fl_DTC_No = i - 3;
+
+                *DTC_NVM_UserType_Temp = S_NVM_Infos_Init_Value;
+                //在初始值的基础上修改部分信息
+                DTC_NVM_UserType_Temp->Str_BlockName = QString("DemCfg_NvMBlockDescriptor_DemPrimary_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
+                DTC_NVM_UserType_Temp->Str_RamBlockDataAddress = QString("Dem_PrimaryEntry_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
+                DTC_NVM_UserType_Temp->Str_RomBlockDataAddress = "Dem_MemoryEntryInit";
+                DTC_NVM_UserType_Temp->Str_JobFinishedFunction = "Dem_NvM_JobFinished";
+
+                List_DTC_NVM_Infos_User.append(DTC_NVM_UserType_Temp);
+            }
+            else
+            {
+                *DTC_NVM_UserType_Temp = S_DTC_NVM_Infos_User_Default[i];
+                List_DTC_NVM_Infos_User.insert(i,DTC_NVM_UserType_Temp);
+            }
         }
+        //重新刷新一下 List_NVM_Infos_User
+        PM_NVMTable_AddDTC();
     }
 }
 
@@ -2754,6 +2810,7 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
 
             Ptr_S_NVMInfos_Temp_User->Str_InitFun = StdModel_NVM.item(i,0)->text();
             Ptr_S_NVMInfos_Temp_User->Str_BlockName = StdModel_NVM.item(i,1)->text();
+
             Ptr_S_NVMInfos_Temp_User->NvBlockBaseNumber = StdModel_NVM.item(i,2)->text().toInt(&Result, 10);
             Ptr_S_NVMInfos_Temp_User->NvBlockLength = StdModel_NVM.item(i,3)->text().toInt(&Result, 10);
 
@@ -2770,8 +2827,7 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
             Ptr_S_NVMInfos_Temp_User->BlockManagementType = StdModel_NVM.item(i,13)->text().toInt(&Result, 10);
             //Ptr_S_NVMInfos_Temp_User->SelectBlockForReadAll = StdModel_NVM.item(i,13)->text().toInt(&Result, 10);
             //Ptr_S_NVMInfos_Temp_User->SelectBlockForWriteAll = StdModel_NVM.item(i,14)->text().toInt(&Result, 10);
-
-            
+    
             IndexData = StdModel_NVM.item(i, 14)->data(Qt::DisplayRole);
             if(Qt::Checked == IndexData)
             {
@@ -2791,7 +2847,6 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
             {
                 Ptr_S_NVMInfos_Temp_User->SelectBlockForWriteAll = 0;
             }
-
 
             //根据ComboBox的值设置DeviceKind的值
             Ptr_ComboBox = (QComboBox*)Ptr_TableView_NVM->indexWidget(StdModel_NVM.index(i, 11));
@@ -2913,8 +2968,28 @@ void MainWindow::Print_Did_Infos(void)
                  << List_DidOpInfo.at(i).SignalInfo_Ref \
                  << List_DidOpInfo.at(i).CallTypes;
     }
-
     qDebug() << "------End: Print Did Infos: ";
 }
 
+void MainWindow::ResizeLayout(QTableView* Ptr_Table)
+{
+    //qDebug() << "Central Layout: " << ui->centralwidget->layout()->objectName();
+    ui->HLayout_Table->removeWidget((QWidget*)ui->HLayout_Table->itemAt(1));
+    ui->HLayout_Table->addWidget(Ptr_Table);
+
+    //布局中删掉所有窗口
+//    ui->centralwidget->layout()->removeWidget(ui->TableView_Did);
+//    ui->centralwidget->layout()->removeWidget(Ptr_TableView_DcmGeneral);
+//    ui->centralwidget->layout()->removeWidget(Ptr_TableView_Rid);
+//    ui->centralwidget->layout()->removeWidget(Ptr_TableView_OpCycle);
+//    ui->centralwidget->layout()->removeWidget(Ptr_TableView_Debounce);
+//    ui->centralwidget->layout()->removeWidget(Ptr_TableView_DTC);
+//    ui->centralwidget->layout()->removeWidget(Ptr_TableView_NVM);
+//    ui->centralwidget->layout()->removeWidget(Ptr_TableView_FEE);
+
+//    //增加指定窗口
+//    ui->Tree_Config->layout()->addWidget(Ptr_Table);
+//    //设置顶部对齐
+//    ui->centralwidget->layout()->setAlignment(Ptr_Table, Qt::AlignTop);
+}
 

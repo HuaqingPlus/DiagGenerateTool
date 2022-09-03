@@ -1,0 +1,84 @@
+<DiagConfigs>
+    <DcmConfig>
+        <DcmGeneralConfig>
+            <DcmGeneralConfig: DcmTesterResponseAddr="1"/>
+            <DcmGeneralConfig: DcmTesterSourcePhyAddr="1"/>
+            <DcmGeneralConfig: DcmTesterSourceFuncAddr="0"/>
+            <DcmGeneralConfig: DcmDslBufferSize="4095"/>
+        </DcmGeneralConfig>
+        <DidConfig>
+            <DidConfig: IsOnlyEol="0" Operation="2" DataLen="0" Did="a1a1"/>
+            <DidConfig: IsOnlyEol="0" Operation="2" DataLen="11" Did="f190"/>
+            <DidConfig: IsOnlyEol="0" Operation="2" DataLen="0" Did="f193"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="4" Did="f195"/>
+            <DidConfig: IsOnlyEol="0" Operation="3" DataLen="0" Did="f1b1"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="0" Did="f187"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="2000" Did="f18a"/>
+            <DidConfig: IsOnlyEol="0" Operation="3" DataLen="1000" Did="f18c"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="13" Did="f1a2"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="4" Did="f1b5"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="0" Did="f189"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="0" Did="f1c0"/>
+            <DidConfig: IsOnlyEol="0" Operation="1" DataLen="0" Did="f1c1"/>
+            <DidConfig: IsOnlyEol="0" Operation="3" DataLen="4" Did="f299"/>
+            <DidConfig: IsOnlyEol="0" Operation="3" DataLen="10" Did="f298"/>
+            <DidConfig: IsOnlyEol="1" Operation="3" DataLen="2" Did="f297"/>
+        </DidConfig>
+        <RidConfig>
+            <RidConfig: RoutineType="6" Operation="15" Rid="202" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Operation="15" Rid="203" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Operation="15" Rid="ff01" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Operation="15" Rid="f103" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Operation="15" Rid="f104" RoutineControlOptionRecord="0"/>
+            <RidConfig: RoutineType="6" Operation="15" Rid="f11e" RoutineControlOptionRecord="1"/>
+        </RidConfig>
+    </DcmConfig>
+    <DemConfig>
+        <OpCycleConfig>
+            <OpCycleConfig: Id="0" AutoStart="0" AutoStop="0" Type="0"/>
+            <OpCycleConfig: Id="1" AutoStart="0" AutoStop="0" Type="0"/>
+            <OpCycleConfig: Id="2" AutoStart="0" AutoStop="0" Type="0"/>
+            <OpCycleConfig: Id="3" AutoStart="1" AutoStop="1" Type="0"/>
+        </OpCycleConfig>
+        <DebounceConfig>
+            <DebounceConfig: PassedTimeThershold="100" IncStepSize="0" JumpUp="0" JumpDown="0" JumpUpValue="0" JumpDownValue="0" DecStepSize="0" FailedThershold="0" PassedThershold="0" FailedTimeThershold="100" AlgoClass="1" behavior="1"/>
+            <DebounceConfig: PassedTimeThershold="0" IncStepSize="1" JumpUp="0" JumpDown="0" JumpUpValue="0" JumpDownValue="0" DecStepSize="-1" FailedThershold="127" PassedThershold="-128" FailedTimeThershold="0" AlgoClass="0" behavior="1"/>
+            <DebounceConfig: PassedTimeThershold="0" IncStepSize="0" JumpUp="0" JumpDown="0" JumpUpValue="0" JumpDownValue="0" DecStepSize="0" FailedThershold="0" PassedThershold="0" FailedTimeThershold="0" AlgoClass="3" behavior="1"/>
+        </DebounceConfig>
+        <DTCConfig>
+            <DTCConfig: DebounceTableRef="255" AttrbsRef="0" Id="0" Value="ffffff" AgingAllowed="0" DTCTableRef="0" AgingThershold="255" AvailableStatus="0" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="4" ImmediateNvStorageAllowed="0" EventKind="0" EnableConditionRef="0" OpCycleRef="4" StorageConditionRef="0"/>
+            <DTCConfig: DebounceTableRef="255" AttrbsRef="1" Id="1" Value="0" AgingAllowed="1" DTCTableRef="1" AgingThershold="40" AvailableStatus="1" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="0" ImmediateNvStorageAllowed="1" EventKind="0" EnableConditionRef="0" OpCycleRef="2" StorageConditionRef="0"/>
+            <DTCConfig: DebounceTableRef="255" AttrbsRef="2" Id="2" Value="0" AgingAllowed="1" DTCTableRef="2" AgingThershold="40" AvailableStatus="1" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="0" ImmediateNvStorageAllowed="1" EventKind="1" EnableConditionRef="0" OpCycleRef="2" StorageConditionRef="0"/>
+            <DTCConfig: DebounceTableRef="1" AttrbsRef="3" Id="3" Value="c14087" AgingAllowed="1" DTCTableRef="3" AgingThershold="40" AvailableStatus="1" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="0" ImmediateNvStorageAllowed="1" EventKind="0" EnableConditionRef="0" OpCycleRef="3" StorageConditionRef="0"/>
+            <DTCConfig: DebounceTableRef="0" AttrbsRef="4" Id="4" Value="d10017" AgingAllowed="1" DTCTableRef="4" AgingThershold="40" AvailableStatus="1" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="3" ImmediateNvStorageAllowed="1" EventKind="0" EnableConditionRef="0" OpCycleRef="3" StorageConditionRef="0"/>
+            <DTCConfig: DebounceTableRef="1" AttrbsRef="5" Id="5" Value="555555" AgingAllowed="1" DTCTableRef="5" AgingThershold="40" AvailableStatus="1" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="3" ImmediateNvStorageAllowed="1" EventKind="0" EnableConditionRef="0" OpCycleRef="3" StorageConditionRef="0"/>
+            <DTCConfig: DebounceTableRef="1" AttrbsRef="6" Id="6" Value="666666" AgingAllowed="1" DTCTableRef="6" AgingThershold="40" AvailableStatus="1" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="3" ImmediateNvStorageAllowed="1" EventKind="0" EnableConditionRef="0" OpCycleRef="3" StorageConditionRef="0"/>
+            <DTCConfig: DebounceTableRef="1" AttrbsRef="7" Id="7" Value="777777" AgingAllowed="1" DTCTableRef="7" AgingThershold="40" AvailableStatus="1" FailureCycleCounterThershold="255" DemCallbackInitMForE="((void *) 0)" AgingOpCycleRef="3" ImmediateNvStorageAllowed="1" EventKind="0" EnableConditionRef="0" OpCycleRef="3" StorageConditionRef="0"/>
+        </DTCConfig>
+    </DemConfig>
+    <NVMConfig>
+        <NVMBlockConfig>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="NvMConf___MultiBlockRequest" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="NULL" SelectBlockForReadAll="1" NvBlockBaseNumber="0" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="NULL" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="NULL" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="NvMConf_NvMBlockDescriptor_NvMConfigBlock" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="32" Str_RamBlockDataAddress="NvMConfigBlock_RamBlock_au8" SelectBlockForReadAll="1" NvBlockBaseNumber="1" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="NULL" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="NULL" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0x4C, 0x58, 0x57, 0x59, 0x45, 0x50, 0x47, 0x32, 0x38, 0x4A, 0x48, 0x30, 0x30, 0x31, 0x37, 0x35, 0x32" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="NvMConf_NvMBlockDescriptor_VIN" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="17" Str_RamBlockDataAddress="NvmRamData_VIN" SelectBlockForReadAll="1" NvBlockBaseNumber="2" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="NvmRomData_VIN" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Rte_Call_VIN_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="NvMConf_NvMBlockDescriptor_EcuConfig" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="200" Str_RamBlockDataAddress="NvmRamData_EcuConfig" SelectBlockForReadAll="1" NvBlockBaseNumber="3" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="NvmRomData_EcuConfig" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Rte_Call_EcuConfig_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0,1,0,2,0,0,0,0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="NvMConf_NvMBlockDescriptor_EIDCConfig" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="8" Str_RamBlockDataAddress="NvmRamData_EIDCConfig" SelectBlockForReadAll="1" NvBlockBaseNumber="4" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="NvmRomData_EIDCConfig" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Rte_Call_EIDCConfig_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_OpCycle" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_Cfg_OpCycle" SelectBlockForReadAll="1" NvBlockBaseNumber="5" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="DemCfg_OpCycle_Default" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_DemAdmin" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_Cfg_AdminData" SelectBlockForReadAll="1" NvBlockBaseNumber="6" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="DemCfg_AdminData_Default" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_DemStatus" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_Cfg_StatusData" SelectBlockForReadAll="1" NvBlockBaseNumber="7" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="DemCfg_StatusData_Default" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_DemPrimary_000" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_PrimaryEntry_000" SelectBlockForReadAll="1" NvBlockBaseNumber="8" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="Dem_MemoryEntryInit" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_DemPrimary_001" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_PrimaryEntry_001" SelectBlockForReadAll="1" NvBlockBaseNumber="9" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="Dem_MemoryEntryInit" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_DemPrimary_002" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_PrimaryEntry_002" SelectBlockForReadAll="1" NvBlockBaseNumber="10" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="Dem_MemoryEntryInit" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_DemPrimary_003" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_PrimaryEntry_003" SelectBlockForReadAll="1" NvBlockBaseNumber="11" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="Dem_MemoryEntryInit" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+            <NVMBlockConfig: MaxNumWriteRetries="0" WriteBlockOnce="0" Str_RomBlockDefaultData="0" RomBlockNum="0" BlockManagementType="0" BlockUseCrc="0" NvRamBlockIdentifier="0" Str_BlockName="DemCfg_NvMBlockDescriptor_DemPrimary_004" MaxNumReadRetries="0" NvBlockNum="0" BlockWriteProt="0" Str_InitFun="NULL" SelectBlockForWriteAll="1" NvBlockLength="0" Str_RamBlockDataAddress="Dem_PrimaryEntry_004" SelectBlockForReadAll="1" NvBlockBaseNumber="12" BlockUseSetRamBlockStatus="0" BswMBlockStatusInformation="0" BlockCrcType="2" Str_RomBlockDataAddress="Dem_MemoryEntryInit" NvRamDeviceId="0" BlockJobPriority="1" Str_JobFinishedFunction="Dem_NvM_JobFinished" CalcRamBlockCrc="0"/>
+        </NVMBlockConfig>
+        <FEEBlockConfig>
+            <FEEBlockConfig: FEE_NUM_PARTITIONS="1"/>
+            <FEEBlockConfig: FEE_MAX_LENGTH="216"/>
+            <FEEBlockConfig: FEE_SECTOR_SIZE="2048"/>
+            <FEEBlockConfig: FEE_SECTOR_HEADER_SIZE="8"/>
+            <FEEBlockConfig: FEE_SECTOR_FOOTER_SIZE="8"/>
+            <FEEBlockConfig: FEE_HEADER_SIZE="8"/>
+        </FEEBlockConfig>
+    </NVMConfig>
+</DiagConfigs>

@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "FileGenerater.h"
 
-#define RELEASE
+//#define RELEASE
 
 extern MainWindow* MW;
 //define in mainwindow.cpp
@@ -83,6 +83,7 @@ QStringList StrList_Bool = {"FALSE", "TRUE"};
 
 //Generate File Result
 boolean Result_Generate = true;
+
 
 void FG_Init(void)
 {
@@ -887,8 +888,8 @@ void FG_ParseDTCConfig(void)
     Str_Temp_DTC_Value .append(QString("#define Dem_Cfg_Num_Of_Event\t\t((uint8)%1)\n").arg(row));
     Str_Temp_DTC_Value .append(QString("#define Dem_Cfg_Num_Of_DTC\t\t\t(Dem_Cfg_Num_Of_Event)\n\n"))\
                        .append("#define Dem_Cfg_Mem_Total_Primary_Entry (Dem_Cfg_Num_Of_DTC)\n")\
-                       .append("#define Dem_Cfg_Mem_Primary_Entry_Stop  (Dem_Cfg_Mem_Total_Primary_Entry + 2)\n")\
-                       .append("#define Dem_Cfg_Mem_Total_Entry      	(Dem_Cfg_Mem_Total_Primary_Entry + 2)\n\n");
+                       .append("#define Dem_Cfg_Mem_Primary_Entry_Stop  (Dem_Cfg_Mem_Total_Primary_Entry)\n")\
+                       .append("#define Dem_Cfg_Mem_Total_Entry      	(Dem_Cfg_Mem_Total_Primary_Entry)\n\n");
 
     Str_Temp_DTC_Value .append("#ifndef DEM_TABLE_DTC\n")\
                        .append("#define DEM_TABLE_DTC \\\n")\
@@ -1408,9 +1409,9 @@ void FG_GenerateFiles(void)
 void Generate_Dcm_Cfg_Generate_h(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/Dcm_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../Output/Dcm/Dcm_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dcm_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dcm/Dcm_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1424,9 +1425,7 @@ void Generate_Dcm_Cfg_Generate_h(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        Text_Out << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Start                     */" << endl\
-                 << "/*********************************************************************/" << endl\
+        Text_Out << FG_Generate_FileHeader()\
                  << endl \
                  << "#ifndef __DCM_CFG_GENERATE_H__" << endl\
                  << "#define __DCM_CFG_GENERATE_H__" << endl \
@@ -1449,12 +1448,9 @@ void Generate_Dcm_Cfg_Generate_h(void)
         Text_Out << S_File_RidConfigs.Str_RidSignalInfoTable << endl << endl;
 
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
         File_Config.close();
     }
     else
@@ -1467,9 +1463,9 @@ void Generate_Dcm_Cfg_Generate_h(void)
 void Generate_DcmExt_Generate_c(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/DcmExt_Generate.c";
+    QString Str_ConfigFile_Name = "./../Output/Dcm/DcmExt_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/DcmExt_Generate.c";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dcm/DcmExt_Generate.c";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1483,9 +1479,7 @@ void Generate_DcmExt_Generate_c(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        Text_Out << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Start                     */" << endl\
-                 << "/*********************************************************************/" << endl\
+        Text_Out << FG_Generate_FileHeader()\
                  << endl \
                  << "#ifndef __DCMEXT_GENERATE_C__" << endl\
                  << "#define __DCMEXT_GENERATE_C__" << endl \
@@ -1508,13 +1502,9 @@ void Generate_DcmExt_Generate_c(void)
         Text_Out << S_File_RidConfigs.Str_RidFunctions_Define << endl;
 
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
-        File_Config.close();
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
     }
     else
     {
@@ -1526,9 +1516,9 @@ void Generate_DcmExt_Generate_c(void)
 void Generate_DcmExt_Generate_h(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/DcmExt_Generate.h";
+    QString Str_ConfigFile_Name = "./../Output/Dcm/DcmExt_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/DcmExt_Generate.h";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dcm/DcmExt_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1542,9 +1532,7 @@ void Generate_DcmExt_Generate_h(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        Text_Out << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Start                     */" << endl\
-                 << "/*********************************************************************/" << endl\
+        Text_Out << FG_Generate_FileHeader()\
                  << endl \
                  << "#ifndef __DCMEXT_GENERATE_H__" << endl\
                  << "#define __DCMEXT_GENERATE_H__" << endl \
@@ -1576,14 +1564,10 @@ void Generate_DcmExt_Generate_h(void)
         Text_Out << S_File_RidConfigs.Str_Rid_RTN_Record << endl;
         Text_Out << S_File_RidConfigs.Str_RidFunctions_Declaration << endl;
 
-
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
         File_Config.close();
     }
     else
@@ -1596,9 +1580,9 @@ void Generate_DcmExt_Generate_h(void)
 void Generate_Dem_Cfg_Generate_h(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/Dem_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../Output/Dem/Dem_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dem_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dem/Dem_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1612,9 +1596,7 @@ void Generate_Dem_Cfg_Generate_h(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        S_File_DemConfigs.Str_File_Start = QString("/*********************************************************************/\n")\
-                 .append("/*                       DiagTool.Generate Start                     */\n")\
-                 .append("/*********************************************************************/\n")\
+        S_File_DemConfigs.Str_File_Start = FG_Generate_FileHeader()\
                  .append("\n")\
                  .append("#ifndef __DEM_CFG_GENERATE_H__\n")\
                  .append("#define __DEM_CFG_GENERATE_H__\n")\
@@ -1656,12 +1638,9 @@ void Generate_Dem_Cfg_Generate_h(void)
         Text_Out << S_File_DemConfigs.Dem_Cfg_Memory_BlockIdTable_Declare << endl;
 
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
         File_Config.close();
     }
     else
@@ -1674,9 +1653,9 @@ void Generate_Dem_Cfg_Generate_h(void)
 void Generate_Dem_Cfg_Generate_c(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/Dem_Cfg_Generate.c";
+    QString Str_ConfigFile_Name = "./../Output/Dem/Dem_Cfg_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dem_Cfg_Generate.c";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dem/Dem_Cfg_Generate.c";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1690,9 +1669,7 @@ void Generate_Dem_Cfg_Generate_c(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        S_File_DemConfigs.Str_File_Start = QString("/*********************************************************************/\n")\
-                 .append("/*                       DiagTool.Generate Start                     */\n")\
-                 .append("/*********************************************************************/\n")\
+        S_File_DemConfigs.Str_File_Start = FG_Generate_FileHeader()\
                  .append("\n")\
                  .append("#ifndef __DEM_CFG_GENERATE_C__\n")\
                  .append("#define __DEM_CFG_GENERATE_C__\n")\
@@ -1707,12 +1684,9 @@ void Generate_Dem_Cfg_Generate_c(void)
         Text_Out << S_File_DemConfigs.Dem_Cfg_Memory_BlockIdTable_Define << endl;
 
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
         File_Config.close();
     }
     else
@@ -1722,13 +1696,12 @@ void Generate_Dem_Cfg_Generate_c(void)
     }
 }
 
-
 void Generate_NvM_Cfg_Generate_c(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/NvM_Cfg_Generate.c";
+    QString Str_ConfigFile_Name = "./../Output/Nvm/NvM_Cfg_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/NvM_Cfg_Generate.c";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Nvm/NvM_Cfg_Generate.c";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1742,9 +1715,7 @@ void Generate_NvM_Cfg_Generate_c(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        Text_Out << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Start                     */" << endl\
-                 << "/*********************************************************************/" << endl\
+        Text_Out << FG_Generate_FileHeader()\
                  << endl \
                  << "#ifndef __NVM_CFG_GENERATE_C__" << endl\
                  << "#define __NVM_CFG_GENERATE_C__" << endl \
@@ -1764,12 +1735,9 @@ void Generate_NvM_Cfg_Generate_c(void)
         Text_Out << S_File_NVMConfigs.Str_DirtyFlagTable_Define << endl;
 
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
         File_Config.close();
     }
     else
@@ -1782,9 +1750,9 @@ void Generate_NvM_Cfg_Generate_c(void)
 void Generate_NvM_Cfg_Generate_h(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/NvM_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../Output/Nvm/NvM_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/NvM_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Nvm/NvM_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1798,9 +1766,7 @@ void Generate_NvM_Cfg_Generate_h(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        Text_Out << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Start                     */" << endl\
-                 << "/*********************************************************************/" << endl\
+        Text_Out << FG_Generate_FileHeader()\
                  << endl \
                  << "#ifndef __NVM_CFG_GENERATE_H__" << endl\
                  << "#define __NVM_CFG_GENERATE_H__" << endl \
@@ -1819,12 +1785,9 @@ void Generate_NvM_Cfg_Generate_h(void)
         Text_Out << S_File_NVMConfigs.Str_NvmBlockConfigTable << endl;
 
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
         File_Config.close();
     }
     else
@@ -1837,9 +1800,9 @@ void Generate_NvM_Cfg_Generate_h(void)
 void Generate_FEE_Cfg_Generate_h(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/FEE_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../Output/Nvm/FEE_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/FEE_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Nvm/FEE_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1853,9 +1816,7 @@ void Generate_FEE_Cfg_Generate_h(void)
     if(false != File_Config.open(QIODevice::ReadWrite | QIODevice::Text))
     {
         //写入文件头
-        Text_Out << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Start                     */" << endl\
-                 << "/*********************************************************************/" << endl\
+        Text_Out << FG_Generate_FileHeader()\
                  << endl \
                  << "#ifndef __FEE_CFG_GENERATE_H__" << endl\
                  << "#define __FEE_CFG_GENERATE_H__" << endl \
@@ -1867,12 +1828,9 @@ void Generate_FEE_Cfg_Generate_h(void)
         Text_Out << S_File_FEEConfigs.Str_FeeBlockConfigTable << endl;
 
         //写入文件尾
-        Text_Out << endl \
-                 << "#endif" << endl \
-                 << "/*********************************************************************/" << endl\
-                 << "/*                       DiagTool.Generate Stop                      */" << endl\
-                 << "/*********************************************************************/" << endl\
-                 << endl;
+        Text_Out << "\n\n"\
+                 << "#endif\n"\
+                 << FG_Generate_FileFooter();
         File_Config.close();
     }
     else
@@ -1885,9 +1843,9 @@ void Generate_FEE_Cfg_Generate_h(void)
 void FG_GetUserCode(void)
 {
 #ifdef RELEASE
-    QString Str_ConfigFile_Name = "./../Output/DcmExt_Generate.c";
+    QString Str_ConfigFile_Name = "./../Input/DcmExt_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/DcmExt_Generate.c";
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Input/DcmExt_Generate.c";
 #endif
     QString Str_line;
     QRegExp Rex(".*[0-9A-F]{4}.*");//正则表达式，匹配4个(0-9或A-F)的值
@@ -1991,4 +1949,29 @@ void FG_GetUserCode(void)
         }
     }
     File_Config.close();
+}
+
+//生成文件头信息
+QString FG_Generate_FileHeader(void)
+{
+    QString Str_FileHeader;
+    QString Str_Datatime = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+
+    Str_FileHeader = QString("/*********************************************************************/\n")\
+                     .append("/*                       DiagTool.Generate Start                     */\n")\
+                     .append(QString("/*                       Generate Data: %1          */\n").arg(Str_Datatime))\
+                     .append("/*                       Author: QHQ                                 */\n")\
+                     .append("/*********************************************************************/\n");
+    return Str_FileHeader;
+}
+
+//生成文件尾信息
+QString FG_Generate_FileFooter(void)
+{
+    QString Str_FileFooter;
+    Str_FileFooter = QString("/*********************************************************************/\n")\
+                     .append("/*                       DiagTool.Generate End                       */\n")\
+                     .append("/*                       Author: QHQ                                 */\n")\
+                     .append("/*********************************************************************/\n");
+    return Str_FileFooter;
 }

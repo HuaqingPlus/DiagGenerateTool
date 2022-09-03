@@ -56,13 +56,25 @@ S_DTC_Infos_User_Type S_DTC_Infos_User_Default[3] = \
 };
 
 //NVM 默认值
+//初始值
+S_NVM_Infos_User_Type S_NVM_Infos_Init_Value = {"NULL", "NULL", 0, 0,  "NULL", "NULL", "0", "NULL", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
 S_NVM_Infos_User_Type S_NVM_Infos_User_Default[2] = \
 {
     {"NULL", "NULL", 0, 0,  "NULL", "NULL", "NULL", "NULL", 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {"NULL", "NULL",  1, 32, "(uint8*)&NvMConfigBlock_RamBlock_au8", "NULL", "NULL", "NULL", 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    {"NULL", "NULL",  1, 32, "NvMConfigBlock_RamBlock_au8", "NULL", "NULL", "NULL", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
+//DTC_NVM 默认值
 //NVM 默认值
+S_NVM_Infos_User_Type S_DTC_NVM_Infos_User_Default[3] = \
+{
+    {"NULL", "DemCfg_NvMBlockDescriptor_OpCycle", 0, 0,  "Dem_Cfg_OpCycle", "DemCfg_OpCycle_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"NULL", "DemCfg_NvMBlockDescriptor_DemAdmin", 0, 0,  "Dem_Cfg_AdminData", "DemCfg_AdminData_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"NULL", "DemCfg_NvMBlockDescriptor_DemStatus", 0, 0,  "Dem_Cfg_StatusData", "DemCfg_StatusData_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+};
+
+//FEE 默认值
 S_FEE_Infos_User_Type S_FEE_Infos_User_Default[6] = \
 {
     {"FEE_NUM_PARTITIONS", "1", ""},
@@ -72,6 +84,7 @@ S_FEE_Infos_User_Type S_FEE_Infos_User_Default[6] = \
     {"FEE_SECTOR_FOOTER_SIZE", "8", "/* should be same size as PageSize */"},
     {"FEE_HEADER_SIZE", "8", "/* should be same size as PageSize */"}
 };
+
 
 //新建一个工程
 void PM_NewProject(void)
@@ -135,12 +148,11 @@ void PM_NewProject(void)
         S_FEE_Infos_User_Type* Ptr_FEE_Temp = new S_FEE_Infos_User_Type;
         Ptr_FEE_Temp->Item = S_FEE_Infos_User_Default[i].Item;
         Ptr_FEE_Temp->Value = S_FEE_Infos_User_Default[i].Value;
-        Ptr_FEE_Temp->Value = S_FEE_Infos_User_Default[i].Comment;
+        Ptr_FEE_Temp->Comment = S_FEE_Infos_User_Default[i].Comment;
 
         List_FEE_Infos_User.append(Ptr_FEE_Temp);
     }
 }
-
 
 //保存配置工程
 void PM_SaveConfigInfo(void)
@@ -364,13 +376,13 @@ void PM_OpenProject(void)
                                                         ("xml (*.xml)"));
     Str_CurProject_Name = Str_FileName;
     
-
     List_DID_Infos_User.clear();
     List_RID_Infos_User.clear();
     List_DcmGeneral_Infos_User.clear();
     List_OpCycle_Infos_User.clear();
     List_Debounce_Infos_User.clear();
     List_DTC_Infos_User.clear();
+    List_DTC_NVM_Infos_User.clear();
 
     //QFile File_DiagConfig("./../DiagGenerateTool/Config/Diag_Config.xml");
     qDebug() << "ConfigFile Path" << Str_FileName;
@@ -391,6 +403,7 @@ void PM_OpenProject(void)
     S_DTC_Infos_User_Type* DTC_UserType_Temp;
     S_NVM_Infos_User_Type* NVM_UserType_Temp;
     S_FEE_Infos_User_Type* FEE_UserType_Temp;
+    S_NVM_Infos_User_Type* DTC_NVM_UserType_Temp;
     QDomDocument Dom_DiagConfig;
 
     //1. xml -> List_xxxx_Infos_User
@@ -625,6 +638,8 @@ void PM_OpenProject(void)
     for(i = 0; i < List_Node.count(); i++)
     {
         DTC_UserType_Temp = new S_DTC_Infos_User_Type;
+        DTC_NVM_UserType_Temp = new S_NVM_Infos_User_Type;
+
         DomAttr_Map = List_Node.at(i).attributes();
         for(j =0; j < DomAttr_Map.count(); j++)
         {
@@ -700,6 +715,27 @@ void PM_OpenProject(void)
             }
         }
         List_DTC_Infos_User.append(DTC_UserType_Temp);
+
+        // DTC对应的NVM配置
+        //前3个为固定的NVM配置项
+        if(i >= 3)
+        {
+            uint16 fl_DTC_No = i - 3;
+
+            *DTC_NVM_UserType_Temp = S_NVM_Infos_Init_Value;
+            //在初始值的基础上修改部分信息
+            DTC_NVM_UserType_Temp->Str_BlockName = QString("DemCfg_NvMBlockDescriptor_DemPrimary_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
+            DTC_NVM_UserType_Temp->Str_RamBlockDataAddress = QString("Dem_PrimaryEntry_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
+            DTC_NVM_UserType_Temp->Str_RomBlockDataAddress = "Dem_MemoryEntryInit";
+            DTC_NVM_UserType_Temp->Str_JobFinishedFunction = "Dem_NvM_JobFinished";
+
+            List_DTC_NVM_Infos_User.append(DTC_NVM_UserType_Temp);
+        }
+        else
+        {
+            *DTC_NVM_UserType_Temp = S_DTC_NVM_Infos_User_Default[i];
+            List_DTC_NVM_Infos_User.insert(i,DTC_NVM_UserType_Temp);
+        }
     }
 
     //NVM 配置
@@ -819,7 +855,9 @@ void PM_OpenProject(void)
         }
         List_NVM_Infos_User.append(NVM_UserType_Temp);
     }
-
+    //根据DTC的配置，自动增加NVM配置
+    PM_NVMTable_AddDTC();
+    
     //FEE Config
     List_Node = Dom_DiagConfig.elementsByTagName("FEEConfig:");
     if(List_Node.isEmpty())
@@ -866,3 +904,33 @@ void PM_OpenProject(void)
     MW->setWindowTitle(Str_ToolVersion + " - " + Str_CurProject_Name);
 }
 
+//根据DTC的配置，自动增加NVM配置
+void PM_NVMTable_AddDTC(void)
+{
+    uint8 i_NVM = 0;
+    uint8 i_DTC_NVM = 0;
+    uint8 count_NVM = 0;
+    uint8 count_DTC_NVM = 0;
+
+    count_NVM = List_NVM_Infos_User.count();
+    count_DTC_NVM = List_DTC_NVM_Infos_User.count();
+    for(i_DTC_NVM = 0; i_DTC_NVM < count_DTC_NVM; i_DTC_NVM++)
+    {
+        for(i_NVM = 0; i_NVM < count_NVM; i_NVM++)
+        {
+            if(List_DTC_NVM_Infos_User.at(i_DTC_NVM)->Str_BlockName == List_NVM_Infos_User.at(i_NVM)->Str_BlockName)
+            {
+                //如果List_NVM_Infos_User表中已经有对应的DTC配置，则直接跳过
+                break;
+            }
+            else
+            {
+                //遍历到最后，仍然找不到匹配的，则新增
+                if(i_NVM == (count_NVM -1))
+                {
+                    List_NVM_Infos_User.append(List_DTC_NVM_Infos_User.at(i_DTC_NVM));
+                }
+            }
+        }
+    }
+}

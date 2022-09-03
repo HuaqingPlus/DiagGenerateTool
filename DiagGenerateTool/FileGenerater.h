@@ -224,6 +224,8 @@ void Generate_Dem_Cfg_Generate_c(void);
 void Generate_NvM_Cfg_Generate_c(void);
 void Generate_NvM_Cfg_Generate_h(void);
 void Generate_FEE_Cfg_Generate_h(void);
+QString FG_Generate_FileHeader(void);
+QString FG_Generate_FileFooter(void);
 
 extern void PM_NewProject(void);
 extern void PM_OpenProject(void);

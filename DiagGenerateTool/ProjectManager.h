@@ -10,8 +10,10 @@ extern QList<S_Debounce_Infos_User_Type*> List_Debounce_Infos_User;
 extern QList<S_DTC_Infos_User_Type* > List_DTC_Infos_User;
 extern QList<S_NVM_Infos_User_Type* > List_NVM_Infos_User;
 extern QList<S_FEE_Infos_User_Type* > List_FEE_Infos_User;
+extern QList<S_NVM_Infos_User_Type* > List_DTC_NVM_Infos_User;
 
-extern void PM_SaveConfigInfo(void);
-extern void PM_NewProject(void);
+void PM_SaveConfigInfo(void);
+void PM_NewProject(void);
+void PM_NVMTable_AddDTC(void);
 
 #endif // PROJECTMANAGER_H

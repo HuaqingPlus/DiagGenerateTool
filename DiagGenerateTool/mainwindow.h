@@ -5,6 +5,7 @@
 #include <QtDebug>
 #include <QFileDialog>
 #include <QDir>
+#include <QTableView>
 #include <QAbstractItemModel>
 #include <QStandardItemModel>
 #include <QStandardItem>
@@ -16,6 +17,7 @@
 #include <QItemDelegate>
 #include <QMessageBox>
 #include <QCheckBox>
+#include <QDateTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -166,7 +168,7 @@ public:
     void Print_Info_User(void);
     void Print_TableView(void);
     void Print_Did_Infos(void);
-
+    void ResizeLayout(QTableView* Ptr_Table);
 public slots:
     void Slot_OpenConfig(bool checked);
     void Slot_TreeView_Clicled(QModelIndex index);
