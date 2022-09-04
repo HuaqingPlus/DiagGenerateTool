@@ -75,11 +75,12 @@ S_NVM_Infos_User_Type S_DTC_NVM_Infos_User_Default[3] = \
 };
 
 //FEE 默认值
-S_FEE_Infos_User_Type S_FEE_Infos_User_Default[6] = \
+S_FEE_Infos_User_Type S_FEE_Infos_User_Default[] = \
 {
     {"FEE_NUM_PARTITIONS", "1", ""},
-    {"FEE_MAX_LENGTH", "216", "/* Remainding Byte */"},
-    {"FEE_SECTOR_SIZE", "2048", "/* Sector Size */"},
+    {"FEE_MAX_LENGTH", "216", "/* Max Block length: Max length of NvmBlock + 2 * PageSize */"},
+    {"FEE_SECTOR_NUMBER", "30", "/* Sector' number */"},
+    {"FEE_SECTOR_SIZE", "2048", "/* Sector Size, unit: Byte */"},
     {"FEE_SECTOR_HEADER_SIZE", "8", "/* should be same size as PageSize */"},
     {"FEE_SECTOR_FOOTER_SIZE", "8", "/* should be same size as PageSize */"},
     {"FEE_HEADER_SIZE", "8", "/* should be same size as PageSize */"}

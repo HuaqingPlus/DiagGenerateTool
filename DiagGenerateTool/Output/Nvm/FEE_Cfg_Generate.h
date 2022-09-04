@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-04 13:39:49          */
+/*                       Generate Data: 2022-09-04 14:03:27          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -12,8 +12,9 @@
 //FEE Config
 #define FEE_NUM_BLOCKS                 ((uint8)17)
 #define FEE_NUM_PARTITIONS             (1u)     
-#define FEE_MAX_LENGTH                 (216u)   /* Remainding Byte */
-#define FEE_SECTOR_SIZE                (2048u)  /* Sector Size */
+#define FEE_MAX_LENGTH                 (216u)   /* Max Block length: Max length of NvmBlock + 2 * PageSize */
+#define FEE_SECTOR_NUMBER              (30u)    /* Sector' number */
+#define FEE_SECTOR_SIZE                (2048u)  /* Sector Size, unit: Byte */
 #define FEE_SECTOR_HEADER_SIZE         (8u)     /* should be same size as PageSize */
 #define FEE_SECTOR_FOOTER_SIZE         (8u)     /* should be same size as PageSize */
 #define FEE_HEADER_SIZE                (8u)     /* should be same size as PageSize */

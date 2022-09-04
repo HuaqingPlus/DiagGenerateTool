@@ -409,6 +409,9 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
         List_Actions_Project.at(2)->setEnabled(true);
         List_Actions_Project.at(3)->setEnabled(true);
         List_Actions_Project.at(4)->setEnabled(true);
+        //禁止New和Open
+        List_Actions_Project.at(0)->setEnabled(false);
+        List_Actions_Project.at(1)->setEnabled(false);
     }
     else if(action->text() == "Save Project")
     {
@@ -470,6 +473,9 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
         List_Actions_Project.at(2)->setEnabled(false);
         List_Actions_Project.at(3)->setEnabled(false);
         List_Actions_Project.at(4)->setEnabled(false);
+        //使能New和Open
+        List_Actions_Project.at(0)->setEnabled(true);
+        List_Actions_Project.at(1)->setEnabled(true);
 
         //取消显示工程名
         this->setWindowTitle(Str_ToolVersion);
@@ -2040,8 +2046,7 @@ void MainWindow::TableView_UpdateNVM(void)
                     break;
                 case (1):
                     //设置文字左对齐
-                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
-                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_BlockName);
                     break;
                 case (2):
@@ -2052,32 +2057,27 @@ void MainWindow::TableView_UpdateNVM(void)
                     break;
                 case (3):
                     //设置文字左对齐
-                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
-                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_NvBlockLength);
                     break;
                 case (4):
                     //设置文字左对齐
-                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
-                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_RamBlockDataAddress);
                     break;
                 case (5):
                     //设置文字左对齐
-                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
-                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_RomBlockDataAddress);
                     break;
                 case (6):
                     //设置文字左对齐
-                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
-                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_RomBlockDefaultData);
                     break;
                 case (7):
                     //设置文字左对齐
-                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
-                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_JobFinishedFunction);
                     break;
                 case (8):

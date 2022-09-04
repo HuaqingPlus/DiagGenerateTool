@@ -1330,7 +1330,7 @@ void FG_ParseNVMConfig(void)
         uint8 fl_FeeBlockLen = List_NVM_Infos_User.at(i)->Str_NvBlockLength.toUInt(&Result, 10);
 
         //保证和PageSize8对齐,
-        uint8 PAGE_SIZE = List_FEE_Infos_User.at(3)->Value.toUInt(&Result, 10);
+        uint8 PAGE_SIZE = List_FEE_Infos_User.at(4)->Value.toUInt(&Result, 10);
         //qDebug() << "PageSize:" << PAGE_SIZE;
 
         if((fl_FeeBlockLen % PAGE_SIZE) != 0)
