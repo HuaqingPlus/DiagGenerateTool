@@ -1,0 +1,2 @@
+1. NvmCfg_Generate.c文件增加用户代码保留功能
+2. Nvm配置CrcType时用下拉框进行选择。
