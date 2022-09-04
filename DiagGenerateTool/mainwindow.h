@@ -115,7 +115,7 @@ typedef struct
     QString   Str_InitFun;
     QString   Str_BlockName;
     uint16    NvBlockBaseNumber;
-    uint16    NvBlockLength;
+    QString   Str_NvBlockLength;
     QString   Str_RamBlockDataAddress;
     QString   Str_RomBlockDataAddress;
     QString   Str_RomBlockDefaultData;

@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-04 00:55:19          */
+/*                       Generate Data: 2022-09-04 13:39:49          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -60,7 +60,7 @@
 
 
 //DTC Value
-#define Dem_Cfg_Num_Of_Event		((uint8)8)
+#define Dem_Cfg_Num_Of_Event		((uint8)12)
 #define Dem_Cfg_Num_Of_DTC			(Dem_Cfg_Num_Of_Event)
 
 #define Dem_Cfg_Mem_Total_Primary_Entry (Dem_Cfg_Num_Of_DTC)
@@ -75,9 +75,13 @@
 	{ /* 2 */0x000000, 2},\
 	{ /* 3 */0xC14087, 3},\
 	{ /* 4 */0xD10017, 4},\
-	{ /* 5 */0x555555, 5},\
-	{ /* 6 */0x666666, 6},\
-	{ /* 7 */0x777777, 7},\
+	{ /* 5 */0xD10116, 5},\
+	{ /* 6 */0xC07388, 6},\
+	{ /* 7 */0x900A98, 7},\
+	{ /* 8 */0x900A81, 8},\
+	{ /* 9 */0x900A96, 9},\
+	{ /* 10 */0x222222, 10},\
+	{ /* 11 */0x333333, 11},\
 
 #endif
 
@@ -88,9 +92,13 @@
 #define INDEX_DTC_EVENT_000000		(0x2)
 #define INDEX_DTC_EVENT_C14087		(0x3)
 #define INDEX_DTC_EVENT_D10017		(0x4)
-#define INDEX_DTC_EVENT_555555		(0x5)
-#define INDEX_DTC_EVENT_666666		(0x6)
-#define INDEX_DTC_EVENT_777777		(0x7)
+#define INDEX_DTC_EVENT_D10116		(0x5)
+#define INDEX_DTC_EVENT_C07388		(0x6)
+#define INDEX_DTC_EVENT_900A98		(0x7)
+#define INDEX_DTC_EVENT_900A81		(0x8)
+#define INDEX_DTC_EVENT_900A96		(0x9)
+#define INDEX_DTC_EVENT_222222		(0x10)
+#define INDEX_DTC_EVENT_333333		(0x11)
 
 //DTC Attributes Table
 #ifndef DEM_TABLE_DTC_ATTRIBUTES
@@ -104,6 +112,10 @@
 	{ /* 5 */40, 3, TRUE, TRUE},\
 	{ /* 6 */40, 3, TRUE, TRUE},\
 	{ /* 7 */40, 3, TRUE, TRUE},\
+	{ /* 8 */40, 3, TRUE, TRUE},\
+	{ /* 9 */40, 3, TRUE, TRUE},\
+	{ /* 10 */40, 3, TRUE, TRUE},\
+	{ /* 11 */40, 3, TRUE, TRUE},\
 
 #endif
 
@@ -117,9 +129,13 @@
 	{ /* 2 */((void *) 0), 2, DEM_EVENT_KIND_SWC, 255, 255, 2, 2, 0, 0, TRUE},\
 	{ /* 3 */((void *) 0), 3, DEM_EVENT_KIND_BSW, 255, 1, 3, 3, 0, 0, TRUE},\
 	{ /* 4 */((void *) 0), 4, DEM_EVENT_KIND_BSW, 255, 0, 3, 4, 0, 0, TRUE},\
-	{ /* 5 */((void *) 0), 5, DEM_EVENT_KIND_BSW, 255, 1, 3, 5, 0, 0, TRUE},\
-	{ /* 6 */((void *) 0), 6, DEM_EVENT_KIND_BSW, 255, 1, 3, 6, 0, 0, TRUE},\
-	{ /* 7 */((void *) 0), 7, DEM_EVENT_KIND_BSW, 255, 1, 3, 7, 0, 0, TRUE},\
+	{ /* 5 */((void *) 0), 5, DEM_EVENT_KIND_BSW, 255, 0, 3, 5, 0, 0, TRUE},\
+	{ /* 6 */((void *) 0), 6, DEM_EVENT_KIND_BSW, 255, 0, 3, 6, 0, 0, TRUE},\
+	{ /* 7 */((void *) 0), 7, DEM_EVENT_KIND_BSW, 255, 0, 3, 7, 0, 0, TRUE},\
+	{ /* 8 */((void *) 0), 8, DEM_EVENT_KIND_BSW, 255, 0, 3, 8, 0, 0, TRUE},\
+	{ /* 9 */((void *) 0), 9, DEM_EVENT_KIND_BSW, 255, 0, 3, 9, 0, 0, TRUE},\
+	{ /* 10 */((void *) 0), 10, DEM_EVENT_KIND_BSW, 255, 1, 3, 10, 0, 0, TRUE},\
+	{ /* 11 */((void *) 0), 11, DEM_EVENT_KIND_BSW, 255, 1, 3, 11, 0, 0, TRUE},\
 
 #endif
 
@@ -155,6 +171,10 @@ extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_001;
 extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_002;
 extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_003;
 extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_004;
+extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_005;
+extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_006;
+extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_007;
+extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_008;
 
 //Dem NvmBlock RamData Table
 extern const uint8* Dem_Cfg_MemPtr[Dem_Cfg_Mem_Total_Entry];

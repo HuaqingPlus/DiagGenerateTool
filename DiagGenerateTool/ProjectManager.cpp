@@ -61,17 +61,17 @@ S_NVM_Infos_User_Type S_NVM_Infos_Init_Value = {"NULL", "NULL", 0, 0,  "NULL", "
 
 S_NVM_Infos_User_Type S_NVM_Infos_User_Default[2] = \
 {
-    {"NULL", "NULL", 0, 0,  "NULL", "NULL", "NULL", "NULL", 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {"NULL", "NULL",  1, 32, "NvMConfigBlock_RamBlock_au8", "NULL", "NULL", "NULL", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    {"NULL", "NULL", 0, "0",  "NULL", "NULL", "NULL", "NULL", 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"NULL", "NULL",  1, "0", "NvMConfigBlock_RamBlock_au8", "NULL", "NULL", "NULL", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
 //DTC_NVM 默认值
 //NVM 默认值
 S_NVM_Infos_User_Type S_DTC_NVM_Infos_User_Default[3] = \
 {
-    {"NULL", "DemCfg_NvMBlockDescriptor_OpCycle", 0, 0,  "Dem_Cfg_OpCycle", "DemCfg_OpCycle_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {"NULL", "DemCfg_NvMBlockDescriptor_DemAdmin", 0, 0,  "Dem_Cfg_AdminData", "DemCfg_AdminData_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {"NULL", "DemCfg_NvMBlockDescriptor_DemStatus", 0, 0,  "Dem_Cfg_StatusData", "DemCfg_StatusData_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    {"NULL", "DemCfg_NvMBlockDescriptor_OpCycle", 0, "sizeof(Dem_Cfg_OpCycleType)",  "Dem_Cfg_OpCycle", "DemCfg_OpCycle_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"NULL", "DemCfg_NvMBlockDescriptor_DemAdmin", 0, "sizeof(Dem_Cfg_AdminDataType)",  "Dem_Cfg_AdminData", "DemCfg_AdminData_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"NULL", "DemCfg_NvMBlockDescriptor_DemStatus", 0, "sizeof(Dem_Cfg_UdsStatusDataType)", "Dem_Cfg_StatusData", "DemCfg_StatusData_Default", "0", "Dem_NvM_JobFinished", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
 //FEE 默认值
@@ -307,7 +307,7 @@ void PM_SaveConfigInfo(void)
         SubNode.setAttribute("Str_InitFun", List_NVM_Infos_User.at(i)->Str_InitFun);
         SubNode.setAttribute("Str_BlockName", List_NVM_Infos_User.at(i)->Str_BlockName);
         SubNode.setAttribute("NvBlockBaseNumber", QString::number(List_NVM_Infos_User.at(i)->NvBlockBaseNumber, 10));
-        SubNode.setAttribute("NvBlockLength", QString::number(List_NVM_Infos_User.at(i)->NvBlockLength, 10));
+        SubNode.setAttribute("Str_NvBlockLength", List_NVM_Infos_User.at(i)->Str_NvBlockLength);
         SubNode.setAttribute("Str_RamBlockDataAddress", List_NVM_Infos_User.at(i)->Str_RamBlockDataAddress);
         SubNode.setAttribute("Str_RomBlockDataAddress", List_NVM_Infos_User.at(i)->Str_RomBlockDataAddress);
         SubNode.setAttribute("Str_RomBlockDefaultData", List_NVM_Infos_User.at(i)->Str_RomBlockDefaultData);
@@ -726,6 +726,7 @@ void PM_OpenProject(void)
             //在初始值的基础上修改部分信息
             DTC_NVM_UserType_Temp->Str_BlockName = QString("DemCfg_NvMBlockDescriptor_DemPrimary_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
             DTC_NVM_UserType_Temp->Str_RamBlockDataAddress = QString("Dem_PrimaryEntry_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
+            DTC_NVM_UserType_Temp->Str_NvBlockLength = "sizeof(Dem_Cfg_PrimaryMemEntryType)";
             DTC_NVM_UserType_Temp->Str_RomBlockDataAddress = "Dem_MemoryEntryInit";
             DTC_NVM_UserType_Temp->Str_JobFinishedFunction = "Dem_NvM_JobFinished";
 
@@ -760,9 +761,9 @@ void PM_OpenProject(void)
             {
                 NVM_UserType_Temp->NvBlockBaseNumber = Str_Value.toUInt(&Result, 10);
             }
-            else if("NvBlockLength" == Str_Key)
+            else if(("NvBlockLength" == Str_Key) || ("Str_NvBlockLength" == Str_Key))   //为了兼容之前的版本
             {
-                NVM_UserType_Temp->NvBlockLength = Str_Value.toUInt(&Result, 10);
+                NVM_UserType_Temp->Str_NvBlockLength = Str_Value;
             }
             else if("Str_RamBlockDataAddress" == Str_Key)
             {

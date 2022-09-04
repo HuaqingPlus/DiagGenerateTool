@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-04 00:55:19          */
+/*                       Generate Data: 2022-09-04 13:39:49          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -11,7 +11,7 @@
 #include "NvM_Types.h"
 #include "NvM_Server.h"
 
-#define NVM_NUM_OF_BLOCKS                                           ((uint8)13)
+#define NVM_NUM_OF_BLOCKS                                           ((uint8)17)
 //BlockId
 #define NvMConf___MultiBlockRequest                                 (0)
 #define NvMConf_NvMBlockDescriptor_NvMConfigBlock                   (1)
@@ -26,6 +26,10 @@
 #define DemCfg_NvMBlockDescriptor_DemPrimary_002                    (10)
 #define DemCfg_NvMBlockDescriptor_DemPrimary_003                    (11)
 #define DemCfg_NvMBlockDescriptor_DemPrimary_004                    (12)
+#define DemCfg_NvMBlockDescriptor_DemPrimary_005                    (13)
+#define DemCfg_NvMBlockDescriptor_DemPrimary_006                    (14)
+#define DemCfg_NvMBlockDescriptor_DemPrimary_007                    (15)
+#define DemCfg_NvMBlockDescriptor_DemPrimary_008                    (16)
 
 //Ram Block
 extern uint8 NvMConfigBlock_RamBlock_au8[32];
@@ -180,7 +184,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_Cfg_OpCycle,     /*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&DemCfg_OpCycle_Default,/*   uint8*    RomBlockDataAddress;        */ \
  		5,                            /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_OpCycleType),  /*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
@@ -205,7 +209,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_Cfg_AdminData,   /*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&DemCfg_AdminData_Default,/*   uint8*    RomBlockDataAddress;        */ \
  		6,                            /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_AdminDataType),/*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
@@ -230,7 +234,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_Cfg_StatusData,  /*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&DemCfg_StatusData_Default,/*   uint8*    RomBlockDataAddress;        */ \
  		7,                            /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_UdsStatusDataType),/*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
@@ -255,7 +259,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_PrimaryEntry_000,/*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
  		8,                            /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
@@ -280,7 +284,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_PrimaryEntry_001,/*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
  		9,                            /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
@@ -305,7 +309,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_PrimaryEntry_002,/*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
  		10,                           /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
@@ -330,7 +334,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_PrimaryEntry_003,/*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
  		11,                           /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
@@ -355,7 +359,107 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		(uint8*)&Dem_PrimaryEntry_004,/*   uint8*    RamBlockDataAddress;        */ \
  		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
  		12,                           /*   uint16    NvBlockBaseNumber;          */ \
- 		0,                            /*   uint16    NvBlockLength;              */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
+ 		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
+ 		1,                            /*   uint8     BlockJobPriority;           */ \
+ 		0,                            /*   uint8     MaxNumReadRetries;          */ \
+ 		0,                            /*   uint8     MaxNumWriteRetries;         */ \
+		0,                            /*   uint8     NvBlockNum;                 */ \
+		0,                            /*   uint8     NvRamDeviceId;              */ \
+		0,                            /*   uint8     RomBlockNum;                */ \
+		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
+		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		0,                            /*   boolean   BlockUseCrc;                */ \
+		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
+		0,                            /*   boolean BlockWriteProt;               */ \
+		0,                            /*   boolean   BswMBlockStatusInformation; */ \
+		0,                            /*   boolean   CalcRamBlockCrc;            */ \
+		1,                            /*   boolean   SelectBlockForReadAll;      */ \
+		1,                            /*   boolean   SelectBlockForWriteAll;     */ \
+		0,                            /*   boolean   WriteBlockOnce;             */ \
+	},\
+	{\
+		NULL,                         /*   void (*InitCallback) (void);          */ \
+		Dem_NvM_JobFinished,          /*   void(*SingleBlockCallback)(void);     */ \
+ 		(uint8*)&Dem_PrimaryEntry_005,/*   uint8*    RamBlockDataAddress;        */ \
+ 		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
+ 		13,                           /*   uint16    NvBlockBaseNumber;          */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
+ 		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
+ 		1,                            /*   uint8     BlockJobPriority;           */ \
+ 		0,                            /*   uint8     MaxNumReadRetries;          */ \
+ 		0,                            /*   uint8     MaxNumWriteRetries;         */ \
+		0,                            /*   uint8     NvBlockNum;                 */ \
+		0,                            /*   uint8     NvRamDeviceId;              */ \
+		0,                            /*   uint8     RomBlockNum;                */ \
+		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
+		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		0,                            /*   boolean   BlockUseCrc;                */ \
+		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
+		0,                            /*   boolean BlockWriteProt;               */ \
+		0,                            /*   boolean   BswMBlockStatusInformation; */ \
+		0,                            /*   boolean   CalcRamBlockCrc;            */ \
+		1,                            /*   boolean   SelectBlockForReadAll;      */ \
+		1,                            /*   boolean   SelectBlockForWriteAll;     */ \
+		0,                            /*   boolean   WriteBlockOnce;             */ \
+	},\
+	{\
+		NULL,                         /*   void (*InitCallback) (void);          */ \
+		Dem_NvM_JobFinished,          /*   void(*SingleBlockCallback)(void);     */ \
+ 		(uint8*)&Dem_PrimaryEntry_006,/*   uint8*    RamBlockDataAddress;        */ \
+ 		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
+ 		14,                           /*   uint16    NvBlockBaseNumber;          */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
+ 		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
+ 		1,                            /*   uint8     BlockJobPriority;           */ \
+ 		0,                            /*   uint8     MaxNumReadRetries;          */ \
+ 		0,                            /*   uint8     MaxNumWriteRetries;         */ \
+		0,                            /*   uint8     NvBlockNum;                 */ \
+		0,                            /*   uint8     NvRamDeviceId;              */ \
+		0,                            /*   uint8     RomBlockNum;                */ \
+		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
+		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		0,                            /*   boolean   BlockUseCrc;                */ \
+		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
+		0,                            /*   boolean BlockWriteProt;               */ \
+		0,                            /*   boolean   BswMBlockStatusInformation; */ \
+		0,                            /*   boolean   CalcRamBlockCrc;            */ \
+		1,                            /*   boolean   SelectBlockForReadAll;      */ \
+		1,                            /*   boolean   SelectBlockForWriteAll;     */ \
+		0,                            /*   boolean   WriteBlockOnce;             */ \
+	},\
+	{\
+		NULL,                         /*   void (*InitCallback) (void);          */ \
+		Dem_NvM_JobFinished,          /*   void(*SingleBlockCallback)(void);     */ \
+ 		(uint8*)&Dem_PrimaryEntry_007,/*   uint8*    RamBlockDataAddress;        */ \
+ 		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
+ 		15,                           /*   uint16    NvBlockBaseNumber;          */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
+ 		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
+ 		1,                            /*   uint8     BlockJobPriority;           */ \
+ 		0,                            /*   uint8     MaxNumReadRetries;          */ \
+ 		0,                            /*   uint8     MaxNumWriteRetries;         */ \
+		0,                            /*   uint8     NvBlockNum;                 */ \
+		0,                            /*   uint8     NvRamDeviceId;              */ \
+		0,                            /*   uint8     RomBlockNum;                */ \
+		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
+		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		0,                            /*   boolean   BlockUseCrc;                */ \
+		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
+		0,                            /*   boolean BlockWriteProt;               */ \
+		0,                            /*   boolean   BswMBlockStatusInformation; */ \
+		0,                            /*   boolean   CalcRamBlockCrc;            */ \
+		1,                            /*   boolean   SelectBlockForReadAll;      */ \
+		1,                            /*   boolean   SelectBlockForWriteAll;     */ \
+		0,                            /*   boolean   WriteBlockOnce;             */ \
+	},\
+	{\
+		NULL,                         /*   void (*InitCallback) (void);          */ \
+		Dem_NvM_JobFinished,          /*   void(*SingleBlockCallback)(void);     */ \
+ 		(uint8*)&Dem_PrimaryEntry_008,/*   uint8*    RamBlockDataAddress;        */ \
+ 		(uint8*)&Dem_MemoryEntryInit, /*   uint8*    RomBlockDataAddress;        */ \
+ 		16,                           /*   uint16    NvBlockBaseNumber;          */ \
+ 		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16    NvBlockLength;              */ \
  		0,                            /*   uint16    NvRamBlockIdentifier;       */ \
  		1,                            /*   uint8     BlockJobPriority;           */ \
  		0,                            /*   uint8     MaxNumReadRetries;          */ \

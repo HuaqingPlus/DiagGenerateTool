@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-04 00:55:19          */
+/*                       Generate Data: 2022-09-04 13:39:49          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -10,7 +10,7 @@
 #include "Std_Types.h"
 
 //FEE Config
-#define FEE_NUM_BLOCKS                 ((uint8)13)
+#define FEE_NUM_BLOCKS                 ((uint8)17)
 #define FEE_NUM_PARTITIONS             (1u)     
 #define FEE_MAX_LENGTH                 (216u)   /* Remainding Byte */
 #define FEE_SECTOR_SIZE                (2048u)  /* Sector Size */
@@ -35,7 +35,7 @@
 	},\
 	{\
 		2,        /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
+		17,       /*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
@@ -53,49 +53,73 @@
 	},\
 	{\
 		5,        /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_OpCycleType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		6,        /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_AdminDataType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		7,        /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_UdsStatusDataType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		8,        /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		9,        /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		10,       /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		11,       /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		12,       /*   uint16 BlockNumber;    */ \
-		0,        /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
+		0,        /*   uint8  PartitionNo;    */ \
+		0,        /*   boolean ImmediateData; */ \
+	},\
+	{\
+		13,       /*   uint16 BlockNumber;    */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
+		0,        /*   uint8  PartitionNo;    */ \
+		0,        /*   boolean ImmediateData; */ \
+	},\
+	{\
+		14,       /*   uint16 BlockNumber;    */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
+		0,        /*   uint8  PartitionNo;    */ \
+		0,        /*   boolean ImmediateData; */ \
+	},\
+	{\
+		15,       /*   uint16 BlockNumber;    */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
+		0,        /*   uint8  PartitionNo;    */ \
+		0,        /*   boolean ImmediateData; */ \
+	},\
+	{\
+		16,       /*   uint16 BlockNumber;    */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\

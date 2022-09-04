@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-04 00:55:19          */
+/*                       Generate Data: 2022-09-04 13:39:49          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -90,6 +90,10 @@ S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS] = \
 	{DemCfg_NvMBlockDescriptor_DemPrimary_002,          0,  (uint8*)(&Dem_PrimaryEntry_002)},\
 	{DemCfg_NvMBlockDescriptor_DemPrimary_003,          0,  (uint8*)(&Dem_PrimaryEntry_003)},\
 	{DemCfg_NvMBlockDescriptor_DemPrimary_004,          0,  (uint8*)(&Dem_PrimaryEntry_004)},\
+	{DemCfg_NvMBlockDescriptor_DemPrimary_005,          0,  (uint8*)(&Dem_PrimaryEntry_005)},\
+	{DemCfg_NvMBlockDescriptor_DemPrimary_006,          0,  (uint8*)(&Dem_PrimaryEntry_006)},\
+	{DemCfg_NvMBlockDescriptor_DemPrimary_007,          0,  (uint8*)(&Dem_PrimaryEntry_007)},\
+	{DemCfg_NvMBlockDescriptor_DemPrimary_008,          0,  (uint8*)(&Dem_PrimaryEntry_008)},\
 };
 
 

@@ -1110,7 +1110,7 @@ void MainWindow::Slot_AddNVM(bool checked)
     Ptr_Infos_Add->BlockCrcType = 2;
     Ptr_Infos_Add->BlockManagementType = 0;
     Ptr_Infos_Add->NvBlockBaseNumber = 0;
-    Ptr_Infos_Add->NvBlockLength = 0;
+    Ptr_Infos_Add->Str_NvBlockLength = "0";
     Ptr_Infos_Add->NvRamBlockIdentifier = 0;
     Ptr_Infos_Add->BlockUseCrc = 0;
     Ptr_Infos_Add->BlockUseSetRamBlockStatus = 0;
@@ -1166,7 +1166,7 @@ void MainWindow::Slot_InsertNVM(bool checked)
     Ptr_Infos_Add->BlockCrcType = 2;
     Ptr_Infos_Add->BlockManagementType = 0;
     Ptr_Infos_Add->NvBlockBaseNumber = Index;
-    Ptr_Infos_Add->NvBlockLength = 0;
+    Ptr_Infos_Add->Str_NvBlockLength = "0";
     Ptr_Infos_Add->NvRamBlockIdentifier = 0;
     Ptr_Infos_Add->BlockUseCrc = 0;
     Ptr_Infos_Add->BlockUseSetRamBlockStatus = 0;
@@ -1298,9 +1298,9 @@ void MainWindow::TableView_UpdateDid(void)
     for(int i = 0; i < row; i++)
     {
         
-        qDebug() << "i,j: " << List_DID_Infos_User.at(i)->Did\
-                    << List_DID_Infos_User.at(i)->Operation\
-                    << List_DID_Infos_User.at(i)->IsOnlyEol;
+        // qDebug() << "i,j: " << List_DID_Infos_User.at(i)->Did\
+        //             << List_DID_Infos_User.at(i)->Operation\
+        //             << List_DID_Infos_User.at(i)->IsOnlyEol;
                     
         List_Row_Item.clear();
         for(int j = 0; j < col; j++)
@@ -2039,6 +2039,9 @@ void MainWindow::TableView_UpdateNVM(void)
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_InitFun);
                     break;
                 case (1):
+                    //设置文字左对齐
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
+                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_BlockName);
                     break;
                 case (2):
@@ -2048,18 +2051,33 @@ void MainWindow::TableView_UpdateNVM(void)
                     Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->NvBlockBaseNumber));
                     break;
                 case (3):
-                    Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->NvBlockLength));
+                    //设置文字左对齐
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
+                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
+                    Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_NvBlockLength);
                     break;
                 case (4):
+                    //设置文字左对齐
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
+                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_RamBlockDataAddress);
                     break;
                 case (5):
+                    //设置文字左对齐
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
+                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_RomBlockDataAddress);
                     break;
                 case (6):
+                    //设置文字左对齐
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
+                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_RomBlockDefaultData);
                     break;
                 case (7):
+                    //设置文字左对齐
+                    Ptr_Item->setTextAlignment(Qt::AlignLeft);
+                    Ptr_Item->setTextAlignment(Qt::AlignVCenter);
                     Ptr_Item->setText(List_NVM_Infos_User.at(i)->Str_JobFinishedFunction);
                     break;
                 case (8):
@@ -2758,6 +2776,7 @@ void MainWindow::Slot_UpdateDTCInfos(QStandardItem *item)
                 //在初始值的基础上修改部分信息
                 DTC_NVM_UserType_Temp->Str_BlockName = QString("DemCfg_NvMBlockDescriptor_DemPrimary_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
                 DTC_NVM_UserType_Temp->Str_RamBlockDataAddress = QString("Dem_PrimaryEntry_%1").arg(QString::number(fl_DTC_No),3,QChar('0'));
+                DTC_NVM_UserType_Temp->Str_NvBlockLength = "sizeof(Dem_Cfg_PrimaryMemEntryType)";
                 DTC_NVM_UserType_Temp->Str_RomBlockDataAddress = "Dem_MemoryEntryInit";
                 DTC_NVM_UserType_Temp->Str_JobFinishedFunction = "Dem_NvM_JobFinished";
 
@@ -2812,7 +2831,7 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
             Ptr_S_NVMInfos_Temp_User->Str_BlockName = StdModel_NVM.item(i,1)->text();
 
             Ptr_S_NVMInfos_Temp_User->NvBlockBaseNumber = StdModel_NVM.item(i,2)->text().toInt(&Result, 10);
-            Ptr_S_NVMInfos_Temp_User->NvBlockLength = StdModel_NVM.item(i,3)->text().toInt(&Result, 10);
+            Ptr_S_NVMInfos_Temp_User->Str_NvBlockLength = StdModel_NVM.item(i,3)->text();
 
             Ptr_S_NVMInfos_Temp_User->Str_RamBlockDataAddress = StdModel_NVM.item(i,4)->text();
             Ptr_S_NVMInfos_Temp_User->Str_RomBlockDataAddress = StdModel_NVM.item(i,5)->text();
