@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "FileGenerater.h"
 
-//#define RELEASE
+#define RELEASE
 
 extern MainWindow* MW;
 //define in mainwindow.cpp
