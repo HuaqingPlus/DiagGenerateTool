@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "FileGenerater.h"
 
-#define RELEASE
+//#define RELEASE
 
 extern MainWindow* MW;
 //define in mainwindow.cpp
@@ -943,6 +943,10 @@ void FG_ParseDTCConfig(void)
                                            .append("\tDemCfg_NvMBlockDescriptor_DemStatus,\n");
 
     QString Str_UdsStatus_OpCycle_TypeDefine;
+
+    //定义数据类型: Dem_Cfg_UdsStatusDataType 和 Dem_Cfg_OpCycleType
+    uint8 ReserveSize_ToAlign_8Byte = 0;
+    ReserveSize_ToAlign_8Byte = 8 - ((8 + row) % 8);
     Str_UdsStatus_OpCycle_TypeDefine = QString("//Type Define\n")
                                        .append("typedef struct\n")\
                                        .append("{\n")\
@@ -951,12 +955,16 @@ void FG_ParseDTCConfig(void)
                                        .append("\tuint16 RecentFailedEvent;\n")\
                                        .append("\tuint16 RecentConfirmedEvent;\n")\
                                        .append("\tuint8 EventStatus[Dem_Cfg_Mem_Total_Entry];\n")\
-                                       .append("} Dem_Cfg_UdsStatusDataType;\n\n")\
-                                       .append("typedef struct\n")\
-                                       .append("{\n")\
-                                       .append("\tuint16 Counter[Dem_Cfg_Num_Of_OpCycle];\n")\
-                                       .append("\tuint8 MagicFlag;\n")\
-                                       .append("} Dem_Cfg_OpCycleType;\n\n");
+                                       .append(QString("\tuint8 Reserve[%1];\n").arg(ReserveSize_ToAlign_8Byte))\
+                                       .append("} Dem_Cfg_UdsStatusDataType;\n\n");
+
+    ReserveSize_ToAlign_8Byte = 8 - ((2 *  List_OpCycle_Infos_User.count() + 1) % 8);
+    Str_UdsStatus_OpCycle_TypeDefine.append("typedef struct\n")\
+                                    .append("{\n")\
+                                    .append("\tuint16 Counter[Dem_Cfg_Num_Of_OpCycle];\n")\
+                                    .append("\tuint8 MagicFlag;\n")\
+                                    .append(QString("\tuint8 Reserve[%1];\n").arg(ReserveSize_ToAlign_8Byte))\
+                                    .append("} Dem_Cfg_OpCycleType;\n\n");
 
     
     QString Str_Dem_Cfg_MemPtr_Table_Declare = QString("//Dem NvmBlock RamData Table\n")\
@@ -1828,7 +1836,8 @@ void Generate_FEE_Cfg_Generate_h(void)
                  << "#define __FEE_CFG_GENERATE_H__" << endl \
                  << endl;
 
-        Text_Out << "#include \"Std_Types.h\"" << endl << endl;
+        Text_Out << "#include \"Std_Types.h\"" << endl;
+        Text_Out << "#include \"Dem_Cfg_Generate.h\"" << endl << endl;
 
         Text_Out << S_File_FEEConfigs.Str_Macro_Define << endl;
         Text_Out << S_File_FEEConfigs.Str_FeeBlockConfigTable << endl;

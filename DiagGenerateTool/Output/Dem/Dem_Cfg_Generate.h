@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-04 14:03:27          */
+/*                       Generate Data: 2022-09-07 11:34:58          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -148,12 +148,14 @@ typedef struct
 	uint16 RecentFailedEvent;
 	uint16 RecentConfirmedEvent;
 	uint8 EventStatus[Dem_Cfg_Mem_Total_Entry];
+	uint8 Reserve[4];
 } Dem_Cfg_UdsStatusDataType;
 
 typedef struct
 {
 	uint16 Counter[Dem_Cfg_Num_Of_OpCycle];
 	uint8 MagicFlag;
+	uint8 Reserve[7];
 } Dem_Cfg_OpCycleType;
 
 

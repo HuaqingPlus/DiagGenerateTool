@@ -61,8 +61,8 @@ S_NVM_Infos_User_Type S_NVM_Infos_Init_Value = {"NULL", "NULL", 0, 0,  "NULL", "
 
 S_NVM_Infos_User_Type S_NVM_Infos_User_Default[2] = \
 {
-    {"NULL", "NULL", 0, "0",  "NULL", "NULL", "NULL", "NULL", 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {"NULL", "NULL",  1, "0", "NvMConfigBlock_RamBlock_au8", "NULL", "NULL", "NULL", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    {"NULL", "NvMConf___MultiBlockRequest ", 0, "0",  "NULL", "NULL", "NULL", "NULL", 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {"NULL", "NvMConf_NvMBlockDescriptor_NvMConfigBlock",  1, "0", "NvMConfigBlock_RamBlock_au8", "NULL", "NULL", "NULL", 1, 0, 0, 0, 2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 };
 
 //DTC_NVM 默认值

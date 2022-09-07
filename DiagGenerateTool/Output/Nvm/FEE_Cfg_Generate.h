@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-04 14:03:27          */
+/*                       Generate Data: 2022-09-07 11:34:58          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -8,6 +8,7 @@
 #define __FEE_CFG_GENERATE_H__
 
 #include "Std_Types.h"
+#include "Dem_Cfg_Generate.h"
 
 //FEE Config
 #define FEE_NUM_BLOCKS                 ((uint8)17)
