@@ -1,2 +1,8 @@
 1. NvmCfg_Generate.c文件增加用户代码保留功能
 2. Nvm配置CrcType时用下拉框进行选择。
+3. 新增DTC后，如果不刷新一下NvmTable，则新增的DTC相关的NvmBlock index不会自动增加
+4. FeeBlock Size没有8Byte对齐
+5. OpCycle增加对应名字: Sleep -> Wakeup, IgnOff -> IgnOn, PowerOff -> PowerON
+6. 工具中有很多没有明确定义的配置项，要么明确化，要么删除。
+
+
