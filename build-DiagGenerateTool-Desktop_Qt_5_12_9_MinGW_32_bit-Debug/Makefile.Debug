@@ -234,8 +234,24 @@ debug/moc_TableView_Delegate.cpp: ../DiagGenerateTool/TableView_Delegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qfileinfo.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdialog.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDir \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qstandarditemmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItem \
@@ -248,17 +264,6 @@ debug/moc_TableView_Delegate.cpp: ../DiagGenerateTool/TableView_Delegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml/qtxml-config.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QComboBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcombobox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qitemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMessageBox \
@@ -266,6 +271,8 @@ debug/moc_TableView_Delegate.cpp: ../DiagGenerateTool/TableView_Delegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QCheckBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcheckbox.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDateTime \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qdatetime.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QStyledItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleditemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QMouseEvent \
@@ -387,8 +394,24 @@ debug/moc_mainwindow.cpp: ../DiagGenerateTool/mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qfileinfo.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdialog.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDir \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qstandarditemmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItem \
@@ -401,17 +424,6 @@ debug/moc_mainwindow.cpp: ../DiagGenerateTool/mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml/qtxml-config.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QComboBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcombobox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qitemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMessageBox \
@@ -419,6 +431,8 @@ debug/moc_mainwindow.cpp: ../DiagGenerateTool/mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QCheckBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcheckbox.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDateTime \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qdatetime.h \
 		debug/moc_predefs.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/bin/moc.exe
 	C:\Qt\Qt5.12.9\5.12.9\mingw73_32\bin\moc.exe $(DEFINES) --include C:/MyData/Git_WorkSpace/DiagGenerateTool/build-DiagGenerateTool-Desktop_Qt_5_12_9_MinGW_32_bit-Debug/debug/moc_predefs.h -IC:/Qt/Qt5.12.9/5.12.9/mingw73_32/mkspecs/win32-g++ -IC:/MyData/Git_WorkSpace/DiagGenerateTool/DiagGenerateTool -IC:/Qt/Qt5.12.9/5.12.9/mingw73_32/include -IC:/Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets -IC:/Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui -IC:/Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtANGLE -IC:/Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml -IC:/Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore -I. -IC:/Qt/Qt5.12.9/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Qt5.12.9/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.12.9/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Qt5.12.9/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IC:/Qt/Qt5.12.9/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Qt5.12.9/Tools/mingw730_32/i686-w64-mingw32/include ..\DiagGenerateTool\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -560,8 +574,24 @@ debug/FileGenerater.o: ../DiagGenerateTool/FileGenerater.cpp ../DiagGenerateTool
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qfileinfo.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdialog.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDir \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qstandarditemmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItem \
@@ -574,17 +604,6 @@ debug/FileGenerater.o: ../DiagGenerateTool/FileGenerater.cpp ../DiagGenerateTool
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml/qtxml-config.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QComboBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcombobox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qitemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMessageBox \
@@ -592,6 +611,8 @@ debug/FileGenerater.o: ../DiagGenerateTool/FileGenerater.cpp ../DiagGenerateTool
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QCheckBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcheckbox.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDateTime \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qdatetime.h \
 		../DiagGenerateTool/ui_mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QVariant \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QApplication \
@@ -601,11 +622,14 @@ debug/FileGenerater.o: ../DiagGenerateTool/FileGenerater.cpp ../DiagGenerateTool
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qguiapplication.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qinputmethod.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QGridLayout \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHBoxLayout \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHeaderView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qheaderview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMenuBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenubar.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenu.h \
@@ -615,8 +639,6 @@ debug/FileGenerater.o: ../DiagGenerateTool/FileGenerater.cpp ../DiagGenerateTool
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QStatusBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTreeView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtreeview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QWidget \
@@ -737,8 +759,24 @@ debug/ProjectManager.o: ../DiagGenerateTool/ProjectManager.cpp ../DiagGenerateTo
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qfileinfo.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdialog.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDir \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qstandarditemmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItem \
@@ -751,17 +789,6 @@ debug/ProjectManager.o: ../DiagGenerateTool/ProjectManager.cpp ../DiagGenerateTo
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml/qtxml-config.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QComboBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcombobox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qitemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMessageBox \
@@ -769,6 +796,8 @@ debug/ProjectManager.o: ../DiagGenerateTool/ProjectManager.cpp ../DiagGenerateTo
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QCheckBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcheckbox.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDateTime \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qdatetime.h \
 		../DiagGenerateTool/ui_mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QVariant \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QApplication \
@@ -778,11 +807,14 @@ debug/ProjectManager.o: ../DiagGenerateTool/ProjectManager.cpp ../DiagGenerateTo
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qguiapplication.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qinputmethod.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QGridLayout \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHBoxLayout \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHeaderView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qheaderview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMenuBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenubar.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenu.h \
@@ -792,8 +824,6 @@ debug/ProjectManager.o: ../DiagGenerateTool/ProjectManager.cpp ../DiagGenerateTo
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QStatusBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTreeView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtreeview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QWidget \
@@ -914,8 +944,24 @@ debug/TableView_Delegate.o: ../DiagGenerateTool/TableView_Delegate.cpp ../DiagGe
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qfileinfo.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdialog.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDir \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qstandarditemmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItem \
@@ -928,17 +974,6 @@ debug/TableView_Delegate.o: ../DiagGenerateTool/TableView_Delegate.cpp ../DiagGe
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml/qtxml-config.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QComboBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcombobox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qitemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMessageBox \
@@ -946,6 +981,8 @@ debug/TableView_Delegate.o: ../DiagGenerateTool/TableView_Delegate.cpp ../DiagGe
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QCheckBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcheckbox.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDateTime \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qdatetime.h \
 		../DiagGenerateTool/ui_mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QVariant \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QApplication \
@@ -955,11 +992,14 @@ debug/TableView_Delegate.o: ../DiagGenerateTool/TableView_Delegate.cpp ../DiagGe
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qguiapplication.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qinputmethod.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QGridLayout \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHBoxLayout \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHeaderView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qheaderview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMenuBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenubar.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenu.h \
@@ -969,8 +1009,6 @@ debug/TableView_Delegate.o: ../DiagGenerateTool/TableView_Delegate.cpp ../DiagGe
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QStatusBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTreeView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtreeview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QWidget \
@@ -1094,8 +1132,24 @@ debug/main.o: ../DiagGenerateTool/main.cpp ../DiagGenerateTool/mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qfileinfo.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdialog.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDir \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qstandarditemmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItem \
@@ -1108,17 +1162,6 @@ debug/main.o: ../DiagGenerateTool/main.cpp ../DiagGenerateTool/mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml/qtxml-config.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QComboBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcombobox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qitemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMessageBox \
@@ -1126,6 +1169,8 @@ debug/main.o: ../DiagGenerateTool/main.cpp ../DiagGenerateTool/mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QCheckBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcheckbox.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDateTime \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qdatetime.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QApplication \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qapplication.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qcoreapplication.h \
@@ -1249,8 +1294,24 @@ debug/mainwindow.o: ../DiagGenerateTool/mainwindow.cpp ../DiagGenerateTool/mainw
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qfileinfo.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdialog.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDir \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QAbstractItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItemModel \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qstandarditemmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/QStandardItem \
@@ -1263,17 +1324,6 @@ debug/mainwindow.o: ../DiagGenerateTool/mainwindow.cpp ../DiagGenerateTool/mainw
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtXml/qtxml-config.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QComboBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcombobox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qvalidator.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qregularexpression.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractslider.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstyle.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtabbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qrubberband.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qframe.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QItemDelegate \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qitemdelegate.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMessageBox \
@@ -1281,6 +1331,8 @@ debug/mainwindow.o: ../DiagGenerateTool/mainwindow.cpp ../DiagGenerateTool/mainw
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QCheckBox \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qcheckbox.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QDateTime \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qdatetime.h \
 		../DiagGenerateTool/ui_mainwindow.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/QVariant \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QApplication \
@@ -1290,11 +1342,14 @@ debug/mainwindow.o: ../DiagGenerateTool/mainwindow.cpp ../DiagGenerateTool/mainw
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qguiapplication.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtGui/qinputmethod.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QGridLayout \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHBoxLayout \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QHeaderView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qheaderview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractitemview.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtCore/qitemselectionmodel.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QMenuBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenubar.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qmenu.h \
@@ -1304,8 +1359,6 @@ debug/mainwindow.o: ../DiagGenerateTool/mainwindow.cpp ../DiagGenerateTool/mainw
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qpushbutton.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QStatusBar \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTableView \
-		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtableview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QTreeView \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/qtreeview.h \
 		../../../../Qt/Qt5.12.9/5.12.9/mingw73_32/include/QtWidgets/QWidget \

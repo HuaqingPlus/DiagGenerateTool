@@ -146,6 +146,12 @@ typedef struct
     QString Comment;
 }S_FEE_Infos_User_Type;
 
+typedef struct
+{
+    uint8 Id;
+    QString Description;
+}S_DemCfg_OpCycle_IdType;
+
 //class 定义
 class MainWindow : public QMainWindow
 {

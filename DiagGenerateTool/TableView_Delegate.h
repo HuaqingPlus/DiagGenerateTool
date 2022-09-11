@@ -13,8 +13,7 @@ class ComboBox_Delegate: public QItemDelegate
 public:
     //构造函数
    ComboBox_Delegate(QObject *parent = 0);
-
-
+   
    void setItems(const QStringList &texts);
 
 public:
@@ -38,7 +37,6 @@ public:
 
 private:
     QStringList _texts;
-
 };
 
 

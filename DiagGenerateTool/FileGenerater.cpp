@@ -1334,16 +1334,25 @@ void FG_ParseNVMConfig(void)
         Str_NvMBlock_Config_Row.append("\t},\\\n");
         Str_Temp_NvmBlockConfig.append(Str_NvMBlock_Config_Row);
 
-        //FEE Block Config
-        uint8 fl_FeeBlockLen = List_NVM_Infos_User.at(i)->Str_NvBlockLength.toUInt(&Result, 10);
 
+        //FEE Block Config
         //保证和PageSize8对齐,
         uint8 PAGE_SIZE = List_FEE_Infos_User.at(4)->Value.toUInt(&Result, 10);
-        //qDebug() << "PageSize:" << PAGE_SIZE;
+        uint8 fl_FeeBlockLen = List_NVM_Infos_User.at(i)->Str_NvBlockLength.toUInt(&Result, 10);
+        QString Str_Blocklen = 0;
 
-        if((fl_FeeBlockLen % PAGE_SIZE) != 0)
+        if(false != Result)
         {
-            fl_FeeBlockLen += (PAGE_SIZE - (fl_FeeBlockLen % PAGE_SIZE));
+            //qDebug() << "PageSize:" << PAGE_SIZE;
+            if((fl_FeeBlockLen % PAGE_SIZE) != 0)
+            {
+                fl_FeeBlockLen += (PAGE_SIZE - (fl_FeeBlockLen % PAGE_SIZE));
+            }
+            Str_Blocklen = QString::number(fl_FeeBlockLen);
+        }
+        else
+        {
+            Str_Blocklen = List_NVM_Infos_User.at(i)->Str_NvBlockLength;
         }
 
         Str_Temp_FeeBlockConfig.append("\t{\\\n");
@@ -1353,7 +1362,7 @@ void FG_ParseNVMConfig(void)
                                       .append("\t\t%4/*   boolean ImmediateData; */ \\\n");
         Str_Temp_FeeBlockConfig.append(Str_FeeBlock_Fromat\
                                .arg(QString::number(List_NVM_Infos_User.at(i)->NvBlockBaseNumber) +",", -10, QChar(' '))\
-                               .arg(List_NVM_Infos_User.at(i)->Str_NvBlockLength +",", -10, QChar(' '))\
+                               .arg(Str_Blocklen +",", -10, QChar(' '))\
                                .arg(QString::number(0) +",", -10, QChar(' '))\
                                .arg(QString::number(0) +",", -10, QChar(' ')));
 

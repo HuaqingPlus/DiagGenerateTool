@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-07 11:34:58          */
+/*                       Generate Data: 2022-09-11 21:12:26          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -37,7 +37,7 @@
 	},\
 	{\
 		2,        /*   uint16 BlockNumber;    */ \
-		17,       /*   uint16 BlockSize;      */ \
+		24,       /*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\

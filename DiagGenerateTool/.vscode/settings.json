@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "nvm_cfg_generate.h": "c"
+        "nvm_cfg_generate.h": "c",
+        "new": "cpp",
+        "variant": "cpp"
     }
 }

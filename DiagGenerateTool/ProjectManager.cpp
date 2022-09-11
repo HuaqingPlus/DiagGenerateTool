@@ -22,6 +22,11 @@ QString Str_CurProject_Name;
 #define MEMIF_FEE       0x00U
 #define MEMIF_EA        0x01U
 
+#define DemCfg_OperationCycle_PowerOn_Off       (0U)
+#define DemCfg_OperationCycle_IgnOn_Off         (1U)
+#define DemCfg_OperationCycle_WakeUp_Sleep      (2U)
+#define DemCfg_OperationCycle_Auto              (3U)
+
 S_DcmGeneral_Infos_User_Type S_DcmGeneral_Infos_User_Default[4] =
 {
     {"DcmTesterResponseAddr", "2"},
@@ -30,12 +35,13 @@ S_DcmGeneral_Infos_User_Type S_DcmGeneral_Infos_User_Default[4] =
     {"DcmDslBufferSize", "4095"},
 };
 
+//OpCycle 默认值
 S_OpCycle_Infos_User_Type S_OpCycle_Infos_User_Default[4] =
 {
-    {0, 0, 0, 0 },\
-    {1, 0, 0, 0 },\
-    {2, 0, 0, 0 },\
-    {3, 0, 1, 1 },\
+    {DemCfg_OperationCycle_PowerOn_Off, 0, 0, 0 },\
+    {DemCfg_OperationCycle_IgnOn_Off, 0, 0, 0 },\
+    {DemCfg_OperationCycle_WakeUp_Sleep, 0, 0, 0 },\
+    {DemCfg_OperationCycle_Auto, 0, 1, 1 },\
 };
 
 //Debounce 默认值
@@ -103,7 +109,6 @@ void PM_NewProject(void)
     List_FEE_Infos_User.clear();
 
     //设置Dcm_General的默认配置项
-
     count = sizeof(S_DcmGeneral_Infos_User_Default) / sizeof(S_DcmGeneral_Infos_User_Default[0]);
     for(uint8 i = 0; i < count; i++)
     {

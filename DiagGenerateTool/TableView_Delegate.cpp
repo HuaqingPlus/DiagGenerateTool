@@ -98,7 +98,7 @@ void CheckBoxDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
     {
         QStyleOptionButton checkBoxStyleOption;
         checkBoxStyleOption.state |= QStyle::State_Enabled;
-        checkBoxStyleOption.state |= checked? QStyle::State_On : QStyle::State_Off;
+        checkBoxStyleOption.state |= checked ? QStyle::State_On : QStyle::State_Off;
         checkBoxStyleOption.rect = CheckBoxRect(option);
 
         QApplication::style()->drawControl(QStyle::CE_CheckBox,&checkBoxStyleOption,painter);
