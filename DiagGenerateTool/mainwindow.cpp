@@ -114,10 +114,7 @@ QComboBox* Ptr_ComBox_Behavior;
 QComboBox* Ptr_Combox_EventKind;
 QComboBox* Ptr_Combox_NvmDeviceKind;
 
-ComboBox_Delegate* Ptr_ComBoxDelegate_AlgoClass;
-ComboBox_Delegate* Ptr_ComBoxDelegate_Behavior;
 ComboBox_Delegate* Ptr_ComBoxDelegate_EventKind;
-ComboBox_Delegate* Ptr_ComBoxDelegate_DeviceKind;
 
 //Checkbox 代理
 CheckBoxDelegate* Ptr_Checkbox_Delegate_Did[4];
@@ -138,6 +135,8 @@ QStringList StrList_AlgoClass = {"DEM_CFG_DEBOUNCETYPE_COUNTER", "DEM_CFG_DEBOUN
 QStringList StrList_Behavior = {"DEM_DEBOUNCE_FREEZE", "DEM_DEBOUNCE_RESET"};
 QStringList StrList_EventKind = {"DEM_EVENT_KIND_BSW", "DEM_EVENT_KIND_SWC"};
 QStringList StrList_DeviceKind = {"MEMIF_FEE", "MEMIF_EA"};
+QStringList StrList_CrcType = {"CRC_8", "CRC_16", "CRC_32", "CRC_64"};
+QStringList StrList_BlockType = {"NVM_NATIVE_BLOCK", "NVM_REDUNDANT_BLOCK", "NVM_DATASET_BLOCK"};
 
 //函数定义
 MainWindow::MainWindow(QWidget *parent)
@@ -335,13 +334,6 @@ void MainWindow::MainWindow_Init(void)
     connect(Ptr_TableView_Debounce, &QTableView::customContextMenuRequested, this, &MainWindow::Slot_DebounceTable_customContextMenuRequested);
     connect(&StdModel_Debounce, &QStandardItemModel::itemChanged, this, &MainWindow::Slot_UpdateDebounceInfos);
 
-    //设置代理
-    Ptr_ComBoxDelegate_AlgoClass = new ComboBox_Delegate(Ptr_TableView_Debounce);
-    Ptr_ComBoxDelegate_Behavior = new ComboBox_Delegate(Ptr_TableView_Debounce);
-
-    Ptr_ComBoxDelegate_AlgoClass->setItems(StrList_AlgoClass);
-    Ptr_ComBoxDelegate_Behavior->setItems(StrList_Behavior);
-
     //增加 DTC 右键菜单
     Ptr_Menu_DTC = new QMenu(Ptr_TableView_DTC);
     Ptr_Action_AddDTC = Ptr_Menu_DTC->addAction("Add DTC");
@@ -382,9 +374,6 @@ void MainWindow::MainWindow_Init(void)
     connect(Ptr_TableView_NVM, &QTableView::customContextMenuRequested, this, &MainWindow::Slot_NVMTable_customContextMenuRequested);
     connect(&StdModel_NVM, &QStandardItemModel::itemChanged, this, &MainWindow::Slot_UpdateNVMInfos);
 
-    //设置代理
-    Ptr_ComBoxDelegate_DeviceKind = new ComboBox_Delegate(Ptr_TableView_NVM);
-    Ptr_ComBoxDelegate_DeviceKind->setItems(StrList_DeviceKind);
 
     //增加DcmGeneral表的槽函数
     connect(&StdModel_FEE, &QStandardItemModel::itemChanged, this, &MainWindow::Slot_UpdateFEEInfos);
@@ -1601,15 +1590,14 @@ void MainWindow::TableView_UpdateDebounce(void)
     QStringList Strlist_HeaderTip;
     QStandardItem* Ptr_Item;
     CheckBoxDelegate* Ptr_CheckBoxDelegate[2];
-    ComboBox_Delegate* Ptr_ComBoxDelegate[2];
+    ComboBox_Delegate* Ptr_ComBoxDelegate_AlgoClass;
+    ComboBox_Delegate* Ptr_ComBoxDelegate_Behavior;
 
     //清除数据
     StdModel_Debounce.clear();
 
     //设置模型
     Ptr_TableView_Debounce->setModel(&StdModel_Debounce);
-    Ptr_TableView_Debounce->setItemDelegateForColumn(8,Ptr_ComBoxDelegate_AlgoClass);
-    Ptr_TableView_Debounce->setItemDelegateForColumn(11,Ptr_ComBoxDelegate_Behavior);
 
     //设置表头和ToolTip
     Strlist_Header << "FailedThershold" << "PassedThershold" << "FailedTimeThershold" << "PassedTimeThershold" \
@@ -1650,23 +1638,18 @@ void MainWindow::TableView_UpdateDebounce(void)
     Ptr_CheckBoxDelegate[1]->setColumn(10);
 
     //Combox代理
-    Ptr_ComBoxDelegate[0] = new ComboBox_Delegate(Ptr_TableView_Debounce);
-    Ptr_ComBoxDelegate[1] = new ComboBox_Delegate(Ptr_TableView_Debounce);
+    Ptr_ComBoxDelegate_AlgoClass = new ComboBox_Delegate(Ptr_TableView_Debounce);
+    Ptr_ComBoxDelegate_Behavior = new ComboBox_Delegate(Ptr_TableView_Debounce);
 
-    Ptr_ComBoxDelegate[0]->setItems(StrList_AlgoClass);
-    Ptr_ComBoxDelegate[1]->setItems(StrList_Behavior);
+    Ptr_ComBoxDelegate_AlgoClass->setItems(StrList_AlgoClass);
+    Ptr_ComBoxDelegate_Behavior->setItems(StrList_Behavior);
 
     //8列,11列设置Combox代理, 9列,10列设置CheckBOx代理
     Ptr_TableView_Debounce->setItemDelegateForColumn(9,Ptr_CheckBoxDelegate[0]);
     Ptr_TableView_Debounce->setItemDelegateForColumn(10,Ptr_CheckBoxDelegate[1]);
-
-
-    //Ptr_TableView_Debounce->setItemDelegateForColumn(8,Ptr_ComBoxDelegate_AlgoClass);
-    //Ptr_TableView_Debounce->setItemDelegateForColumn(11,Ptr_ComBoxDelegate_Behavior);
-
-    // Ptr_TableView_Debounce->setItemDelegateForColumn(8,Ptr_ComBoxDelegate[0]);
-    // Ptr_TableView_Debounce->setItemDelegateForColumn(11,Ptr_ComBoxDelegate[1]);
-
+    
+    Ptr_TableView_Debounce->setItemDelegateForColumn(8,Ptr_ComBoxDelegate_AlgoClass);
+    Ptr_TableView_Debounce->setItemDelegateForColumn(11,Ptr_ComBoxDelegate_Behavior);
 
     //设置Debounce表的信息
     for(uint8 i = 0; i < row; i++)
@@ -1748,21 +1731,23 @@ void MainWindow::TableView_UpdateDebounce(void)
 
         StdModel_Debounce.insertRow(i, List_Row_Item);
 
-         //在给定索引处的项上打开一个持久编辑器。如果不存在编辑器，委托将创建一个新的编辑器
         QModelIndex index = StdModel_Debounce.index(i,8);
+        QComboBox* Ptr_ComBox;
+
+        //ComboBox需要通过widget方式设置，所以要在Model item都new完后再单独处理
+        //在给定索引处的项上打开一个持久编辑器。如果不存在编辑器，委托将创建一个新的编辑器
         Ptr_TableView_Debounce->openPersistentEditor(index);
         //根据 AlgoClass_u8 设置当前ComboBox的index
         uint8 AlgoClass_u8 = List_Debounce_Infos_User.at(i)->AlgoClass;
-        Ptr_ComBox_Alogclass = (QComboBox*)Ptr_TableView_Debounce->indexWidget(index);
-        Ptr_ComBox_Alogclass->setCurrentIndex(AlgoClass_u8);
+        Ptr_ComBox = (QComboBox*)Ptr_TableView_Debounce->indexWidget(index);
+        Ptr_ComBox->setCurrentIndex(AlgoClass_u8);
 
-        //在给定索引处的项上打开一个持久编辑器。如果不存在编辑器，委托将创建一个新的编辑器
         index = StdModel_Debounce.index(i,11);
         Ptr_TableView_Debounce->openPersistentEditor(index);
         //根据 Behavior_u8 设置当前ComboBox的index
         uint8 Behavior_u8 = List_Debounce_Infos_User.at(i)->behavior;
-        Ptr_ComBox_Behavior = (QComboBox*)Ptr_TableView_Debounce->indexWidget(index);
-        Ptr_ComBox_Behavior->setCurrentIndex(Behavior_u8);
+        Ptr_ComBox = (QComboBox*)Ptr_TableView_Debounce->indexWidget(index);
+        Ptr_ComBox->setCurrentIndex(Behavior_u8);
     }
 
     //设置根据内容自动调整列宽
@@ -1993,7 +1978,12 @@ void MainWindow::TableView_UpdateNVM(void)
     QStringList Strlist_Header;
     QStringList Strlist_HeaderTip;
     QStandardItem* Ptr_Item;
+    QComboBox* Ptr_ComBox;
+    QModelIndex index; 
     CheckBoxDelegate* Ptr_CheckBoxDelegate[2];
+    ComboBox_Delegate* Ptr_ComBoxDelegate_DeviceKind;
+    ComboBox_Delegate* Ptr_ComBoxDelegate_CrcType;
+    ComboBox_Delegate* Ptr_ComBoxDelegate_BlockType;
 
     //清除数据
     StdModel_NVM.clear();
@@ -2015,7 +2005,7 @@ void MainWindow::TableView_UpdateNVM(void)
                       << QString::fromLocal8Bit("重读次数") \
                       << QString::fromLocal8Bit("重写次数")\
                       << QString::fromLocal8Bit("驱动(FEE or EA)")\
-                      << QString::fromLocal8Bit("CRC") \
+                      << QString::fromLocal8Bit("CRC Type") \
                       << QString::fromLocal8Bit("Block Type") \
                       << QString::fromLocal8Bit("ReadAll时是否读取")\
                       << QString::fromLocal8Bit("WriteAll时是否写入");
@@ -2037,7 +2027,17 @@ void MainWindow::TableView_UpdateNVM(void)
     Ptr_TableView_NVM->setModel(&StdModel_NVM);
 
     //设置ComBOx代理
+    Ptr_ComBoxDelegate_DeviceKind = new ComboBox_Delegate(Ptr_TableView_NVM);
+    Ptr_ComBoxDelegate_CrcType = new ComboBox_Delegate(Ptr_TableView_NVM);
+    Ptr_ComBoxDelegate_BlockType = new ComboBox_Delegate(Ptr_TableView_NVM);
+
+    Ptr_ComBoxDelegate_DeviceKind->setItems(StrList_DeviceKind);
+    Ptr_ComBoxDelegate_CrcType->setItems(StrList_CrcType);
+    Ptr_ComBoxDelegate_BlockType->setItems(StrList_BlockType);
+
     Ptr_TableView_NVM->setItemDelegateForColumn(11,Ptr_ComBoxDelegate_DeviceKind);
+    Ptr_TableView_NVM->setItemDelegateForColumn(12,Ptr_ComBoxDelegate_CrcType);
+    Ptr_TableView_NVM->setItemDelegateForColumn(13,Ptr_ComBoxDelegate_BlockType);
 
     //设置CheckBox代理
     Ptr_CheckBoxDelegate[0] = new CheckBoxDelegate(Ptr_TableView_NVM);
@@ -2115,12 +2115,12 @@ void MainWindow::TableView_UpdateNVM(void)
                 case (11): /* ComBox 用全局变量控制 */
                     //Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->NvRamDeviceId));
                     break;
-                case (12):
+                case (12):/* ComBox 用全局变量控制 */
                     /* 禁止编辑 */
                     Ptr_Item->setEditable(false);
                     Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->BlockCrcType));
                     break;
-                case (13):
+                case (13):/* ComBox 用全局变量控制 */
                     /* 禁止编辑 */
                     Ptr_Item->setEditable(false);
                     Ptr_Item->setText(QString::number(List_NVM_Infos_User.at(i)->BlockManagementType));
@@ -2163,13 +2163,26 @@ void MainWindow::TableView_UpdateNVM(void)
         StdModel_NVM.insertRow(i, List_Row_Item);
 
         //在给定索引处的项上打开一个持久编辑器。如果不存在编辑器，委托将创建一个新的编辑器
-        QModelIndex index = StdModel_NVM.index(i,11);
+        index = StdModel_NVM.index(i,11);
         Ptr_TableView_NVM->openPersistentEditor(index);
-
-        //根据 ComBox类型 设置当前ComboBox的index
+        //根据NvRamDeviceId 设置对应ComboBox的index
         uint8 DeviceKind_u8 = List_NVM_Infos_User.at(i)->NvRamDeviceId;
-        Ptr_Combox_NvmDeviceKind = (QComboBox*)(Ptr_TableView_NVM->indexWidget(index));
-        Ptr_Combox_NvmDeviceKind->setCurrentIndex(DeviceKind_u8);
+        Ptr_ComBox = (QComboBox*)(Ptr_TableView_NVM->indexWidget(index));
+        Ptr_ComBox->setCurrentIndex(DeviceKind_u8);
+
+        //根据NvRamDeviceId 设置对应ComboBox的index
+        index = StdModel_NVM.index(i,12);
+        Ptr_TableView_NVM->openPersistentEditor(index);
+        uint8 CrcType_u8 = List_NVM_Infos_User.at(i)->BlockCrcType;
+        Ptr_ComBox = (QComboBox*)(Ptr_TableView_NVM->indexWidget(index));
+        Ptr_ComBox->setCurrentIndex(CrcType_u8);
+
+        //根据NvRamDeviceId 设置对应ComboBox的index
+        index = StdModel_NVM.index(i,13);
+        Ptr_TableView_NVM->openPersistentEditor(index);
+        uint8 BlockType_u8 = List_NVM_Infos_User.at(i)->BlockManagementType;
+        Ptr_ComBox = (QComboBox*)(Ptr_TableView_NVM->indexWidget(index));
+        Ptr_ComBox->setCurrentIndex(BlockType_u8);
     }
 
     //设置根据内容自动调整列宽
@@ -2864,8 +2877,8 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
             Ptr_S_NVMInfos_Temp_User->MaxNumReadRetries = StdModel_NVM.item(i,9)->text().toInt(&Result, 10);
             Ptr_S_NVMInfos_Temp_User->MaxNumWriteRetries = StdModel_NVM.item(i,10)->text().toInt(&Result, 10);
             //Ptr_S_NVMInfos_Temp_User->NvRamDeviceId = StdModel_NVM.item(i,10)->text().toInt(&Result, 10);
-            Ptr_S_NVMInfos_Temp_User->BlockCrcType = StdModel_NVM.item(i,12)->text().toInt(&Result, 10);
-            Ptr_S_NVMInfos_Temp_User->BlockManagementType = StdModel_NVM.item(i,13)->text().toInt(&Result, 10);
+            // Ptr_S_NVMInfos_Temp_User->BlockCrcType = StdModel_NVM.item(i,12)->text().toInt(&Result, 10);
+            // Ptr_S_NVMInfos_Temp_User->BlockManagementType = StdModel_NVM.item(i,13)->text().toInt(&Result, 10);
             //Ptr_S_NVMInfos_Temp_User->SelectBlockForReadAll = StdModel_NVM.item(i,13)->text().toInt(&Result, 10);
             //Ptr_S_NVMInfos_Temp_User->SelectBlockForWriteAll = StdModel_NVM.item(i,14)->text().toInt(&Result, 10);
 
@@ -2889,9 +2902,15 @@ void MainWindow::Slot_UpdateNVMInfos(QStandardItem *item)
                 Ptr_S_NVMInfos_Temp_User->SelectBlockForWriteAll = 0;
             }
 
-            //根据ComboBox的值设置DeviceKind的值
+            //根据ComboBox的值设置 NvRamDeviceId 的值
             Ptr_ComboBox = (QComboBox*)Ptr_TableView_NVM->indexWidget(StdModel_NVM.index(i, 11));
             Ptr_S_NVMInfos_Temp_User->NvRamDeviceId = Ptr_ComboBox->currentIndex();
+            //根据ComboBox的值设置 BlockCrcType 的值
+            Ptr_ComboBox = (QComboBox*)Ptr_TableView_NVM->indexWidget(StdModel_NVM.index(i, 12));
+            Ptr_S_NVMInfos_Temp_User->BlockCrcType = Ptr_ComboBox->currentIndex();
+            //根据ComboBox的值设置 BlockManagementType 的值
+            Ptr_ComboBox = (QComboBox*)Ptr_TableView_NVM->indexWidget(StdModel_NVM.index(i, 13));
+            Ptr_S_NVMInfos_Temp_User->BlockManagementType = Ptr_ComboBox->currentIndex();
 
             //其他不需要配置的项，设置为默认值
             Ptr_S_NVMInfos_Temp_User->NvBlockNum = 0;

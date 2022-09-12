@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-11 21:12:26          */
+/*                       Generate Data: 2022-09-12 22:10:51          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -45,32 +45,56 @@ const uint8 NvmRomData_EIDCConfig[8] = {0,1,0,2,0,0,0,0};
 //JobFinished Function
 uint8 Rte_Call_VIN_JobFinished(NvM_ServiceIdType ServiceId, NvM_RequestResultType JobResult)
 {
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
 	uint8 fl_Ret_u8 = E_NOT_OK;
 	if((ServiceId == NVM_READ_BLOCK) && (JobResult == NVM_REQ_OK))
 	{
 		fl_Ret_u8 = E_OK;
 	}
 	return fl_Ret_u8;
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
 }
 
 uint8 Rte_Call_EcuConfig_JobFinished(NvM_ServiceIdType ServiceId, NvM_RequestResultType JobResult)
 {
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
 	uint8 fl_Ret_u8 = E_NOT_OK;
 	if((ServiceId == NVM_READ_BLOCK) && (JobResult == NVM_REQ_OK))
 	{
 		fl_Ret_u8 = E_OK;
 	}
 	return fl_Ret_u8;
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
 }
 
 uint8 Rte_Call_EIDCConfig_JobFinished(NvM_ServiceIdType ServiceId, NvM_RequestResultType JobResult)
 {
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code Start        */
+/*********************************************/
 	uint8 fl_Ret_u8 = E_NOT_OK;
 	if((ServiceId == NVM_READ_BLOCK) && (JobResult == NVM_REQ_OK))
 	{
 		fl_Ret_u8 = E_OK;
 	}
 	return fl_Ret_u8;
+/*********************************************/
+/*     !!! Don't Remove This Comment !!!     */
+/*         User's Function Code end          */
+/*********************************************/
 }
 
 

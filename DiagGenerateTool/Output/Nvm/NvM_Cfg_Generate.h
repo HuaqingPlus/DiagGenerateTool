@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-11 21:12:26          */
+/*                       Generate Data: 2022-09-12 22:10:51          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -68,7 +68,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
 		0,                            /*   uint8     NvRamDeviceId;              */ \
 		0,                            /*   uint8     RomBlockNum;                */ \
 		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
-		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		1,                            /*   NvM_BlockType BlockManagementType;    */ \
 		0,                            /*   boolean   BlockUseCrc;                */ \
 		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
 		0,                            /*   boolean BlockWriteProt;               */ \
@@ -93,7 +93,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
 		0,                            /*   uint8     NvRamDeviceId;              */ \
 		0,                            /*   uint8     RomBlockNum;                */ \
 		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
-		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		2,                            /*   NvM_BlockType BlockManagementType;    */ \
 		0,                            /*   boolean   BlockUseCrc;                */ \
 		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
 		0,                            /*   boolean BlockWriteProt;               */ \
@@ -265,7 +265,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
  		0,                            /*   uint8     MaxNumWriteRetries;         */ \
 		0,                            /*   uint8     NvBlockNum;                 */ \
-		0,                            /*   uint8     NvRamDeviceId;              */ \
+		1,                            /*   uint8     NvRamDeviceId;              */ \
 		0,                            /*   uint8     RomBlockNum;                */ \
 		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
 		0,                            /*   NvM_BlockType BlockManagementType;    */ \
@@ -290,7 +290,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
  		0,                            /*   uint8     MaxNumReadRetries;          */ \
  		0,                            /*   uint8     MaxNumWriteRetries;         */ \
 		0,                            /*   uint8     NvBlockNum;                 */ \
-		0,                            /*   uint8     NvRamDeviceId;              */ \
+		1,                            /*   uint8     NvRamDeviceId;              */ \
 		0,                            /*   uint8     RomBlockNum;                */ \
 		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
 		0,                            /*   NvM_BlockType BlockManagementType;    */ \
@@ -443,7 +443,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
 		0,                            /*   uint8     NvRamDeviceId;              */ \
 		0,                            /*   uint8     RomBlockNum;                */ \
 		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
-		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		2,                            /*   NvM_BlockType BlockManagementType;    */ \
 		0,                            /*   boolean   BlockUseCrc;                */ \
 		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
 		0,                            /*   boolean BlockWriteProt;               */ \
@@ -468,7 +468,7 @@ extern S_NvM_DirtyFlag_Type Rte_DirtyFlags[NVM_NUM_OF_BLOCKS];
 		0,                            /*   uint8     NvRamDeviceId;              */ \
 		0,                            /*   uint8     RomBlockNum;                */ \
 		2,                            /*   NvM_CrcEnumeration BlockCrcType;      */ \
-		0,                            /*   NvM_BlockType BlockManagementType;    */ \
+		1,                            /*   NvM_BlockType BlockManagementType;    */ \
 		0,                            /*   boolean   BlockUseCrc;                */ \
 		0,                            /*   boolean   BlockUseSetRamBlockStatus;  */ \
 		0,                            /*   boolean BlockWriteProt;               */ \

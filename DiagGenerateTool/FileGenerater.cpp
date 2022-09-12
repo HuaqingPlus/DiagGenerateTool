@@ -65,8 +65,10 @@ QList<S_ReadFunction_Type> List_Write_Funtion;
 QStringList List_IOC_Funtion;
 
 //用户代码
-QString Str_UserCode_Common;
-QList<S_UserCode_Type*> List_UserCode;
+QString Str_UserCode_Common_DcmExt;
+QString Str_UserCode_Common_NvmCfg;
+QList<S_UserCode_Type*> List_DcmExt_UserCode;
+QList<S_UserCode_Type*> List_NvmCfg_UserCode;
 
 //Don't Remove Flag
 QString Str_ComCode_StartFlag[4];
@@ -135,7 +137,8 @@ void FG_Process(void)
     PM_SaveConfigInfo();
 
     //3. List_Config_xxxx -> xxx_Generate.x (生成配置文件)
-    FG_GetUserCode();
+    FG_GetUserCode_DcmExt();
+    FG_GetUserCode_NvmCfg();
     FG_ParseConfig();
     FG_GenerateFiles();
 
@@ -369,11 +372,11 @@ void FG_ParseDidConfig()
 
         //3.用户代码
         Str_UserCode.clear();
-        for(j = 0; j < List_UserCode.count(); j++)
+        for(j = 0; j < List_DcmExt_UserCode.count(); j++)
         {
-            if(List_UserCode.at(j)->Str_FunctionName == (Str_ReadFun_Name + "\n"))
+            if(List_DcmExt_UserCode.at(j)->Str_FunctionName == (Str_ReadFun_Name + "\n"))
             {
-                Str_UserCode = List_UserCode.at(j)->Str_UserCode;
+                Str_UserCode = List_DcmExt_UserCode.at(j)->Str_UserCode;
                 break;
             }
         }
@@ -426,11 +429,11 @@ void FG_ParseDidConfig()
 
         //3.用户代码
         Str_UserCode.clear();
-        for(j = 0; j < List_UserCode.count(); j++)
+        for(j = 0; j < List_DcmExt_UserCode.count(); j++)
         {
-            if(List_UserCode.at(j)->Str_FunctionName == (Str_WriteFun_Name + "\n"))
+            if(List_DcmExt_UserCode.at(j)->Str_FunctionName == (Str_WriteFun_Name + "\n"))
             {
-                Str_UserCode = List_UserCode.at(j)->Str_UserCode;
+                Str_UserCode = List_DcmExt_UserCode.at(j)->Str_UserCode;
                 break;
             }
         }
@@ -483,11 +486,11 @@ void FG_ParseDidConfig()
 
         //用户代码
         Str_UserCode.clear();
-        for(j = 0; j < List_UserCode.count(); j++)
+        for(j = 0; j < List_DcmExt_UserCode.count(); j++)
         {
-            if(List_UserCode.at(j)->Str_FunctionName == (Str_IOC_FunName + "\n"))
+            if(List_DcmExt_UserCode.at(j)->Str_FunctionName == (Str_IOC_FunName + "\n"))
             {
-                Str_UserCode = List_UserCode.at(j)->Str_UserCode;
+                Str_UserCode = List_DcmExt_UserCode.at(j)->Str_UserCode;
                 break;
             }
         }
@@ -642,11 +645,11 @@ void FG_ParseRidConfig(void)
 
         //3.用户代码
         Str_UserCode.clear();
-        for(j = 0; j < List_UserCode.count(); j++)
+        for(j = 0; j < List_DcmExt_UserCode.count(); j++)
         {
-            if(List_UserCode.at(j)->Str_FunctionName == Strline_FunName)
+            if(List_DcmExt_UserCode.at(j)->Str_FunctionName == Strline_FunName)
             {
-                Str_UserCode = List_UserCode.at(j)->Str_UserCode;
+                Str_UserCode = List_DcmExt_UserCode.at(j)->Str_UserCode;
                 break;
             }
         }
@@ -684,11 +687,11 @@ void FG_ParseRidConfig(void)
 
         //3.用户代码
         Str_UserCode.clear();
-        for(j = 0; j < List_UserCode.count(); j++)
+        for(j = 0; j < List_DcmExt_UserCode.count(); j++)
         {
-            if(List_UserCode.at(j)->Str_FunctionName == Strline_FunName)
+            if(List_DcmExt_UserCode.at(j)->Str_FunctionName == Strline_FunName)
             {
-                Str_UserCode = List_UserCode.at(j)->Str_UserCode;
+                Str_UserCode = List_DcmExt_UserCode.at(j)->Str_UserCode;
                 break;
             }
         }
@@ -725,11 +728,11 @@ void FG_ParseRidConfig(void)
 
         //3.用户代码
         Str_UserCode.clear();
-        for(j = 0; j < List_UserCode.count(); j++)
+        for(j = 0; j < List_DcmExt_UserCode.count(); j++)
         {
-            if(List_UserCode.at(j)->Str_FunctionName == Strline_FunName)
+            if(List_DcmExt_UserCode.at(j)->Str_FunctionName == Strline_FunName)
             {
-                Str_UserCode = List_UserCode.at(j)->Str_UserCode;
+                Str_UserCode = List_DcmExt_UserCode.at(j)->Str_UserCode;
                 break;
             }
         }
@@ -764,11 +767,11 @@ void FG_ParseRidConfig(void)
 
         //3.用户代码
         Str_UserCode.clear();
-        for(j = 0; j < List_UserCode.count(); j++)
+        for(j = 0; j < List_DcmExt_UserCode.count(); j++)
         {
-            if(List_UserCode.at(j)->Str_FunctionName == Strline_FunName)
+            if(List_DcmExt_UserCode.at(j)->Str_FunctionName == Strline_FunName)
             {
-                Str_UserCode = List_UserCode.at(j)->Str_UserCode;
+                Str_UserCode = List_DcmExt_UserCode.at(j)->Str_UserCode;
                 break;
             }
         }
@@ -1223,19 +1226,43 @@ void FG_ParseNVMConfig(void)
             }
 
             //JobFinished Callback
+            QString Str_UserCode;
             if(List_NVM_Infos_User.at(i)->Str_JobFinishedFunction != "NULL")
             {
                 Str_CallBackFunction = QString("uint8 %1(NvM_ServiceIdType ServiceId, NvM_RequestResultType JobResult)")
                                        .arg(List_NVM_Infos_User.at(i)->Str_JobFinishedFunction);
 
                 Str_Temp_CallBack_Define.append(Str_CallBackFunction).append("\n")\
-                                        .append("{\n")\
-                                        .append("\tuint8 fl_Ret_u8 = E_NOT_OK;\n")
-                                        .append("\tif((ServiceId == NVM_READ_BLOCK) && (JobResult == NVM_REQ_OK))\n")\
-                                        .append("\t{\n")\
-                                        .append("\t\tfl_Ret_u8 = E_OK;\n")\
-                                        .append("\t}\n")\
-                                        .append("\treturn fl_Ret_u8;\n")\
+                                        .append("{\n");
+
+                //增加 Don't Remove Start 声明
+                Str_Temp_CallBack_Define.append(Str_UserFunCode_StartFlag);
+
+                //增加用户代码
+                Str_UserCode.clear();
+                for(uint8 count = 0; count < List_NvmCfg_UserCode.count(); count++)
+                {
+                    if(List_NvmCfg_UserCode.at(count)->Str_FunctionName == Str_CallBackFunction.append(";\n"))
+                    {
+                        Str_UserCode = List_NvmCfg_UserCode.at(count)->Str_UserCode;
+                        break;
+                    }
+                }
+
+                if(Str_UserCode.isEmpty())
+                {
+                    Str_UserCode =  QString("\tuint8 fl_Ret_u8 = E_NOT_OK;\n")\
+                                    .append("\tif((ServiceId == NVM_READ_BLOCK) && (JobResult == NVM_REQ_OK))\n")\
+                                    .append("\t{\n")\
+                                    .append("\t\tfl_Ret_u8 = E_OK;\n")\
+                                    .append("\t}\n")\
+                                    .append("\treturn fl_Ret_u8;\n");
+                }
+                
+                Str_Temp_CallBack_Define.append(Str_UserCode);
+
+                //增加 Don't Remove End 声明
+                Str_Temp_CallBack_Define.append(Str_UserFunCode_EndFlag)\
                                         .append("}\n\n");
 
                 Str_Temp_CallBack_Declare.append(Str_CallBackFunction).append(";\n");
@@ -1516,7 +1543,7 @@ void Generate_DcmExt_Generate_c(void)
         Text_Out << "#define E_NOT_OK    (1u)" << endl << endl;
 
         Text_Out << Str_UserComCode_StartFlag;
-        Text_Out << Str_UserCode_Common;
+        Text_Out << Str_UserCode_Common_DcmExt;
         Text_Out << Str_UserComCode_EndFlag << endl;
 
         Text_Out << S_File_DidConfigs.Str_ReadFunctions_Define << endl;
@@ -1749,7 +1776,7 @@ void Generate_NvM_Cfg_Generate_c(void)
         Text_Out << "#include \"NvM.h\"" << endl << endl;
 
         Text_Out << Str_UserComCode_StartFlag;
-        //Text_Out << Str_UserCode_Common;
+        Text_Out << Str_UserCode_Common_NvmCfg;
         Text_Out << Str_UserComCode_EndFlag << endl;
 
         Text_Out << S_File_NVMConfigs.Str_RamBlockTable_Define << endl;
@@ -1864,7 +1891,7 @@ void Generate_FEE_Cfg_Generate_h(void)
     }
 }
 
-void FG_GetUserCode(void)
+void FG_GetUserCode_DcmExt(void)
 {
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Input/DcmExt_Generate.c";
@@ -1886,15 +1913,15 @@ void FG_GetUserCode(void)
 //    }
 
     //逐行读取，取出用户代码
-    Str_UserCode_Common.clear();
-    List_UserCode.clear();
+    Str_UserCode_Common_DcmExt.clear();
+    List_DcmExt_UserCode.clear();
     if(false != File_Config.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         while(!File_Config.atEnd())
         {
             Str_line = File_Config.readLine();
             //获取ComUserCode
-            if(Str_UserCode_Common.isEmpty())
+            if(Str_UserCode_Common_DcmExt.isEmpty())
             {
                 if(Str_line == Str_ComCode_StartFlag[0])
                 {
@@ -1910,7 +1937,7 @@ void FG_GetUserCode(void)
                                 Str_line = File_Config.readLine();
                                 while(Str_line != Str_ComCode_EndFlag[0])
                                 {
-                                    Str_UserCode_Common.append(Str_line);
+                                    Str_UserCode_Common_DcmExt.append(Str_line);
                                     Str_line = File_Config.readLine();
                                 }
                            }
@@ -1965,7 +1992,7 @@ void FG_GetUserCode(void)
                                 Ptr_UserFunCode_Temp->Str_UserCode.append(Str_line);
                                  Str_line = File_Config.readLine();
                             }
-                            List_UserCode.append(Ptr_UserFunCode_Temp);
+                            List_DcmExt_UserCode.append(Ptr_UserFunCode_Temp);
                        }
                    }
                }
@@ -1973,6 +2000,100 @@ void FG_GetUserCode(void)
         }
     }
     File_Config.close();
+}
+
+void FG_GetUserCode_NvmCfg(void)
+{
+#ifdef RELEASE
+    QString Str_ConfigFile_Name = "./../Input/NvM_Cfg_Generate.c";
+#else
+    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Input/NvM_Cfg_Generate.c";
+#endif
+    QString Str_line;
+    QRegExp Rex(".*JobFinished");//正则表达式，匹配 有JobFinished的行
+    QString Str_CurFunName;
+
+    bool Result = false;
+    S_UserCode_Type* Ptr_UserFunCode_Temp;
+    QFile File_Config(Str_ConfigFile_Name);
+    QTextStream Text_Out(&File_Config);
+
+    //逐行读取，取出用户代码
+    Str_UserCode_Common_NvmCfg.clear();
+    List_DcmExt_UserCode.clear();
+    if(false != File_Config.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        while(!File_Config.atEnd())
+        {
+            Str_line = File_Config.readLine();
+
+            //获取ComUserCode
+            if(Str_UserCode_Common_NvmCfg.isEmpty())
+            {
+                if(Str_line == Str_ComCode_StartFlag[0])
+                {
+                   Str_line = File_Config.readLine();
+                   if(Str_line == Str_ComCode_StartFlag[1])
+                   {
+                       Str_line = File_Config.readLine();
+                       if(Str_line == Str_ComCode_StartFlag[2])
+                       {
+                           Str_line = File_Config.readLine();
+                           if(Str_line == Str_ComCode_StartFlag[3])
+                           {
+                                Str_line = File_Config.readLine();
+                                while(Str_line != Str_ComCode_EndFlag[0])
+                                {
+                                    Str_UserCode_Common_NvmCfg.append(Str_line);
+                                    Str_line = File_Config.readLine();
+                                }
+                           }
+                       }
+                   }
+                }
+            }
+
+            //获取 NvmCfg CallBackFunction Code
+            //匹配正则表达式
+            Result = Rex.exactMatch(Str_line);
+            //匹配成功，说明当前行定义有ID值，获取该行数据
+            if(false != Result)
+            {
+                QString Str_Match;
+                QString Str_Section;
+                //int index;
+                Str_Match = Rex.capturedTexts().at(0);
+                Str_CurFunName = Str_Match;
+
+                if(Str_line == Str_FunCode_StartFlag[0])
+                {
+                   Str_line = File_Config.readLine();
+                   if(Str_line == Str_FunCode_StartFlag[1])
+                   {
+                       Str_line = File_Config.readLine();
+                       if(Str_line == Str_FunCode_StartFlag[2])
+                       {
+                           Str_line = File_Config.readLine();
+                           if(Str_line == Str_FunCode_StartFlag[3])
+                           {
+                               Ptr_UserFunCode_Temp = new S_UserCode_Type;
+                               Ptr_UserFunCode_Temp->Str_FunctionName = Str_CurFunName;
+
+                               Str_line = File_Config.readLine();
+                                while(Str_line != Str_FunCode_EndFlag[0])
+                                {
+                                    Ptr_UserFunCode_Temp->Str_UserCode.append(Str_line);
+                                     Str_line = File_Config.readLine();
+                                }
+                                List_NvmCfg_UserCode.append(Ptr_UserFunCode_Temp);
+                           }
+                       }
+                       }
+                }
+            }
+        }
+        File_Config.close();
+    }
 }
 
 //生成文件头信息
