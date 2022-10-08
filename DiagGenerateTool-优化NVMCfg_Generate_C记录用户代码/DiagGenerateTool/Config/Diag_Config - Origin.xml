@@ -1,0 +1,29 @@
+<DiagConfigs>
+    <DcmConfig>
+        <DcmGeneralConfig>
+            <DcmGeneralConfig: DcmTesterResponseAddr="2"/>
+            <DcmGeneralConfig: DcmTesterSourcePhyAddr="1"/>
+            <DcmGeneralConfig: DcmTesterSourceFuncAddr="0"/>
+            <DcmGeneralConfig: DcmDslBufferSize="4095"/>
+        </DcmGeneralConfig>
+        <DidConfig>
+            <DidConfig: DataLen="a" Did="a1a1" Operation="3"/>
+            <DidConfig: DataLen="1" Did="f1b1" Operation="4"/>
+            <DidConfig: DataLen="4" Did="f193" Operation="1"/>
+            <DidConfig: DataLen="4" Did="f195" Operation="1"/>
+        </DidConfig>
+        <RidConfig>
+            <RidConfig: RoutineType="6" RoutineControlOptionRecord="0" Rid="202" Operation="f"/>
+            <RidConfig: RoutineType="6" RoutineControlOptionRecord="0" Rid="203" Operation="f"/>
+            <RidConfig: RoutineType="6" RoutineControlOptionRecord="0" Rid="ff01" Operation="f"/>
+            <RidConfig: RoutineType="6" RoutineControlOptionRecord="0" Rid="f103" Operation="f"/>
+            <RidConfig: RoutineType="6" RoutineControlOptionRecord="0" Rid="f104" Operation="f"/>
+            <RidConfig: RoutineType="6" RoutineControlOptionRecord="1" Rid="f11e" Operation="f"/>
+        </RidConfig>
+    </DcmConfig>
+    <DemConfig>
+        <OpCycleConfig/>
+        <DebounceConfig/>
+        <DTCConfig/>
+    </DemConfig>
+</DiagConfigs>

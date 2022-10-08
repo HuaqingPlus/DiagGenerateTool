@@ -1,0 +1,44 @@
+<DiagConfigs>
+    <DcmConfig>
+        <DcmGeneralConfig>
+            <DcmGeneralConfig: DcmTesterResponseAddr="2"/>
+            <DcmGeneralConfig: DcmTesterSourcePhyAddr="1"/>
+            <DcmGeneralConfig: DcmTesterSourceFuncAddr="0"/>
+            <DcmGeneralConfig: DcmDslBufferSize="4095"/>
+        </DcmGeneralConfig>
+        <DidConfig/>
+        <RidConfig/>
+    </DcmConfig>
+    <DemConfig>
+        <OpCycleConfig>
+            <OpCycleConfig: AutoStop="0" Type="0" AutoStart="0" Id="0"/>
+            <OpCycleConfig: AutoStop="0" Type="0" AutoStart="0" Id="1"/>
+            <OpCycleConfig: AutoStop="0" Type="0" AutoStart="0" Id="2"/>
+            <OpCycleConfig: AutoStop="1" Type="0" AutoStart="1" Id="3"/>
+        </OpCycleConfig>
+        <DebounceConfig>
+            <DebounceConfig: PassedThershold="0" JumpUpValue="0" JumpUp="0" FailedThershold="0" AlgoClass="1" JumpDownValue="0" JumpDown="0" behavior="1" PassedTimeThershold="100" DecStepSize="0" FailedTimeThershold="100" IncStepSize="0"/>
+            <DebounceConfig: PassedThershold="-128" JumpUpValue="0" JumpUp="0" FailedThershold="127" AlgoClass="0" JumpDownValue="0" JumpDown="0" behavior="1" PassedTimeThershold="0" DecStepSize="-1" FailedTimeThershold="0" IncStepSize="1"/>
+            <DebounceConfig: PassedThershold="0" JumpUpValue="0" JumpUp="0" FailedThershold="0" AlgoClass="3" JumpDownValue="0" JumpDown="0" behavior="1" PassedTimeThershold="0" DecStepSize="0" FailedTimeThershold="0" IncStepSize="0"/>
+        </DebounceConfig>
+        <DTCConfig>
+            <DTCConfig: AgingAllowed="0" StorageConditionRef="0" DTCTableRef="0" DebounceTableRef="255" ImmediateNvStorageAllowed="0" EnableConditionRef="0" AgingThershold="255" AttrbsRef="0" DemCallbackInitMForE="((void *) 0)" FailureCycleCounterThershold="255" Value="ffffff" AgingOpCycleRef="4" EventKind="0" OpCycleRef="4" Id="0" AvailableStatus="0"/>
+            <DTCConfig: AgingAllowed="1" StorageConditionRef="0" DTCTableRef="1" DebounceTableRef="255" ImmediateNvStorageAllowed="1" EnableConditionRef="0" AgingThershold="40" AttrbsRef="1" DemCallbackInitMForE="((void *) 0)" FailureCycleCounterThershold="255" Value="0" AgingOpCycleRef="0" EventKind="0" OpCycleRef="2" Id="1" AvailableStatus="1"/>
+            <DTCConfig: AgingAllowed="1" StorageConditionRef="0" DTCTableRef="2" DebounceTableRef="255" ImmediateNvStorageAllowed="1" EnableConditionRef="0" AgingThershold="40" AttrbsRef="2" DemCallbackInitMForE="((void *) 0)" FailureCycleCounterThershold="255" Value="0" AgingOpCycleRef="0" EventKind="1" OpCycleRef="2" Id="2" AvailableStatus="1"/>
+        </DTCConfig>
+    </DemConfig>
+    <NVMConfig>
+        <NVMBlockConfig>
+            <NVMBlockConfig: NvBlockNum="0" Str_RomBlockDataAddress="NULL" NvBlockLength="0" BlockCrcType="0" NvRamBlockIdentifier="0" BswMBlockStatusInformation="0" MaxNumWriteRetries="0" BlockWriteProt="0" RomBlockNum="0" WriteBlockOnce="0" MaxNumReadRetries="0" Str_BlockName="NULL" Str_RamBlockDataAddress="NULL" BlockUseSetRamBlockStatus="0" CalcRamBlockCrc="0" BlockManagementType="2" Str_RomBlockDefaultData="NULL" BlockUseCrc="0" NvBlockBaseNumber="0" NvRamDeviceId="0" BlockJobPriority="0" SelectBlockForWriteAll="0" Str_JobFinishedFunction="" Str_InitFun="NULL" SelectBlockForReadAll="0"/>
+            <NVMBlockConfig: NvBlockNum="0" Str_RomBlockDataAddress="NULL" NvBlockLength="32" BlockCrcType="0" NvRamBlockIdentifier="0" BswMBlockStatusInformation="0" MaxNumWriteRetries="0" BlockWriteProt="0" RomBlockNum="0" WriteBlockOnce="0" MaxNumReadRetries="0" Str_BlockName="NULL" Str_RamBlockDataAddress="(uint8*)&amp;NvMConfigBlock_RamBlock_au8" BlockUseSetRamBlockStatus="0" CalcRamBlockCrc="0" BlockManagementType="2" Str_RomBlockDefaultData="NULL" BlockUseCrc="0" NvBlockBaseNumber="1" NvRamDeviceId="0" BlockJobPriority="0" SelectBlockForWriteAll="0" Str_JobFinishedFunction="" Str_InitFun="NULL" SelectBlockForReadAll="0"/>
+        </NVMBlockConfig>
+        <FEEBlockConfig>
+            <FEEBlockConfig: FEE_NUM_PARTITIONS=""/>
+            <FEEBlockConfig: FEE_MAX_LENGTH="/* Remainding Byte */"/>
+            <FEEBlockConfig: FEE_SECTOR_SIZE="/* Sector Size */"/>
+            <FEEBlockConfig: FEE_SECTOR_HEADER_SIZE="/* should be same size as PageSize */"/>
+            <FEEBlockConfig: FEE_SECTOR_FOOTER_SIZE="/* should be same size as PageSize */"/>
+            <FEEBlockConfig: FEE_HEADER_SIZE="/* should be same size as PageSize */"/>
+        </FEEBlockConfig>
+    </NVMConfig>
+</DiagConfigs>

@@ -1173,7 +1173,7 @@ void FG_ParseNVMConfig(void)
                             if(StrList_RomDefaultValue.count() > (index + j))
                             {
                                 //每个数据占4个宽度
-                                Str_data = QString("%1,").arg(StrList_RomDefaultValue.at(index + j), -4, QChar(' '));
+                                Str_data = QString("%1,").arg(StrList_RomDefaultValue.at(index + j), 4, QChar(' '));
                             }
                             Str_RomData_Row.append(Str_data);
                         }
@@ -1184,6 +1184,8 @@ void FG_ParseNVMConfig(void)
                     }
 
                     //小于20个数据部分
+                    Str_RomData_Row.clear();
+                    Str_RomData_Row.append("\t");
                     if((BlockLen_Temp < 20) && (BlockLen_Temp != 0))
                     {
                         for(j = 0; j < BlockLen_Temp; j++)
@@ -1191,14 +1193,16 @@ void FG_ParseNVMConfig(void)
                             //避免用户填充值的个数 < 用户设置的数量。
                             if(StrList_RomDefaultValue.count() > (index + j))
                             {
-                                Str_data = StrList_RomDefaultValue.at(index + j);
+                                //每个数据占4个宽度
+                                Str_data = QString("%1,").arg(StrList_RomDefaultValue.at(index + j), 4, QChar(' '));
                             }
                             else
                             {
-                            Str_data = "0,   ";
+                                Str_data = "0,   ";
                             }
                             Str_RomData_Row.append(Str_data);
                         }
+                        Str_RomData_Row.append("\\\n");
                         StrList_RomData_Row.append(Str_RomData_Row);
                     }
 
@@ -1209,7 +1213,7 @@ void FG_ParseNVMConfig(void)
                 }
                 else
                 {
-                /* do nothing */
+                    /* do nothing */
                 }
 
                 Str_Temp_RomBlock_Define.append(QString("const uint8 %1[%2] = {%3};\n")\
@@ -1242,7 +1246,7 @@ void FG_ParseNVMConfig(void)
                 Str_UserCode.clear();
                 for(uint8 count = 0; count < List_NvmCfg_UserCode.count(); count++)
                 {
-                    if(List_NvmCfg_UserCode.at(count)->Str_FunctionName == Str_CallBackFunction.append(";\n"))
+                    if(List_NvmCfg_UserCode.at(count)->Str_FunctionName == (Str_CallBackFunction + "\n"))
                     {
                         Str_UserCode = List_NvmCfg_UserCode.at(count)->Str_UserCode;
                         break;
@@ -2010,7 +2014,8 @@ void FG_GetUserCode_NvmCfg(void)
     QString Str_ConfigFile_Name = "./../DiagGenerateTool/Input/NvM_Cfg_Generate.c";
 #endif
     QString Str_line;
-    QRegExp Rex(".*JobFinished");//正则表达式，匹配 有JobFinished的行
+    //正则表达式，匹配 有_JobFinished的行
+    QRegExp Rex("[\\s\\S]*_JobFinished[\\s\\S]*");
     QString Str_CurFunName;
 
     bool Result = false;
@@ -2020,7 +2025,7 @@ void FG_GetUserCode_NvmCfg(void)
 
     //逐行读取，取出用户代码
     Str_UserCode_Common_NvmCfg.clear();
-    List_DcmExt_UserCode.clear();
+    List_NvmCfg_UserCode.clear();
     if(false != File_Config.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         while(!File_Config.atEnd())
@@ -2056,7 +2061,7 @@ void FG_GetUserCode_NvmCfg(void)
             //获取 NvmCfg CallBackFunction Code
             //匹配正则表达式
             Result = Rex.exactMatch(Str_line);
-            //匹配成功，说明当前行定义有ID值，获取该行数据
+            //匹配成功，说明当前行定义有_JobFinished的行，获取该行数据
             if(false != Result)
             {
                 QString Str_Match;
@@ -2064,7 +2069,9 @@ void FG_GetUserCode_NvmCfg(void)
                 //int index;
                 Str_Match = Rex.capturedTexts().at(0);
                 Str_CurFunName = Str_Match;
-
+                //再多读2行
+                Str_line = File_Config.readLine();
+                Str_line = File_Config.readLine();
                 if(Str_line == Str_FunCode_StartFlag[0])
                 {
                    Str_line = File_Config.readLine();
@@ -2088,7 +2095,7 @@ void FG_GetUserCode_NvmCfg(void)
                                 List_NvmCfg_UserCode.append(Ptr_UserFunCode_Temp);
                            }
                        }
-                       }
+                    }
                 }
             }
         }

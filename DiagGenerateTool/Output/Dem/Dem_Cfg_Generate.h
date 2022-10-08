@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-09-12 22:10:51          */
+/*                       Generate Data: 2022-10-08 11:25:27          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -52,15 +52,15 @@
 #ifndef DEM_TABLE_DEBOUNCE
 #define DEM_TABLE_DEBOUNCE \
 	/*Index, F.Td, P.Td, FT.Td, PT.Td, Dec-Stp, Inc-Stp, JmpUpVal, JmpDwnVal, Algo, JmpUp, Jmpdwn, Behavior*/ \
-	{ /* 0 */0, 0, 100, 100, 0, 0, 0, 0, DEM_CFG_DEBOUNCETYPE_INVALID, 0, 0, DEM_DEBOUNCE_RESET},\
-	{ /* 1 */127, -128, 0, 0, -1, 1, 0, 0, DEM_CFG_DEBOUNCETYPE_INVALID, 0, 0, DEM_DEBOUNCE_RESET},\
+	{ /* 0 */0, 0, 100, 100, 0, 0, 0, 0, DEM_CFG_DEBOUNCETYPE_TIMER, 0, 0, DEM_DEBOUNCE_RESET},\
+	{ /* 1 */127, -128, 0, 0, -1, 1, 0, 0, DEM_CFG_DEBOUNCETYPE_COUNTER, 0, 0, DEM_DEBOUNCE_RESET},\
 	{ /* 2 */0, 0, 0, 0, 0, 0, 0, 0, DEM_CFG_DEBOUNCETYPE_INVALID, 0, 0, DEM_DEBOUNCE_RESET},\
 
 #endif
 
 
 //DTC Value
-#define Dem_Cfg_Num_Of_Event		((uint8)12)
+#define Dem_Cfg_Num_Of_Event		((uint8)10)
 #define Dem_Cfg_Num_Of_DTC			(Dem_Cfg_Num_Of_Event)
 
 #define Dem_Cfg_Mem_Total_Primary_Entry (Dem_Cfg_Num_Of_DTC)
@@ -80,8 +80,6 @@
 	{ /* 7 */0x900A98, 7},\
 	{ /* 8 */0x900A81, 8},\
 	{ /* 9 */0x900A96, 9},\
-	{ /* 10 */0x222222, 10},\
-	{ /* 11 */0x333333, 11},\
 
 #endif
 
@@ -97,8 +95,6 @@
 #define INDEX_DTC_EVENT_900A98		(0x7)
 #define INDEX_DTC_EVENT_900A81		(0x8)
 #define INDEX_DTC_EVENT_900A96		(0x9)
-#define INDEX_DTC_EVENT_222222		(0x10)
-#define INDEX_DTC_EVENT_333333		(0x11)
 
 //DTC Attributes Table
 #ifndef DEM_TABLE_DTC_ATTRIBUTES
@@ -114,8 +110,6 @@
 	{ /* 7 */40, 3, TRUE, TRUE},\
 	{ /* 8 */40, 3, TRUE, TRUE},\
 	{ /* 9 */40, 3, TRUE, TRUE},\
-	{ /* 10 */40, 3, TRUE, TRUE},\
-	{ /* 11 */40, 3, TRUE, TRUE},\
 
 #endif
 
@@ -134,8 +128,6 @@
 	{ /* 7 */((void *) 0), 7, DEM_EVENT_KIND_BSW, 255, 0, 3, 7, 0, 0, TRUE},\
 	{ /* 8 */((void *) 0), 8, DEM_EVENT_KIND_BSW, 255, 0, 3, 8, 0, 0, TRUE},\
 	{ /* 9 */((void *) 0), 9, DEM_EVENT_KIND_BSW, 255, 0, 3, 9, 0, 0, TRUE},\
-	{ /* 10 */((void *) 0), 10, DEM_EVENT_KIND_BSW, 255, 1, 3, 10, 0, 0, TRUE},\
-	{ /* 11 */((void *) 0), 11, DEM_EVENT_KIND_BSW, 255, 1, 3, 11, 0, 0, TRUE},\
 
 #endif
 
@@ -148,7 +140,7 @@ typedef struct
 	uint16 RecentFailedEvent;
 	uint16 RecentConfirmedEvent;
 	uint8 EventStatus[Dem_Cfg_Mem_Total_Entry];
-	uint8 Reserve[4];
+	uint8 Reserve[6];
 } Dem_Cfg_UdsStatusDataType;
 
 typedef struct
@@ -175,8 +167,6 @@ extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_003;
 extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_004;
 extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_005;
 extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_006;
-extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_007;
-extern Dem_Cfg_PrimaryMemEntryType Dem_PrimaryEntry_008;
 
 //Dem NvmBlock RamData Table
 extern const uint8* Dem_Cfg_MemPtr[Dem_Cfg_Mem_Total_Entry];
