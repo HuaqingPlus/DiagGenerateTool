@@ -401,6 +401,9 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
         //禁止New和Open
         List_Actions_Project.at(0)->setEnabled(false);
         List_Actions_Project.at(1)->setEnabled(false);
+
+        //使能Generate
+        ui->But_Generate->setEnabled(true);
     }
     else if(action->text() == "Save Project")
     {
@@ -413,6 +416,15 @@ void MainWindow::Slot_FileMenu_Triggered(QAction* action)
         ui->Tree_Config->setModel(&StdModle_TreeConfig);
         //设置展开
         ui->Tree_Config->expandAll();
+
+        //使能Generate, Save, Save As, Close
+        ui->But_Generate->setEnabled(true);
+        List_Actions_Project.at(2)->setEnabled(true);
+        List_Actions_Project.at(3)->setEnabled(true);
+        List_Actions_Project.at(4)->setEnabled(true);
+        //禁止New和Open
+        List_Actions_Project.at(0)->setEnabled(false);
+        List_Actions_Project.at(1)->setEnabled(false);
 
         //使能Generate
         ui->But_Generate->setEnabled(true);

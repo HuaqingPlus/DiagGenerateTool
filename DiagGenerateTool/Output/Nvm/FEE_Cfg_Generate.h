@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-10-08 11:25:27          */
+/*                       Generate Data: 2022-10-12 18:08:40          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -11,7 +11,7 @@
 #include "Dem_Cfg_Generate.h"
 
 //FEE Config
-#define FEE_NUM_BLOCKS                 ((uint8)16)
+#define FEE_NUM_BLOCKS                 ((uint8)8)
 #define FEE_NUM_PARTITIONS             (1u)     
 #define FEE_MAX_LENGTH                 (216u)   /* Max Block length: Max length of NvmBlock + 2 * PageSize */
 #define FEE_SECTOR_NUMBER              (30u)    /* Sector' number */
@@ -31,91 +31,43 @@
 	},\
 	{\
 		1,        /*   uint16 BlockNumber;    */ \
-		32,       /*   uint16 BlockSize;      */ \
+		0,        /*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		2,        /*   uint16 BlockNumber;    */ \
-		16,       /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_OpCycleType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		3,        /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_AdminDataType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		4,        /*   uint16 BlockNumber;    */ \
-		16,       /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_UdsStatusDataType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		5,        /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
 		6,        /*   uint16 BlockNumber;    */ \
-		200,      /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		7,        /*   uint16 BlockNumber;    */ \
 		8,        /*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\
 	{\
-		8,        /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		9,        /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		10,       /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		11,       /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		12,       /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		13,       /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		14,       /*   uint16 BlockNumber;    */ \
-		24,       /*   uint16 BlockSize;      */ \
-		0,        /*   uint8  PartitionNo;    */ \
-		0,        /*   boolean ImmediateData; */ \
-	},\
-	{\
-		15,       /*   uint16 BlockNumber;    */ \
-		32,       /*   uint16 BlockSize;      */ \
+		7,        /*   uint16 BlockNumber;    */ \
+		sizeof(Dem_Cfg_PrimaryMemEntryType),/*   uint16 BlockSize;      */ \
 		0,        /*   uint8  PartitionNo;    */ \
 		0,        /*   boolean ImmediateData; */ \
 	},\

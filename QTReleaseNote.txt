@@ -2,18 +2,16 @@
 C:\Users\100005480\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Qt 5.12.9\5.12.9\MSVC 2017 (32-bit)
 
 2.用vcvar32.bat 完成编译环境(C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build)
-
 cd C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build
 vcvars32.bat
 
 3.执行windeployqt xxxx.exe
-windeployqt --force D:\MyDocument\Qt_Project\build-DiagGenerateTool-Desktop_Qt_5_12_9_MSVC2017_32bit-Release\release\DiagGenerateTool.exe
-
 cd C:\Users\100005480\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Qt 5.12.9\5.12.9\MSVC 2017 (32-bit)
 windeployqt --force D:\MyDocument\Qt_Project\build-DiagGenerateTool-Desktop_Qt_5_12_9_MSVC2017_32bit-Release\release\DiagGenerateTool.exe
 
-
-
 /*****************************************/
 最新代码获取：
-git@github.com:HuaqingPlus/DiagGenerateTool.git
+git clone git@github.com:HuaqingPlus/DiagGenerateTool.git
+上传代码：
+git push -u origin main
+

@@ -562,8 +562,8 @@ void FG_ParseRidConfig(void)
         QString Str_Rid = QString::number(List_Rid.at(i), 16).toUpper();
         Str_Temp.append(QString("\t{0x%1, 0x%2, 0x%3}, /* RID: 0x%4 */ \\\n") \
                 .arg(QString::number(List_RidInfo.at(i).SignalInfo_Ref,16), 1, QChar('0')) \
-                .arg(QString::number(List_RidInfo.at(i).State_Ref, 10), 1, QChar('0')) \
-                .arg(QString::number(List_RidInfo.at(i).Operation,10).toUpper(), 2, QChar('0')) \
+                .arg(QString::number(List_RidInfo.at(i).State_Ref, 16), 1, QChar('0')) \
+                .arg(QString::number(List_RidInfo.at(i).Operation,16).toUpper(), 2, QChar('0')) \
                 .arg(Str_Rid, 4, QChar('0')));
     }
     Str_Temp.append("\n#endif\n");
@@ -577,9 +577,9 @@ void FG_ParseRidConfig(void)
     {
         QString Str_Rid = QString::number(List_Rid.at(i), 16).toUpper();
         QString Str_RidOpFunc_Ref = QString::number(List_RidSignalInfo.at(i).RidOpFunc_Ref, 16).toUpper();
-        QString Str_Req_Length = QString::number(List_RidSignalInfo.at(i).Req_Length, 10).toUpper();
-        QString Str_Resp_Length = QString::number(List_RidSignalInfo.at(i).Resp_Length, 10).toUpper();
-        QString Str_OpType = QString::number(List_RidSignalInfo.at(i).OpType, 10).toUpper();
+        QString Str_Req_Length = QString::number(List_RidSignalInfo.at(i).Req_Length, 16).toUpper();
+        QString Str_Resp_Length = QString::number(List_RidSignalInfo.at(i).Resp_Length, 16).toUpper();
+        QString Str_OpType = QString::number(List_RidSignalInfo.at(i).OpType, 16).toUpper();
         Str_Temp.append(QString("\t{0x%1, 0x%2, 0x%3, 0x%4}, /* RID: 0x%5 */ \\\n") \
                         .arg(Str_RidOpFunc_Ref, 1, QChar('0')) \
                         .arg(Str_Req_Length, 1, QChar('0')) \
