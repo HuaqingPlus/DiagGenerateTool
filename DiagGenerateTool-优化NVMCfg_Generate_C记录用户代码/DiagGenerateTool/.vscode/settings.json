@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "nvm_cfg_generate.h": "c",
-        "new": "cpp",
-        "variant": "cpp",
-        "*.tcc": "cpp",
-        "string": "cpp"
-    }
-}
