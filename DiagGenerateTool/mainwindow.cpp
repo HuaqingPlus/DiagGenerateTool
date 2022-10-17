@@ -138,6 +138,14 @@ QStringList StrList_DeviceKind = {"MEMIF_FEE", "MEMIF_EA"};
 QStringList StrList_CrcType = {"CRC_8", "CRC_16", "CRC_32", "CRC_64"};
 QStringList StrList_BlockType = {"NVM_NATIVE_BLOCK", "NVM_REDUNDANT_BLOCK", "NVM_DATASET_BLOCK"};
 
+S_DemCfg_OpCycle_IdType l_DemCfg_OpcycleIdTable[4] =
+{
+    {(0U), "DemCfg_OperationCycle_PowerOn_Off" },
+    {(1U), "DemCfg_OperationCycle_IgnOn_Off"},
+    {(2U), "DemCfg_OperationCycle_WakeUp_Sleep"},
+    {(3U), "DemCfg_OperationCycle_Auto"}
+};
+
 //函数定义
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -1482,13 +1490,7 @@ void MainWindow::TableView_UpdateOpCycle(void)
     QStandardItem* Ptr_Item;
     CheckBoxDelegate* Ptr_CheckBoxDelegate[2];
 
-    S_DemCfg_OpCycle_IdType fl_DemCfg_OpcycleIdTable[4] =
-    {
-        {(0U), "DemCfg_OperationCycle_PowerOn_Off" },
-        {(1U), "DemCfg_OperationCycle_IgnOn_Off"},
-        {(2U), "DemCfg_OperationCycle_WakeUp_Sleep"},
-        {(3U), "DemCfg_OperationCycle_Auto"}
-    };
+    
 
     //清除数据
     StdModel_OpCycle.clear();
@@ -1536,7 +1538,7 @@ void MainWindow::TableView_UpdateOpCycle(void)
             {
                 case (0):
                     Ptr_Item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-                    Ptr_Item->setText(fl_DemCfg_OpcycleIdTable[List_OpCycle_Infos_User.at(i)->Id].Description);
+                    Ptr_Item->setText(l_DemCfg_OpcycleIdTable[List_OpCycle_Infos_User.at(i)->Id].Description);
                     break;
                 case (1):
                     /* 禁止编辑, 使能Check */
@@ -2612,7 +2614,7 @@ void MainWindow::Slot_UpdateOpCycleInfos(QStandardItem *item)
         for(i = 0; i < row; i++)
         {
             Ptr_S_OpCycleInfos_Temp_User = new S_OpCycle_Infos_User_Type;
-            Ptr_S_OpCycleInfos_Temp_User->Id = StdModel_OpCycle.item(i,0)->text().toUInt(&Result, 10);
+            Ptr_S_OpCycleInfos_Temp_User->Id = l_DemCfg_OpcycleIdTable[i].Id;
             Ptr_S_OpCycleInfos_Temp_User->Type = StdModel_OpCycle.item(i,1)->text().toUInt(&Result, 10);
 
             Index = StdModel_OpCycle.index(i,2,QModelIndex());
