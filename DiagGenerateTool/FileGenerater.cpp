@@ -3,6 +3,7 @@
 #include "FileGenerater.h"
 
 //#define RELEASE
+extern QString Str_ConfigFolder_Path;
 
 extern MainWindow* MW;
 //define in mainwindow.cpp
@@ -86,6 +87,13 @@ QStringList StrList_Bool = {"FALSE", "TRUE"};
 //Generate File Result
 boolean Result_Generate = true;
 
+//Generate Folder
+QString Str_Folder_Dcm;
+QString Str_Folder_Dem;
+QString Str_Folder_Nvm;
+
+QString Str_Folder_Dcm_Input;
+QString Str_Folder_Nvm_Input;
 
 void FG_Init(void)
 {
@@ -1448,8 +1456,55 @@ void FG_ParseFEEConfig(void)
     S_File_FEEConfigs.Str_Macro_Define = Str_Temp;
 }
 
+
+void FG_GenerateFolder(void)
+{
+    QString Str_Ouput_Folder;
+    QString Str_Input_Folder;
+
+    Str_Ouput_Folder = Str_ConfigFolder_Path + "//Output";
+    Str_Input_Folder =  Str_ConfigFolder_Path + "//Input";
+
+    Str_Folder_Dcm_Input = Str_Input_Folder + "/Dcm";
+    Str_Folder_Nvm_Input = Str_Input_Folder + "/Nvm";
+
+    Str_Folder_Dcm = Str_Ouput_Folder + "//Dcm";
+    Str_Folder_Dem = Str_Ouput_Folder + "//Dem";
+    Str_Folder_Nvm = Str_Ouput_Folder + "//Nvm";
+
+    //检查当前目录中是否有 Dcm, Dem, Nvm目录，没有则创建
+    QDir Dir_Dcm(Str_Folder_Dcm);
+    if(Dir_Dcm.exists())
+    {
+        //do nothing
+    }
+    else
+    {
+        Dir_Dcm.mkdir(Str_Folder_Dcm);
+    }
+    QDir Dir_Dem(Str_Folder_Dem);
+    if(Dir_Dem.exists())
+    {
+        //do nothing
+    }
+    else
+    {
+        Dir_Dem.mkdir(Str_Folder_Dem);
+    }
+    QDir Dir_Nvm(Str_Folder_Nvm);
+    if(Dir_Nvm.exists())
+    {
+        //do nothing
+    }
+    else
+    {
+        Dir_Nvm.mkdir(Str_Folder_Nvm);
+    }
+}
+
 void FG_GenerateFiles(void)
 {  
+    FG_GenerateFolder();
     Generate_Dcm_Cfg_Generate_h();
     Generate_DcmExt_Generate_c();
     Generate_DcmExt_Generate_h();
@@ -1465,7 +1520,7 @@ void Generate_Dcm_Cfg_Generate_h(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Dcm/Dcm_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dcm/Dcm_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = Str_Folder_Dcm + "/Dcm_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1519,7 +1574,7 @@ void Generate_DcmExt_Generate_c(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Dcm/DcmExt_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dcm/DcmExt_Generate.c";
+    QString Str_ConfigFile_Name = Str_Folder_Dcm + "/DcmExt_Generate.c";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1572,7 +1627,7 @@ void Generate_DcmExt_Generate_h(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Dcm/DcmExt_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dcm/DcmExt_Generate.h";
+    QString Str_ConfigFile_Name = Str_Folder_Dcm + "/DcmExt_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1636,7 +1691,7 @@ void Generate_Dem_Cfg_Generate_h(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Dem/Dem_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dem/Dem_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = Str_Folder_Dem + "/Dem_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1709,7 +1764,7 @@ void Generate_Dem_Cfg_Generate_c(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Dem/Dem_Cfg_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Dem/Dem_Cfg_Generate.c";
+    QString Str_ConfigFile_Name = Str_Folder_Dem + "/Dem_Cfg_Generate.c";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1755,7 +1810,7 @@ void Generate_NvM_Cfg_Generate_c(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Nvm/NvM_Cfg_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Nvm/NvM_Cfg_Generate.c";
+    QString Str_ConfigFile_Name = Str_Folder_Nvm + "/NvM_Cfg_Generate.c";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1806,7 +1861,7 @@ void Generate_NvM_Cfg_Generate_h(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Nvm/NvM_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Nvm/NvM_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = Str_Folder_Nvm + "/NvM_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1856,7 +1911,7 @@ void Generate_FEE_Cfg_Generate_h(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Output/Nvm/FEE_Cfg_Generate.h";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Output/Nvm/FEE_Cfg_Generate.h";
+    QString Str_ConfigFile_Name = Str_Folder_Nvm + "/FEE_Cfg_Generate.h";
 #endif
     QFile File_Config(Str_ConfigFile_Name);
     QTextStream Text_Out(&File_Config);
@@ -1900,7 +1955,7 @@ void FG_GetUserCode_DcmExt(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Input/DcmExt_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Input/DcmExt_Generate.c";
+    QString Str_ConfigFile_Name = Str_Folder_Dcm_Input + "/DcmExt_Generate.c";
 #endif
     QString Str_line;
     QRegExp Rex(".*[0-9A-F]{4}.*");//正则表达式，匹配4个(0-9或A-F)的值
@@ -2011,7 +2066,7 @@ void FG_GetUserCode_NvmCfg(void)
 #ifdef RELEASE
     QString Str_ConfigFile_Name = "./../Input/NvM_Cfg_Generate.c";
 #else
-    QString Str_ConfigFile_Name = "./../DiagGenerateTool/Input/NvM_Cfg_Generate.c";
+    QString Str_ConfigFile_Name = Str_Folder_Nvm_Input + "/NvM_Cfg_Generate.c";
 #endif
     QString Str_line;
     //正则表达式，匹配 有_JobFinished的行

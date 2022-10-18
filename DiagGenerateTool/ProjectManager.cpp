@@ -7,6 +7,7 @@ extern QString Str_ToolVersion;
 
 //当前配置工程
 QString Str_CurProject_Name;
+QString Str_ConfigFolder_Path;
 
 #define DEM_CFG_DEBOUNCETYPE_COUNTER        (0)
 #define DEM_CFG_DEBOUNCETYPE_TIMER          (1)
@@ -372,7 +373,7 @@ void PM_SaveConfigInfo(void)
 //读取配置
 void PM_OpenProject(void)
 {
-
+    QString Str_Temp;
     uint8 i = 0;
     uint8 j = 0;
     uint8 count = 0;
@@ -381,7 +382,12 @@ void PM_OpenProject(void)
                                                         "./../DiagGenerateTool/Config",\
                                                         ("xml (*.xml)"));
     Str_CurProject_Name = Str_FileName;
-    
+
+    // ./../DiagGenerateTool/Config
+    Str_ConfigFolder_Path = Str_FileName.left(Str_FileName.lastIndexOf("/"));
+    // ./../DiagGenerateTool, 将 "/config"移除
+    Str_ConfigFolder_Path.chop(7);
+
     List_DID_Infos_User.clear();
     List_RID_Infos_User.clear();
     List_DcmGeneral_Infos_User.clear();
@@ -390,7 +396,6 @@ void PM_OpenProject(void)
     List_DTC_Infos_User.clear();
     List_DTC_NVM_Infos_User.clear();
 
-    //QFile File_DiagConfig("./../DiagGenerateTool/Config/Diag_Config.xml");
     qDebug() << "ConfigFile Path" << Str_FileName;
 
     QFile File_DiagConfig(Str_FileName);

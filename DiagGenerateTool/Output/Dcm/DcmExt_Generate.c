@@ -1,6 +1,6 @@
 /*********************************************************************/
 /*                       DiagTool.Generate Start                     */
-/*                       Generate Data: 2022-10-17 11:50:41          */
+/*                       Generate Data: 2022-10-18 14:21:26          */
 /*                       Author: QHQ                                 */
 /*********************************************************************/
 
@@ -18,11 +18,6 @@
 /*                      !!! Don't Remove This Comment !!!                   */
 /*                              User's Code Start                           */
 /****************************************************************************/
-
-Code1
-code2
-code3
-
 /****************************************************************************/
 /*                        !!! Don't Remove This Comment !!!                 */
 /*                                User's Code end                           */
@@ -109,7 +104,7 @@ uint16 fdiag_app_F18A_Read(uint8 Buff[])
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint16 fl_DataLen = ((uint16)2000);
+	uint16 fl_DataLen = ((uint16)200);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -131,7 +126,7 @@ uint16 fdiag_app_F18C_Read(uint8 Buff[])
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint16 fl_DataLen = ((uint16)1000);
+	uint16 fl_DataLen = ((uint16)100);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -332,7 +327,7 @@ uint16 fdiag_app_A1A1_Write(uint8 Buff[])
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint16 fl_DataLen = ((uint16)4);
+	uint16 fl_DataLen = ((uint16)0);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
@@ -420,7 +415,7 @@ uint16 fdiag_app_F18C_Write(uint8 Buff[])
 /*     !!! Don't Remove This Comment !!!     */
 /*         User's Function Code Start        */
 /*********************************************/
-	uint16 fl_DataLen = ((uint16)1000);
+	uint16 fl_DataLen = ((uint16)100);
 	return (fl_DataLen);
 /*********************************************/
 /*     !!! Don't Remove This Comment !!!     */
